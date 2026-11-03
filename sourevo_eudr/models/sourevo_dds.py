@@ -83,6 +83,7 @@ class SourevoDds(models.Model):
     check_blocking = fields.Text('Blocking issues', readonly=True, copy=False)
     check_warnings = fields.Text('Warnings', readonly=True, copy=False)
     check_warning_keys = fields.Text(readonly=True, copy=False)
+    check_blocking_codes = fields.Char(readonly=True, copy=False)
     last_synced = fields.Datetime('Updated from Sourevo', readonly=True, copy=False)
     locked = fields.Boolean(compute='_compute_locked')
 
@@ -227,6 +228,7 @@ class SourevoDds(models.Model):
             'check_blocking': '\n'.join(issue_text(i, names, lang) for i in blocking) or False,
             'check_warnings': '\n'.join(issue_text(i, names, lang) for i in warnings) or False,
             'check_warning_keys': json.dumps([i['key'] for i in warnings if i.get('key')]),
+            'check_blocking_codes': ','.join(i.get('code') or '' for i in blocking) or False,
         })
 
     def _sourevo_submit(self):

@@ -16,6 +16,7 @@ class SourevoDdsSubmit(models.TransientModel):
     has_blocking = fields.Boolean(compute='_compute_summary')
     has_warnings = fields.Boolean(compute='_compute_summary')
     simulated = fields.Boolean(compute='_compute_summary')
+    needs_credentials = fields.Boolean(compute='_compute_summary')
     acknowledge = fields.Boolean('I acknowledge the warnings and submit under my responsibility')
 
     @api.depends('line_ids.check_blocking', 'line_ids.check_warnings', 'line_ids.check_ready')
@@ -33,6 +34,14 @@ class SourevoDdsSubmit(models.TransientModel):
             wizard.has_blocking = any(line.check_blocking or not line.check_ready for line in wizard.line_ids)
             wizard.has_warnings = any(wizard.line_ids.mapped('check_warnings'))
             wizard.simulated = wizard.picking_id.company_id.sourevo_mode == 'simulated'
+            wizard.needs_credentials = any('OPERATOR_NO_CREDENTIALS' in (line.check_blocking_codes or '')
+                                           for line in wizard.line_ids)
+
+    def action_open_operators(self):
+        """The TRACES companies of Sourevo, where the TRACES credentials are entered."""
+        self.ensure_one()
+        return {'type': 'ir.actions.act_url', 'target': 'new',
+                'url': self.picking_id.company_id._sourevo_web_url('/dds/operators')}
 
     def action_check_again(self):
         self.ensure_one()
