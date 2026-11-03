@@ -23,6 +23,8 @@
                         <group string="Goods">
                             <field name="locked" invisible="1"/>
                             <field name="company_id" invisible="1"/>
+                            <field name="sourevo_dds_id" invisible="1"/>
+                            <field name="simulated" invisible="1"/>
                             <field name="picking_id"/>
                             <field name="product_id"/>
                             <field name="partner_id"/>
