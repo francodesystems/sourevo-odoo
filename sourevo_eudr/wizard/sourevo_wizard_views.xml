@@ -11,10 +11,15 @@
                 <div class="alert alert-danger" role="alert" invisible="not has_blocking">
                     There are blocking issues (in red). Fix them in Sourevo or in the receipt and check again.
                 </div>
+                <div class="alert alert-warning" role="alert" invisible="not needs_credentials">
+                    The TRACES operator has no TRACES credentials in Sourevo yet.
+                    <button name="action_open_operators" type="object" string="Add them in Sourevo" class="btn-link p-0 align-baseline"/>
+                </div>
                 <field name="summary" readonly="1"/>
                 <field name="has_blocking" invisible="1"/>
                 <field name="has_warnings" invisible="1"/>
                 <field name="simulated" invisible="1"/>
+                <field name="needs_credentials" invisible="1"/>
                 <div invisible="has_blocking or not has_warnings" class="mt-2">
                     <field name="acknowledge"/>
                     <label for="acknowledge"/>
