@@ -1,6 +1,6 @@
 {
     'name': 'Sourevo EUDR',
-    'version': '20.0.1.0.0',
+    'version': '19.0.1.0.0',
     'category': 'Inventory/Purchase',
     'summary': 'EUDR compliance from Odoo: suppliers, plots, receipts and the due diligence statement submitted '
                'to TRACES, with its reference number back on the receipt',
@@ -39,7 +39,8 @@ Enterprise plans and, in the 14-day trial, works in simulated mode.
     'depends': ['purchase', 'stock', 'contacts'],
     'external_dependencies': {'python': ['requests']},
     'data': [
-        'security/ir.access.csv',
+        'security/ir.model.access.csv',
+        'security/sourevo_security.xml',
         'data/ir_cron.xml',
         'views/res_config_settings_views.xml',
         'views/sourevo_dds_views.xml',

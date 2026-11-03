@@ -46,7 +46,7 @@
                             <field name="reference_number"/>
                             <field name="verification_number"/>
                             <field name="simulated" optional="hide"/>
-                            <button name="action_sourevo_discard" type="object" icon="delete" title="Discard"
+                            <button name="action_sourevo_discard" type="object" icon="fa-trash" title="Discard"
                                     invisible="status not in ('new', 'DRAFT')"/>
                         </list>
                     </field>

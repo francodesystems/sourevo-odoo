@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sourevo_operator_user,sourevo.operator user,model_sourevo_operator,base.group_user,1,0,0,0
+access_sourevo_operator_system,sourevo.operator system,model_sourevo_operator,base.group_system,1,1,1,1
+access_sourevo_plot_user,sourevo.plot user,model_sourevo_plot,base.group_user,1,0,0,0
+access_sourevo_plot_purchase,sourevo.plot purchase,model_sourevo_plot,purchase.group_purchase_user,1,1,1,1
+access_sourevo_plot_stock,sourevo.plot stock,model_sourevo_plot,stock.group_stock_user,1,1,1,1
+access_sourevo_dds_user,sourevo.dds user,model_sourevo_dds,base.group_user,1,0,0,0
+access_sourevo_dds_stock,sourevo.dds stock,model_sourevo_dds,stock.group_stock_user,1,1,1,1
+access_sourevo_webhook_event_system,sourevo.webhook.event system,model_sourevo_webhook_event,base.group_system,1,0,0,0
+access_sourevo_dds_submit_stock,sourevo.dds.submit stock,model_sourevo_dds_submit,stock.group_stock_user,1,1,1,1
+access_sourevo_plot_upload_purchase,sourevo.plot.upload purchase,model_sourevo_plot_upload,purchase.group_purchase_user,1,1,1,1
+access_sourevo_plot_upload_stock,sourevo.plot.upload stock,model_sourevo_plot_upload,stock.group_stock_user,1,1,1,1

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_sourevo_operator_company" model="ir.rule">
+        <field name="name">Sourevo operators: multi-company</field>
+        <field name="model_id" ref="model_sourevo_operator"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_sourevo_plot_company" model="ir.rule">
+        <field name="name">Sourevo plots: multi-company</field>
+        <field name="model_id" ref="model_sourevo_plot"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_sourevo_dds_company" model="ir.rule">
+        <field name="name">Sourevo statements: multi-company</field>
+        <field name="model_id" ref="model_sourevo_dds"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

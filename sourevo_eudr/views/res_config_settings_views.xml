@@ -25,9 +25,9 @@
                                 </div>
                                 <div class="mt8" invisible="sourevo_api_key">
                                     <span class="text-muted">No account yet? </span>
-                                    <a href="https://sourevo.com/?utm_source=odoo&amp;utm_medium=module&amp;utm_campaign=odoo20" target="_blank">Start a free trial in Sourevo</a>
+                                    <a href="https://sourevo.com/?utm_source=odoo&amp;utm_medium=module&amp;utm_campaign=odoo19" target="_blank">Start a free trial in Sourevo</a>
                                 </div>
-                                <button name="action_sourevo_test" type="object" string="Test connection" class="btn-link" icon="arrow_forward"/>
+                                <button name="action_sourevo_test" type="object" string="Test connection" class="btn-link" icon="fa-arrow-right"/>
                             </div>
                         </setting>
                         <setting string="Notifications" help="Sourevo tells Odoo when TRACES gives the reference number, when a supplier answers a plot proposal and when a satellite check flags a plot. This database must be reachable from the internet; if not, the statements are updated every 15 minutes.">
@@ -35,7 +35,7 @@
                                 <div invisible="not sourevo_webhook_url">
                                     <span class="text-muted">Sent to </span><field name="sourevo_webhook_url" class="d-inline"/>
                                 </div>
-                                <button name="action_sourevo_connect_webhook" type="object" string="Connect notifications" class="btn-link" icon="arrow_forward" invisible="sourevo_webhook_url"/>
+                                <button name="action_sourevo_connect_webhook" type="object" string="Connect notifications" class="btn-link" icon="fa-arrow-right" invisible="sourevo_webhook_url"/>
                                 <button name="action_sourevo_connect_webhook" type="object" string="Connect again" class="btn-link" invisible="not sourevo_webhook_url"/>
                                 <button name="action_sourevo_disconnect_webhook" type="object" string="Disconnect" class="btn-link" invisible="not sourevo_webhook_url"/>
                                 <div class="mt8">
