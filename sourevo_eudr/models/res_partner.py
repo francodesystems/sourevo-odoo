@@ -146,7 +146,7 @@ class ResPartner(models.Model):
         self.ensure_one()
         partner = self.commercial_partner_id
         return {
-            'type': 'ir.actions.act_window', 'res_model': 'sourevo.plot', 'view_mode': 'list,form',
+            'type': 'ir.actions.act_window', 'res_model': 'sourevo.plot', 'view_mode': 'tree,form',
             'name': _('EUDR plots of %s', partner.display_name),
             'domain': [('partner_id', '=', partner.id)], 'context': {'default_partner_id': partner.id},
         }

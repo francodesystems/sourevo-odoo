@@ -19,7 +19,7 @@ Textos en inglés con traducciones en `i18n/` (es, fr, pt, de, it, nl, pl). La f
 ## Probar en local
 
 ```bash
-docker compose -p sourevo-odoo-18 -f dev/docker-compose.yml up -d     # Odoo de esta rama en http://localhost:8179
+docker compose -p sourevo-odoo-17 -f dev/docker-compose.yml up -d     # Odoo de esta rama en http://localhost:8179
 dev/odoo.sh -d prueba -i sourevo_eudr --stop-after-init
 dev/odoo.sh -d prueba -u sourevo_eudr --test-tags /sourevo_eudr --stop-after-init
 ```

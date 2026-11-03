@@ -1,8 +1,6 @@
 from collections import defaultdict
 
-from odoo.tools import LazyTranslate
-
-_lt = LazyTranslate(__name__)
+from odoo import _lt
 
 # The pre-submission check of Sourevo (GET /dds/{id}/check): one text per issue code, as in Sourevo.
 CHECK_MESSAGES = {
@@ -43,7 +41,9 @@ def issue_text(issue, plot_names=None, lang=None):
     code = issue.get('code') or ''
     data = defaultdict(lambda: '?', {k: v for k, v in (issue.get('data') or {}).items() if v is not None})
     template = CHECK_MESSAGES.get(code)
-    text = template._translate(lang or '').format_map(data) if template else code.replace('_', ' ').capitalize()
+    # _lt reads the language from this local, as _() does.
+    context = {'lang': lang or 'en_US'}  # noqa: F841
+    text = str(template).format_map(data) if template else code.replace('_', ' ').capitalize()
     if issue.get('level') == 'plot' and plot_names and issue.get('entityId') in plot_names:
         text = f'{plot_names[issue["entityId"]]}: {text}'
     return text

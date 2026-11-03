@@ -23,6 +23,8 @@
                         <group string="Goods">
                             <field name="locked" invisible="1"/>
                             <field name="company_id" invisible="1"/>
+                            <field name="sourevo_dds_id" invisible="1"/>
+                            <field name="simulated" invisible="1"/>
                             <field name="picking_id"/>
                             <field name="product_id"/>
                             <field name="partner_id"/>
@@ -60,14 +62,14 @@
                         </page>
                         <page string="Plots" name="plots">
                             <field name="plot_ids" readonly="locked" options="{'no_create': True}">
-                                <list>
+                                <tree>
                                     <field name="name"/>
                                     <field name="country_code"/>
                                     <field name="area_ha"/>
                                     <field name="proposal_status"/>
                                     <field name="verification_status"/>
                                     <field name="satellite_verdict"/>
-                                </list>
+                                </tree>
                             </field>
                         </page>
                         <page string="Check" name="check" invisible="not check_date">
@@ -88,7 +90,7 @@
         <field name="name">sourevo.dds.list</field>
         <field name="model">sourevo.dds</field>
         <field name="arch" type="xml">
-            <list create="0" decoration-danger="status == 'REJECTED'" decoration-muted="status in ('CANCELLED', 'WITHDRAWN', 'ARCHIVED')">
+            <tree create="0" decoration-danger="status == 'REJECTED'" decoration-muted="status in ('CANCELLED', 'WITHDRAWN', 'ARCHIVED')">
                 <field name="name"/>
                 <field name="picking_id"/>
                 <field name="partner_id"/>
@@ -99,7 +101,7 @@
                 <field name="verification_number"/>
                 <field name="simulated" optional="show"/>
                 <field name="company_id" groups="base.group_multi_company" optional="hide"/>
-            </list>
+            </tree>
         </field>
     </record>
 
@@ -130,7 +132,7 @@
     <record id="sourevo_dds_action" model="ir.actions.act_window">
         <field name="name">EUDR statements</field>
         <field name="res_model">sourevo.dds</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">No EUDR statements yet</p>
             <p>Mark the products as EUDR (Inventory tab) and, in a receipt of them, click Prepare DDS.</p>
@@ -141,7 +143,7 @@
         <field name="name">sourevo.plot.list</field>
         <field name="model">sourevo.plot</field>
         <field name="arch" type="xml">
-            <list create="0">
+            <tree create="0">
                 <field name="partner_id"/>
                 <field name="name"/>
                 <field name="country_code"/>
@@ -153,7 +155,7 @@
                 <field name="rejection_reason" optional="show"/>
                 <field name="verification_status" widget="badge" decoration-success="verification_status == 'VERIFIED'"/>
                 <field name="satellite_verdict" widget="badge" decoration-warning="satellite_verdict == 'LOSS_DETECTED'"/>
-            </list>
+            </tree>
         </field>
     </record>
 
@@ -211,7 +213,7 @@
     <record id="sourevo_plot_action" model="ir.actions.act_window">
         <field name="name">EUDR plots</field>
         <field name="res_model">sourevo.plot</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">No EUDR plots yet</p>
             <p>In a supplier, EUDR tab: send it to Sourevo and upload its plots, or invite it to fill them in its portal.</p>
@@ -222,13 +224,13 @@
         <field name="name">sourevo.operator.list</field>
         <field name="model">sourevo.operator</field>
         <field name="arch" type="xml">
-            <list create="0" edit="0">
+            <tree create="0" edit="0">
                 <field name="name"/>
                 <field name="country_code"/>
                 <field name="eori_number"/>
                 <field name="has_credentials"/>
                 <field name="company_id" groups="base.group_multi_company"/>
-            </list>
+            </tree>
         </field>
     </record>
 
