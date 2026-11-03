@@ -9,6 +9,7 @@
                 <field name="sourevo_eudr_visible" invisible="1"/>
                 <field name="sourevo_eudr_pending" invisible="1"/>
                 <field name="sourevo_state" invisible="1"/>
+                <field name="sourevo_simulated" invisible="1"/>
                 <button name="action_sourevo_prepare" type="object" string="Prepare DDS" class="btn-secondary"
                         groups="stock.group_stock_user" invisible="not sourevo_eudr_visible or not sourevo_eudr_pending"/>
                 <button name="action_sourevo_submit" type="object" string="Submit DDS to TRACES" class="btn-primary"
