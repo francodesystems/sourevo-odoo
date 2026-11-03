@@ -23,8 +23,10 @@ class SourevoPlotUpload(models.TransientModel):
 
     def action_upload(self):
         self.ensure_one()
+        # Odoo 20 gives the content (BinaryValue); 17 to 19, base64.
+        raw = self.file.content if hasattr(self.file, 'content') else base64.b64decode(self.file)
         try:
-            geojson = json.loads(base64.b64decode(self.file))
+            geojson = json.loads(raw)
         except (ValueError, TypeError) as e:
             raise UserError(_('The file is not GeoJSON: %s', e)) from e
         partner = self.partner_id.commercial_partner_id

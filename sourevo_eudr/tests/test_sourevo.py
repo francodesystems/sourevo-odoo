@@ -1,3 +1,4 @@
+import base64
 import hashlib
 import hmac
 import json
@@ -145,7 +146,7 @@ class TestSourevoFlow(SourevoCommon):
         self.assertEqual(line.net_weight_kg, 1000.0)
         self.assertEqual(line.operator_id, self.operator)
         self.assertEqual(line.country_id.code, 'ES')
-        # Only the verified plot by default; the pending proposal is not usable.
+        # Only the verified plot by default, though the pending proposal could be used too.
         self.assertEqual(line.plot_ids.mapped('sourevo_id'), ['plot1'])
         self.assertEqual(self.supplier.sourevo_supplier_id, 'sup1')
         self.assertEqual(self.supplier.sourevo_plots_pending, 1)
@@ -281,6 +282,23 @@ class TestSourevoFlow(SourevoCommon):
         self.assertIn('/dds/dds1/refresh', api.paths('POST'))
         self.assertEqual(picking.sourevo_dds_ids.reference_number, '26ESABCDEF')
         self.assertEqual(picking.sourevo_state, 'done')
+
+    def test_upload_plots(self):
+        geojson = {'type': 'FeatureCollection', 'features': [{'type': 'Feature', 'properties': {'ProductionPlace': 'Finca 7'},
+                   'geometry': {'type': 'Polygon', 'coordinates': [[[-4.01, 5.36], [-4.0, 5.36], [-4.0, 5.37], [-4.01, 5.36]]]}}]}
+        api = FakeSourevo({('POST', '/suppliers/sup1/plots'): (201, {'skippedDuplicates': 1, 'data': [
+            plot_json('plot7', 'Finca 7', 'DECLARED', {'status': 'PENDING', 'uploadedAt': '2026-11-03T10:00:00Z',
+                                                     'confirmedAt': None, 'rejectedAt': None, 'rejectionReason': None})]})})
+        wizard = self.env['sourevo.plot.upload'].create({
+            'partner_id': self.supplier.id, 'file': base64.b64encode(json.dumps(geojson).encode()).decode()})
+        with patch(REQUEST, api):
+            wizard.action_upload()
+        upload = next(c for c in api.calls if c['path'] == '/suppliers/sup1/plots')
+        self.assertEqual(upload['json']['geojson'], geojson)
+        self.assertEqual(upload['json']['country'], 'BR')
+        plot = self.supplier.sourevo_plot_ids.filtered(lambda p: p.sourevo_id == 'plot7')
+        self.assertEqual(plot.proposal_status, 'PENDING')
+        self.assertTrue(plot.usable, 'Sourevo only warns about a proposal the supplier has not confirmed')
 
     def test_signature(self):
         body = b'{"id":"evt"}'

@@ -9,6 +9,7 @@ services:
     depends_on: [db]
     ports: ["8179:8069"]
     command: ["--http-interface=0.0.0.0"]
+    extra_hosts: ["host.docker.internal:host-gateway"]  # a Sourevo running on this machine
     environment: { HOST: db, USER: odoo, PASSWORD: odoo }
     volumes: [data:/var/lib/odoo, ..:/mnt/extra-addons]
 volumes: { db: {}, data: {} }
