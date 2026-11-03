@@ -199,6 +199,19 @@ class TestSourevoFlow(SourevoCommon):
             wizard.action_submit()
         self.assertNotIn('/dds/dds1/submit', api.paths())
 
+    def test_operator_without_credentials(self):
+        api = FakeSourevo({('GET', '/dds/dds1/check'): {'ready': False, 'warnings': [], 'blocking': [
+            {'key': 'operator:op1:OPERATOR_NO_CREDENTIALS', 'code': 'OPERATOR_NO_CREDENTIALS', 'level': 'operator',
+             'entityId': 'op1'}]}})
+        picking = self._receipt()
+        with patch(REQUEST, api):
+            action = picking.action_sourevo_submit()
+        wizard = self.env['sourevo.dds.submit'].browse(action['res_id'])
+        self.assertTrue(wizard.has_blocking)
+        self.assertTrue(wizard.needs_credentials)
+        url = wizard.with_context(lang='en_US').action_open_operators()['url']
+        self.assertEqual(url, 'https://sourevo.test/en/dds/operators')
+
     def test_weight_from_the_product(self):
         bag = self.env['product.product'].create({'name': 'Cocoa bag', 'weight': 62.5, 'eudr_relevant': True,
                                                   'eudr_cn_code': '18010000'})

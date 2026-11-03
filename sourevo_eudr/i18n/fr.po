@@ -2178,3 +2178,13 @@ msgid ""
 msgstr ""
 "Parcelle de {areaHa} ha indiquée par un point : au-delà de {max} ha, un "
 "polygone est obligatoire."
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "Add them in Sourevo"
+msgstr "Ajoutez-les dans Sourevo"
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "The TRACES operator has no TRACES credentials in Sourevo yet."
+msgstr "L'opérateur TRACES n'a pas encore d'identifiants TRACES dans Sourevo."

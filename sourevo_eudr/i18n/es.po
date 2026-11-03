@@ -2115,3 +2115,13 @@ msgid ""
 "{areaHa} ha plot given as a point: above {max} ha a polygon is required."
 msgstr ""
 "Parcela de {areaHa} ha con un punto: por encima de {max} ha hace falta un polígono."
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "Add them in Sourevo"
+msgstr "Añádelas en Sourevo"
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "The TRACES operator has no TRACES credentials in Sourevo yet."
+msgstr "El operador de TRACES aún no tiene credenciales de TRACES en Sourevo."
