@@ -49,8 +49,8 @@ class SourevoPlot(models.Model):
     @api.depends('proposal_status', 'verification_status')
     def _compute_usable(self):
         for plot in self:
-            plot.usable = (plot.proposal_status not in ('PENDING', 'REJECTED')
-                           and plot.verification_status != 'CORRECTION_REQUESTED')
+            # A proposal waiting for the supplier can go in a statement: Sourevo warns (PLOT_UPLOADED_BY_IMPORTER).
+            plot.usable = plot.proposal_status != 'REJECTED' and plot.verification_status != 'CORRECTION_REQUESTED'
 
     @api.model
     def _sourevo_values(self, row):
