@@ -1,0 +1,2043 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sourevo_eudr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0-20260926\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-03 17:26+0000\n"
+"PO-Revision-Date: 2026-11-03 17:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sourevo_eudr
+#: model:ir.module.module,description:base.module_sourevo_eudr
+msgid ""
+"\n"
+"Sourevo EUDR (sourevo.com)\n"
+"==========================\n"
+"Connects Odoo with Sourevo, the EUDR compliance service for importers\n"
+"(Regulation (EU) 2023/1115): the due diligence statement (DDS) submitted to\n"
+"TRACES before customs.\n"
+"\n"
+"* Suppliers: send them to Sourevo, invite them to their portal to declare\n"
+"  their plots, see their trust level and their plots.\n"
+"* Plots: upload a GeoJSON file as proposals the supplier confirms in its\n"
+"  portal; rejections and satellite flags arrive as activities.\n"
+"* Products: EUDR flag, CN code and, for wood, pulp and paper, the scientific\n"
+"  and common name.\n"
+"* Receipts: one click prepares the statement of each EUDR product (batch with\n"
+"  its net weight and plots), checks it and submits it to TRACES; the\n"
+"  reference and verification numbers come back to the receipt and its report.\n"
+"* Stays up to date: signed Sourevo webhooks, and a scheduled action every\n"
+"  15 minutes for databases that are not reachable from the internet.\n"
+"\n"
+"Data sent to Sourevo: nothing until you enter your own API key. Then, the\n"
+"suppliers, products, plots and receipts you send (names, country, tax ID,\n"
+"address, email and phone of the supplier; description and CN code of the\n"
+"product; net weight and plots of the receipt).\n"
+"\n"
+"Requires a Sourevo account: the API is included in the Pro, Forwarder and\n"
+"Enterprise plans and, in the 14-day trial, works in simulated mode.\n"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/wizard/sourevo_plot_upload.py:0
+msgid ""
+"%(created)s plot(s) sent to %(supplier)s for confirmation in their portal; "
+"%(skipped)s repeated."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_webhook_event.py:0
+msgid "%(supplier)s confirmed the plot %(plot)s."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_webhook_event.py:0
+msgid "%(supplier)s corrected the plot %(plot)s."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_webhook_event.py:0
+msgid "%(supplier)s rejected the plot %(plot)s. Reason: %(reason)s"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+msgid "%s TRACES operators loaded."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/stock_picking.py:0
+msgid "%s has no EUDR products to declare."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid "%s is already in TRACES: retract it in Sourevo."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/stock_picking.py:0
+msgid "%s is not a receipt of EUDR products."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/product_template.py:0
+msgid ""
+"%s is wood, pulp or paper: it needs the scientific and the common name."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_partner.py:0
+msgid "%s needs a country to be sent to Sourevo."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/product_template.py:0
+msgid "%s needs its CN code (Inventory tab, EUDR) to be sent to Sourevo."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_webhook_event.py:0
+msgid "%s now has its own Sourevo account."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/product_template.py:0
+msgid "%s product(s) in Sourevo."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_partner.py:0
+msgid "%s supplier(s) in Sourevo."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "<span class=\"text-muted\"> · </span>"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "<span class=\"text-muted\">Connected to </span>"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "<span class=\"text-muted\">Last update: </span>"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "<span class=\"text-muted\">No account yet? </span>"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "<span class=\"text-muted\">Sent to </span>"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
+msgid ""
+"<span invisible=\"not sourevo_simulated\"> · <em>simulated (Sourevo "
+"trial)</em></span>"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
+msgid "<strong>EUDR · TRACES: </strong>"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.report_picking_sourevo
+msgid "<strong>EUDR · TRACES:</strong>"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_upload_view_form
+msgid ""
+"A GeoJSON file in WGS84 (Point, Polygon or MultiPolygon; a plot over 4 ha must be a polygon). The\n"
+"                    properties ProductionPlace, ProducerName, ProducerCountry and Area are read. Each plot is a proposal\n"
+"                    the supplier confirms, corrects or rejects in its Sourevo portal."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "A plot of the batch is no longer shared with you."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "A plot over 4 ha must be a polygon, not a point."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "API URL"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "API key"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_invitation_status__accepted
+msgid "Accepted"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__active
+msgid "Active"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__activity_type
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Activity"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_signal__amber
+msgid "Amber"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
+msgid ""
+"An EUDR statement of this receipt was rejected or withdrawn: see the EUDR "
+"tab."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid "An authorised representative needs the represented role (%s)."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_level__level_0_anonymous
+msgid "Anonymous"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__archived
+msgid "Archived"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__area_ha
+msgid "Area (ha)"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_operator_role__authorised_representative
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__operator_role__authorised_representative
+msgid "Authorised representative"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__available
+msgid "Available"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__submitting
+msgid "Being submitted"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__check_blocking
+msgid "Blocking issues"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_product__eudr_cn_code
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_template__eudr_cn_code
+msgid "CN code"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_upload_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__cancelled
+msgid "Cancelled"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid "Check"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__check_warning_keys
+msgid "Check Warning Keys"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "Check again"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__check_date
+msgid "Checked on"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid ""
+"Choose the TRACES operator of %s (Settings > Sourevo sets the default one)."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "Close"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.product_template_form_view_sourevo
+msgid "Coffea arabica"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_product_product__eudr_cn_code
+#: model:ir.model.fields,help:sourevo_eudr.field_product_template__eudr_cn_code
+msgid "Combined Nomenclature code, 8 digits (e.g. 09011100)."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__comment
+msgid "Comment"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_product__eudr_common_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_template__eudr_common_name
+msgid "Common name"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_res_company
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__company_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__company_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__company_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__company_id
+msgid "Company"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__proposal_status__confirmed
+msgid "Confirmed"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Connect again"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Connect notifications"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+msgid ""
+"Connected to %(org)s. Plan: %(plan)s. Mode: %(mode)s. Role: %(role)s. TRACES"
+" operators: %(count)s."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Connection"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__proposal_status__corrected
+msgid "Corrected by the supplier"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__verification_status__correction_requested
+msgid "Correction requested"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "Could not connect to Sourevo (%s)."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__country_code
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__country_code
+msgid "Country"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__country_id
+msgid "Country of activity"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__country_id
+msgid "Country of production"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__create_uid
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__create_uid
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__create_uid
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__create_uid
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__create_uid
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_res_company__sourevo_api_key
+#: model:ir.model.fields,help:sourevo_eudr.field_res_config_settings__sourevo_api_key
+msgid "Created in Sourevo, menu API. It starts with svk_."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid ""
+"Created in Sourevo, menu API. It starts with svk_. The API is included in "
+"the Pro, Forwarder and Enterprise plans; in the 14-day trial it works in "
+"simulated mode (SIM references)."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__create_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__create_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__create_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__create_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__create_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__verification_status__declared
+msgid "Declared"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_operator_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_operator_id
+msgid "Default TRACES operator"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_activity_type
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_activity_type
+msgid "Default activity"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_operator_role
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_operator_role
+msgid "Default operator role"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_represented_role
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_represented_role
+msgid "Default represented role"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
+msgid "Discard"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Disconnect"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_template__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_activity_type__domestic
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__activity_type__domestic
+msgid "Domestic"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__draft
+msgid "Draft"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid ""
+"Due diligence statement %(name)s (%(product)s) in TRACES: reference number "
+"%(ref)s, verification number %(ver)s."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Due diligence statements"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__eori_number
+msgid "EORI"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_product__eudr_relevant
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_template__eudr_relevant
+#: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__sourevo_state
+#: model:ir.ui.menu,name:sourevo_eudr.menu_sourevo_root
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.product_template_form_view_sourevo
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.product_template_search_view_sourevo
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_partner_form_sourevo
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
+msgid "EUDR"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.module.module,summary:base.module_sourevo_eudr
+msgid ""
+"EUDR compliance from Odoo: suppliers, plots, receipts and the due diligence "
+"statement submitted to TRACES, with its reference number back on the receipt"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_sourevo_dds
+msgid "EUDR due diligence statement"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_view_form
+msgid "EUDR plot"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_webhook_event.py:0
+msgid "EUDR plot rejected: %s"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_webhook_event.py:0
+msgid "EUDR plot to review: %s"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.actions.act_window,name:sourevo_eudr.sourevo_plot_action
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_plot_ids
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_plot_ids
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_partner_form_sourevo
+msgid "EUDR plots"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_partner.py:0
+msgid "EUDR plots of %s"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__sourevo_eudr_pending
+msgid "EUDR products without a statement"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid "EUDR statement"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid "EUDR statement %(name)s: %(status)s"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.actions.act_window,name:sourevo_eudr.sourevo_dds_action
+#: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__sourevo_dds_ids
+msgid "EUDR statements"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_status_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_status_date
+msgid "EUDR status updated"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_level__level_1_email_verified
+msgid "Email verified"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid ""
+"Enter the net weight in kg of %(product)s in %(receipt)s: its unit is not a "
+"weight and the product has no weight."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__name
+msgid "Event ID"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_invitation_status__expired
+msgid "Expired"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_activity_type__export
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__activity_type__export
+msgid "Export"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__failed
+msgid "Failed"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__filename
+msgid "Filename"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/wizard/sourevo_dds_submit.py:0
+msgid ""
+"Fix the blocking issues first (in Sourevo or in the receipt) and check "
+"again."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_plots_flagged
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_plots_flagged
+msgid "Flagged by satellite"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_sourevo_plot_upload__country_id
+msgid "For the plots whose file does not say it (ProducerCountry)."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_sourevo_plot_upload__producer_name
+msgid ""
+"For the plots whose file does not say it (ProducerName). Empty: the "
+"supplier."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__file
+msgid "GeoJSON file"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "Geolocation is {bytes} bytes; the maximum is {max}."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__geometry_type
+msgid "Geometry"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid "Goods"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_signal__green
+msgid "Green"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "HS heading {hsHeading} is not in EUDR Annex I."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__has_blocking
+msgid "Has Blocking"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__has_warnings
+msgid "Has Warnings"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_claimed
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_claimed
+msgid "Has a Sourevo account"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__acknowledge
+msgid "I acknowledge the warnings and submit under my responsibility"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_template__id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__id
+msgid "ID"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_activity_type__import
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__activity_type__import
+msgid "Import"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "Import and export require the net weight."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__done
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
+msgid "In TRACES"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.actions.act_window,help:sourevo_eudr.sourevo_plot_action
+msgid ""
+"In a supplier, EUDR tab: send it to Sourevo and upload its plots, or invite "
+"it to fill them in its portal."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__inconclusive
+msgid "Inconclusive"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__name
+msgid "Internal reference"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_partner.py:0
+msgid "Invitation created. Send this link to the supplier: %s"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_partner.py:0
+msgid "Invitation emailed to %s."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_invitation_url
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_invitation_url
+msgid "Invitation link"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_partner_form_sourevo
+msgid "Invite to the portal"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Key"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__write_uid
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__write_uid
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__write_uid
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__write_uid
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__write_uid
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__write_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__write_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__write_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__write_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__write_date
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_last_sync
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_last_sync
+msgid "Last update from Sourevo"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__name
+msgid "Legal name"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_mode__live
+msgid "Live"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Load operators from Sourevo"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__locked
+msgid "Locked"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.actions.act_window,help:sourevo_eudr.sourevo_dds_action
+msgid ""
+"Mark the products as EUDR (Inventory tab) and, in a receipt of them, click "
+"Prepare DDS."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__name
+msgid "Name"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__loss_detected
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_view_search
+msgid "Needs review"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__risk_conclusion__negligible
+msgid "Negligible risk"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__net_weight_kg
+msgid "Net weight (kg)"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.actions.act_window,help:sourevo_eudr.sourevo_plot_action
+msgid "No EUDR plots yet"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.actions.act_window,help:sourevo_eudr.sourevo_dds_action
+msgid "No EUDR statements yet"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__no_forest_2020
+msgid "No forest in 2020"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/wizard/sourevo_dds_submit.py:0
+msgid "No issues."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__no_loss_detected
+msgid "No loss detected"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__none
+msgid "No statement"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__risk_conclusion__non_negligible_mitigated
+msgid "Non-negligible risk, mitigated"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__new
+msgid "Not sent"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Notifications"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+msgid "Notifications connected: Sourevo sends a test ping now."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_webhook_url
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_webhook_url
+msgid "Notifications sent to"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_product_product__eudr_supplementary_unit
+#: model:ir.model.fields,help:sourevo_eudr.field_product_template__eudr_supplementary_unit
+msgid ""
+"Only for CN codes with a supplementary unit (e.g. p/st for pieces): the "
+"receipt sends the quantity in it."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_operator_role__operator
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_represented_role__operator
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__operator_role__operator
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__represented_role__operator
+msgid "Operator"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__operator_role
+msgid "Operator role"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__plot_ids
+msgid "Origin plots"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_invitation_status__pending
+msgid "Pending"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__picking_id
+msgid "Picking"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "Plot declared by the supplier, not yet verified by you."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Plot in a country that is not low risk ({country}) without a current "
+"satellite check."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "Plot with invalid geolocation."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "Plot without area."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "Plot without country."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_plot_count
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_plot_count
+#: model:ir.ui.menu,name:sourevo_eudr.menu_sourevo_plots
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_partner_form_sourevo
+msgid "Plots"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_invitation_status
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_invitation_status
+msgid "Portal invitation"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
+msgid "Prepare DDS"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__producer_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__producer_name
+msgid "Producer"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_product_template
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__product_id
+msgid "Product"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__proposal_status
+msgid "Proposal"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_plots_rejected
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_plots_rejected
+msgid "Proposals rejected"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_plots_pending
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_plots_pending
+msgid "Proposals waiting"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__check_ready
+msgid "Ready to submit"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__picking_id
+msgid "Receipt"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_signal__red
+msgid "Red"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_stock_picking__sourevo_references
+msgid ""
+"Reference and verification numbers of the due diligence statements, for "
+"customs."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__reference_number
+msgid "Reference number"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+msgid ""
+"Registered, but the test notification failed (%(error)s). Sourevo must reach"
+" %(url)s from the internet; if this database is not public, the scheduled "
+"action updates the statements every 15 minutes."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__rejected
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__proposal_status__rejected
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_view_search
+msgid "Rejected"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__problem
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
+msgid "Rejected or withdrawn"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__rejection_reason
+msgid "Rejection reason"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__represented_role
+msgid "Represented role"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Represents"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_product_product__eudr_scientific_name
+#: model:ir.model.fields,help:sourevo_eudr.field_product_template__eudr_scientific_name
+msgid "Required for wood (chapter 44), pulp and paper (47 and 48)."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_invitation_status__revoked
+msgid "Revoked"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__risk_conclusion
+msgid "Risk assessment"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__risk_notes
+msgid "Risk assessment notes"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Role"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Role and activity"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__satellite_verdict
+msgid "Satellite check"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_product__eudr_scientific_name
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_template__eudr_scientific_name
+msgid "Scientific name"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.actions.server,name:sourevo_eudr.action_partner_sourevo_send
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.product_template_form_view_sourevo
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_partner_form_sourevo
+msgid "Send to Sourevo"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.ui.menu,name:sourevo_eudr.menu_sourevo_settings
+msgid "Settings"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__simulated
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__simulated
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
+msgid "Simulated"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid "Simulated (Sourevo trial): it never reached TRACES."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_mode__simulated
+msgid "Simulated (trial)"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid "Simulated statement (Sourevo trial): it never reached TRACES."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/product_template.py:0
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+#: code:addons/sourevo_eudr/models/res_partner.py:0
+#: code:addons/sourevo_eudr/wizard/sourevo_plot_upload.py:0
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Sourevo"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_url
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_url
+msgid "Sourevo API URL"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_api_key
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_api_key
+msgid "Sourevo API key"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.module.module,shortdesc:base.module_sourevo_eudr
+msgid "Sourevo EUDR"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__sourevo_eudr_visible
+msgid "Sourevo Eudr Visible"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__sourevo_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__sourevo_id
+msgid "Sourevo ID"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__sourevo_simulated
+msgid "Sourevo Simulated"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_sourevo_operator
+msgid "Sourevo TRACES operator"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__sourevo_batch_id
+msgid "Sourevo batch"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "Sourevo did not answer in time. Try again in a moment."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "Sourevo does not accept this CN code."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "Sourevo is not available right now. Try again in a few minutes."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "Sourevo is not connected yet: Settings > Sourevo > API key."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_mode
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_mode
+msgid "Sourevo mode"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"Sourevo needs the scientific name for this product (wood, paper and pulp)."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_organization
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_organization
+msgid "Sourevo organization"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_product__sourevo_product_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_template__sourevo_product_id
+msgid "Sourevo product"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_sourevo_plot
+msgid "Sourevo production plot"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.actions.act_window,name:sourevo_eudr.sourevo_config_settings_action
+msgid "Sourevo settings"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__sourevo_dds_id
+msgid "Sourevo statement"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_supplier_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_supplier_id
+msgid "Sourevo supplier"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid ""
+"Sourevo tells Odoo when TRACES gives the reference number, when a supplier "
+"answers a plot proposal and when a satellite check flags a plot. This "
+"database must be reachable from the internet; if not, the statements are "
+"updated every 15 minutes."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_webhook_id
+msgid "Sourevo webhook"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_sourevo_webhook_event
+msgid "Sourevo webhook event"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_webhook_event.py:0
+msgid ""
+"Sourevo: %(level)s%% of the statements included in your plan are used "
+"(%(included)s in the period %(period)s)."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "Sourevo: %(message)s (%(status)s)"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.actions.server,name:sourevo_eudr.ir_cron_sourevo_update_ir_actions_server
+msgid "Sourevo: update EUDR statements"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Start a free trial in Sourevo"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid "Statement"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__line_ids
+#: model:ir.ui.menu,name:sourevo_eudr.menu_sourevo_dds
+msgid "Statements"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+msgid "Statements updated from Sourevo."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__status
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
+msgid "Status"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_product_product__eudr_relevant
+#: model:ir.model.fields,help:sourevo_eudr.field_product_template__eudr_relevant
+msgid ""
+"Subject to the EU Deforestation Regulation (EU) 2023/1115: its receipts need"
+" a due diligence statement in TRACES."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
+msgid "Submit DDS to TRACES"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_sourevo_dds_submit
+msgid "Submit EUDR statements to TRACES"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/stock_picking.py:0
+#: code:addons/sourevo_eudr/wizard/sourevo_dds_submit.py:0
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "Submit to TRACES"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__submitted
+msgid "Submitted"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__simulated
+msgid ""
+"Submitted to the simulated TRACES of the Sourevo trial: it never reached the"
+" Commission."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__summary
+msgid "Summary"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__supplementary_qty
+msgid "Supplementary quantity"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_product__eudr_supplementary_unit
+#: model:ir.model.fields,field_description:sourevo_eudr.field_product_template__eudr_supplementary_unit
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__supplementary_unit
+msgid "Supplementary unit"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__partner_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__partner_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__partner_id
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__source__supplier
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_view_search
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_partner_form_sourevo
+msgid "Supplier"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "Supplier without a validated tax identity (level {trustLevel})."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid "TRACES"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__traces_uuid
+msgid "TRACES UUID"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid ""
+"TRACES changed the status of the statement %(name)s to %(status)s. Review it"
+" in Sourevo."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__has_credentials
+msgid "TRACES credentials"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "TRACES did not accept the request: %s"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__operator_id
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "TRACES operator"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__sourevo_references
+msgid "TRACES reference"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_level__level_2_tax_declared
+msgid "Tax ID declared"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_level__level_3_tax_validated
+msgid "Tax ID validated"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Test connection"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/product_template.py:0
+msgid "The CN code of %s must have 8 digits."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "The GeoJSON file is not valid (%(reason)s): %(message)s"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"The Sourevo API is available from the Pro plan. Upgrade your plan in Sourevo"
+" to use it from Odoo."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "The Sourevo API key is not valid. Check it in Settings > Sourevo."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__reference_number
+msgid "The TRACES reference number that customs ask for."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The batch has no origin plots."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The comment exceeds {max} characters."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid ""
+"The company that submits the statements in TRACES, as set up in Sourevo."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "The country is missing or not valid."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "The defaults of a new statement; each receipt can change them."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid ""
+"The draft is deleted in Sourevo; prepare the receipt again to start over."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/wizard/sourevo_plot_upload.py:0
+msgid "The file is not GeoJSON: %s"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The internal reference exceeds {max} characters."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The operator has no TRACES credentials."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"The owner of this API key can no longer use the API in Sourevo. Create a new"
+" key."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid "The receipt %s has no supplier."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The represented operator has no address."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The risk assessment is missing."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid "The risk assessment of %s needs its notes."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_webhook_event.py:0
+msgid ""
+"The satellite check found tree cover loss after 2020 on the plot %(plot)s of"
+" %(supplier)s (%(loss)s ha). It needs a human review in Sourevo: it does not"
+" mean it was deforested."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The satellite check found tree cover loss after 2020 on this plot. Review it"
+" before submitting."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The satellite check of this plot could not be completed. Run it again."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The satellite check of this plot was inconclusive. Review it on the map "
+"before submitting."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"The statement has blocking issues: check it again and fix them in Sourevo."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "The statement is being submitted to TRACES. Refresh it in a moment."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/stock_picking.py:0
+msgid "The statements of %s are already submitted."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The supplier rejected this plot. Remove it from the batch."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The supplier's email address is missing (EUDR Art. 9)."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The supplier's legal name is missing (EUDR Art. 9)."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The supplier's postal address is missing (EUDR Art. 9)."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "The tax ID does not match the format of its country."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid ""
+"There are blocking issues (in red). Fix them in Sourevo or in the receipt "
+"and check again."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "There are new warnings to acknowledge: check the statement again."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "This TRACES operator has no TRACES credentials in Sourevo yet."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+msgid "This database has no public address (system parameter web.base.url)."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_webhook_event_name_uniq
+msgid "This event was already received."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "This heading only applies from {appliesFrom}."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"This internal reference is already used by another statement of this "
+"operator."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_operator_sourevo_id_uniq
+msgid "This operator is already loaded."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_plot_sourevo_id_uniq
+msgid "This plot is already in Odoo."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/wizard/sourevo_dds_submit.py:0
+msgid "Tick that you acknowledge the warnings to submit."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__draft
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
+msgid "To submit"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "Too many associated statements (max {max})."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "Too many producers (max {max})."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "Too many requests to Sourevo (120 per minute). Try again in a minute."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_activity_type__trade
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__activity_type__trade
+msgid "Trade"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_operator_role__trader
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_represented_role__trader
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__operator_role__trader
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__represented_role__trader
+msgid "Trader"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_stock_picking
+msgid "Transfer"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_trust_level
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_trust_level
+msgid "Trust level"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_trust_signal
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_trust_signal
+msgid "Trust signal"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__event_type
+msgid "Type"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__name
+msgid ""
+"Unique per operator; TRACES accepts 50 characters. By default, the receipt."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__uom_name
+msgid "Unit"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid "Update"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
+msgid "Update DDS"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_partner_form_sourevo
+msgid "Update from Sourevo"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Update now"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__last_synced
+msgid "Updated from Sourevo"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_upload_view_form
+msgid "Upload"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_sourevo_plot_upload
+msgid "Upload EUDR plots to Sourevo"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_partner.py:0
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_upload_view_form
+msgid "Upload plots"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_partner_form_sourevo
+msgid "Upload plots (GeoJSON)"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__source
+msgid "Uploaded by"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__source__importer
+msgid "Us"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_view_search
+msgid "Usable"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__usable
+msgid "Usable in a statement"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__verification_status
+msgid "Verification"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__verification_number
+msgid "Verification number"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__verification_status__verified
+msgid "Verified"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_plots_verified
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_users__sourevo_plots_verified
+msgid "Verified plots"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_view_form
+msgid "Verify"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__volume_m3
+msgid "Volume (m³)"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__submitted
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
+msgid "Waiting for TRACES"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__proposal_status__pending
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_view_search
+msgid "Waiting for the supplier"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__check_warnings
+msgid "Warnings"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_webhook_secret
+msgid "Webhook secret"
+msgstr ""
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__withdrawn
+msgid "Withdrawn"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "You asked for this plot to be corrected."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "You have reached the statements included in your Sourevo plan."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"You uploaded this plot on behalf of the supplier and the supplier has not "
+"confirmed it yet."
+msgstr ""
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid ""
+"Your Sourevo account is in trial: the statements go to the simulated TRACES "
+"(SIM references) and never reach the Commission."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "Your Sourevo plan has expired."
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+msgid "live"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+msgid "simulated (SIM references)"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "unknown error"
+msgstr ""
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"{areaHa} ha plot given as a point: above {max} ha a polygon is required."
+msgstr ""

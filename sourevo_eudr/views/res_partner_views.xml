@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_sourevo" model="ir.ui.view">
+        <field name="name">res.partner.form.sourevo</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_sourevo_view_plots" type="object" class="oe_stat_button" icon="forest"
+                        invisible="not sourevo_supplier_id" groups="stock.group_stock_user,purchase.group_purchase_user">
+                    <field name="sourevo_plot_count" string="EUDR plots" widget="statinfo"/>
+                </button>
+            </div>
+            <notebook position="inside">
+                <page string="EUDR" name="sourevo_eudr" invisible="parent_id" groups="stock.group_stock_user,purchase.group_purchase_user">
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        <button name="action_sourevo_send" type="object" string="Send to Sourevo" class="btn-primary" invisible="sourevo_supplier_id"/>
+                        <button name="action_sourevo_refresh" type="object" string="Update from Sourevo" class="btn-secondary" invisible="not sourevo_supplier_id"/>
+                        <button name="action_sourevo_invite" type="object" string="Invite to the portal" class="btn-secondary" invisible="sourevo_claimed"/>
+                        <button name="action_sourevo_upload_plots" type="object" string="Upload plots (GeoJSON)" class="btn-secondary"/>
+                    </div>
+                    <group invisible="not sourevo_supplier_id">
+                        <group string="Supplier">
+                            <field name="sourevo_trust_signal" widget="badge"
+                                   decoration-danger="sourevo_trust_signal == 'RED'"
+                                   decoration-warning="sourevo_trust_signal == 'AMBER'"
+                                   decoration-success="sourevo_trust_signal == 'GREEN'"/>
+                            <field name="sourevo_trust_level"/>
+                            <field name="sourevo_claimed"/>
+                            <field name="sourevo_invitation_status"/>
+                            <field name="sourevo_invitation_url" widget="url" invisible="not sourevo_invitation_url or sourevo_claimed"/>
+                            <field name="sourevo_supplier_id" invisible="1"/>
+                        </group>
+                        <group string="Plots">
+                            <field name="sourevo_plots_verified"/>
+                            <field name="sourevo_plots_pending"/>
+                            <field name="sourevo_plots_rejected" decoration-danger="sourevo_plots_rejected"/>
+                            <field name="sourevo_plots_flagged" decoration-warning="sourevo_plots_flagged"/>
+                            <field name="sourevo_status_date"/>
+                        </group>
+                    </group>
+                    <field name="sourevo_plot_ids" invisible="not sourevo_plot_ids" readonly="1">
+                        <list>
+                            <field name="name"/>
+                            <field name="country_code"/>
+                            <field name="producer_name" optional="show"/>
+                            <field name="area_ha"/>
+                            <field name="proposal_status" widget="badge" decoration-danger="proposal_status == 'REJECTED'" decoration-info="proposal_status == 'PENDING'"/>
+                            <field name="rejection_reason" optional="show"/>
+                            <field name="verification_status" widget="badge" decoration-success="verification_status == 'VERIFIED'"/>
+                            <field name="satellite_verdict" widget="badge" decoration-warning="satellite_verdict == 'LOSS_DETECTED'"/>
+                        </list>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="action_partner_sourevo_send" model="ir.actions.server">
+        <field name="name">Send to Sourevo</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="group_ids" eval="[(4, ref('purchase.group_purchase_user')), (4, ref('stock.group_stock_user'))]"/>
+        <field name="state">code</field>
+        <field name="code">action = records.action_sourevo_send()</field>
+    </record>
+</odoo>

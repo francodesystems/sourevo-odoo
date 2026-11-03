@@ -1,0 +1,15 @@
+id,name,model_id,group_id/id,operation,domain
+access_sourevo_operator_user,sourevo.operator user,sourevo.operator,base.group_user,r,
+access_sourevo_operator_system,sourevo.operator system,sourevo.operator,base.group_system,crud,
+access_sourevo_plot_user,sourevo.plot user,sourevo.plot,base.group_user,r,
+access_sourevo_plot_purchase,sourevo.plot purchase,sourevo.plot,purchase.group_purchase_user,crud,
+access_sourevo_plot_stock,sourevo.plot stock,sourevo.plot,stock.group_stock_user,crud,
+access_sourevo_dds_user,sourevo.dds user,sourevo.dds,base.group_user,r,
+access_sourevo_dds_stock,sourevo.dds stock,sourevo.dds,stock.group_stock_user,crud,
+access_sourevo_webhook_event_system,sourevo.webhook.event system,sourevo.webhook.event,base.group_system,r,
+access_sourevo_dds_submit_stock,sourevo.dds.submit stock,sourevo.dds.submit,stock.group_stock_user,crud,
+access_sourevo_plot_upload_purchase,sourevo.plot.upload purchase,sourevo.plot.upload,purchase.group_purchase_user,crud,
+access_sourevo_plot_upload_stock,sourevo.plot.upload stock,sourevo.plot.upload,stock.group_stock_user,crud,
+rule_sourevo_operator_company,Sourevo operators: multi-company,sourevo.operator,,crud,"[('company_id', 'in', company_ids)]"
+rule_sourevo_plot_company,Sourevo plots: multi-company,sourevo.plot,,crud,"[('company_id', 'in', company_ids)]"
+rule_sourevo_dds_company,Sourevo statements: multi-company,sourevo.dds,,crud,"[('company_id', 'in', company_ids)]"

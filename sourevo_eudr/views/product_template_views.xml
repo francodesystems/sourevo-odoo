@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_sourevo" model="ir.ui.view">
+        <field name="name">product.template.form.sourevo</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <group name="inventory" position="inside">
+                <group string="EUDR" name="sourevo_eudr">
+                    <field name="eudr_relevant"/>
+                    <field name="eudr_cn_code" invisible="not eudr_relevant" required="eudr_relevant" placeholder="09011100"/>
+                    <field name="eudr_scientific_name" invisible="not eudr_relevant" placeholder="Coffea arabica"/>
+                    <field name="eudr_common_name" invisible="not eudr_relevant"/>
+                    <field name="eudr_supplementary_unit" invisible="not eudr_relevant"/>
+                    <field name="sourevo_product_id" invisible="1"/>
+                    <button name="action_sourevo_send" type="object" string="Send to Sourevo" class="btn-link" colspan="2"
+                            invisible="not eudr_relevant or sourevo_product_id"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="product_template_search_view_sourevo" model="ir.ui.view">
+        <field name="name">product.template.search.sourevo</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <filter name="filter_to_sell" position="before">
+                <filter string="EUDR" name="eudr_relevant" domain="[('eudr_relevant', '=', True)]"/>
+            </filter>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_picking_sourevo" inherit_id="stock.report_picking">
+        <xpath expr="//div[@name='div_origin']" position="before">
+            <div t-if="o.sourevo_references" name="div_sourevo_eudr">
+                <strong>EUDR · TRACES:</strong>
+                <p t-field="o.sourevo_references"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
