@@ -18,7 +18,7 @@ class SourevoOperator(models.Model):
     has_credentials = fields.Boolean('TRACES credentials')
     active = fields.Boolean(default=True)
 
-    _sourevo_id_uniq = models.Constraint('UNIQUE(company_id, sourevo_id)', 'This operator is already loaded.')
+    _sql_constraints = [('sourevo_id_uniq', 'UNIQUE(company_id, sourevo_id)', 'This operator is already loaded.')]
 
     @api.depends('name', 'country_code', 'has_credentials')
     def _compute_display_name(self):

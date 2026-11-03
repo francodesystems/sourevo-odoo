@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="mt8" invisible="sourevo_api_key">
                                     <span class="text-muted">No account yet? </span>
-                                    <a href="https://sourevo.com/?utm_source=odoo&amp;utm_medium=module&amp;utm_campaign=odoo19" target="_blank">Start a free trial in Sourevo</a>
+                                    <a href="https://sourevo.com/?utm_source=odoo&amp;utm_medium=module&amp;utm_campaign=odoo18" target="_blank">Start a free trial in Sourevo</a>
                                 </div>
                                 <button name="action_sourevo_test" type="object" string="Test connection" class="btn-link" icon="fa-arrow-right"/>
                             </div>

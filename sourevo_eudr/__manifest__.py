@@ -1,6 +1,6 @@
 {
     'name': 'Sourevo EUDR',
-    'version': '19.0.1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Inventory/Purchase',
     'summary': 'EUDR compliance from Odoo: suppliers, plots, receipts and the due diligence statement submitted '
                'to TRACES, with its reference number back on the receipt',

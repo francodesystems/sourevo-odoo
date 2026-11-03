@@ -44,7 +44,7 @@ class SourevoPlot(models.Model):
     satellite_verdict = fields.Selection(SATELLITE_VERDICTS, 'Satellite check', readonly=True)
     usable = fields.Boolean('Usable in a statement', compute='_compute_usable', store=True)
 
-    _sourevo_id_uniq = models.Constraint('UNIQUE(company_id, sourevo_id)', 'This plot is already in Odoo.')
+    _sql_constraints = [('sourevo_id_uniq', 'UNIQUE(company_id, sourevo_id)', 'This plot is already in Odoo.')]
 
     @api.depends('proposal_status', 'verification_status')
     def _compute_usable(self):

@@ -16,7 +16,7 @@ class SourevoWebhookEvent(models.Model):
     event_type = fields.Char('Type', readonly=True)
     company_id = fields.Many2one('res.company', required=True, readonly=True, ondelete='cascade')
 
-    _name_uniq = models.Constraint('UNIQUE(company_id, name)', 'This event was already received.')
+    _sql_constraints = [('name_uniq', 'UNIQUE(company_id, name)', 'This event was already received.')]
 
     @api.model
     def _sourevo_handle(self, company, event):
