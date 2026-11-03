@@ -2071,3 +2071,13 @@ msgstr "erro desconhecido"
 msgid ""
 "{areaHa} ha plot given as a point: above {max} ha a polygon is required."
 msgstr "Parcela de {areaHa} ha indicada com um ponto: acima de {max} ha é obrigatório um polígono."
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "Add them in Sourevo"
+msgstr "Adicione-as no Sourevo"
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "The TRACES operator has no TRACES credentials in Sourevo yet."
+msgstr "O operador TRACES ainda não tem credenciais TRACES no Sourevo."
