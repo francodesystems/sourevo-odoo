@@ -57,13 +57,13 @@ def error_message(status, error, context=None):
     if reason == 'invalid_tax_id':
         return _('The tax ID does not match the format of its country.')
     if reason == 'operator_without_credentials':
-        return _('This TRACES operator has no TRACES credentials in Sourevo yet.')
+        return _('This company has no TRACES credentials in Sourevo yet.')
     if reason == 'pre_submission_blocked':
         return _('The statement has blocking issues: check it again and fix them in Sourevo.')
     if reason == 'acknowledgement_required':
         return _('There are new warnings to acknowledge: check the statement again.')
     if reason == 'internal_reference_taken':
-        return _('This internal reference is already used by another statement of this operator.')
+        return _('This internal reference is already used by another statement of this company.')
     if reason == 'submission_in_progress':
         return _('The statement is being submitted to TRACES. Refresh it in a moment.')
     if reason == 'polygon_required_over_4_ha':

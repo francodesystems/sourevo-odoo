@@ -27,7 +27,7 @@ class ResConfigSettings(models.TransientModel):
                 'params': {'title': _('Sourevo'), 'message': message, 'type': kind, 'sticky': False}}
 
     def action_sourevo_test(self):
-        """GET /me: shows the organization, plan, mode and role, and loads the TRACES operators."""
+        """GET /me: shows the organization, plan, mode and role, and loads the companies."""
         self.ensure_one()
         self.execute()
         company = self.company_id
@@ -41,7 +41,7 @@ class ResConfigSettings(models.TransientModel):
         plan_name = plan.get('name') or plan.get('productCode') or plan.get('kind') or '—'
         mode = _('live') if me.get('mode') == 'live' else _('simulated (SIM references)')
         return self._sourevo_notify(_(
-            'Connected to %(org)s. Plan: %(plan)s. Mode: %(mode)s. Role: %(role)s. TRACES operators: %(count)s.',
+            'Connected to %(org)s. Plan: %(plan)s. Mode: %(mode)s. Role: %(role)s. Companies: %(count)s.',
             org=(me.get('organization') or {}).get('name') or '—', plan=plan_name, mode=mode,
             role=me.get('role') or '—', count=len(operators)))
 
@@ -49,7 +49,7 @@ class ResConfigSettings(models.TransientModel):
         self.ensure_one()
         self.execute()
         operators = self.env['sourevo.operator']._sourevo_load(self.company_id)
-        return self._sourevo_notify(_('%s TRACES operators loaded.', len(operators)))
+        return self._sourevo_notify(_('%s companies loaded from Sourevo.', len(operators)))
 
     def action_sourevo_connect_webhook(self):
         """Registers this database in Sourevo (POST /webhooks) and keeps the whsec_ secret."""
