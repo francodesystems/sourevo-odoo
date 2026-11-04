@@ -12,7 +12,7 @@
                     There are blocking issues (in red). Fix them in Sourevo or in the receipt and check again.
                 </div>
                 <div class="alert alert-warning" role="alert" invisible="not needs_credentials">
-                    The TRACES operator has no TRACES credentials in Sourevo yet.
+                    The company has no TRACES credentials in Sourevo yet.
                     <button name="action_open_operators" type="object" string="Add them in Sourevo" class="btn-link p-0 align-baseline"/>
                 </div>
                 <field name="summary" readonly="1"/>

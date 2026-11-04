@@ -10,7 +10,7 @@ CHECK_MESSAGES = {
     'TOO_MANY_PRODUCERS': _lt('Too many producers (max {max}).'),
     'GEOJSON_TOO_LARGE': _lt('Geolocation is {bytes} bytes; the maximum is {max}.'),
     'NO_RISK_ASSESSMENT': _lt('The risk assessment is missing.'),
-    'OPERATOR_NO_CREDENTIALS': _lt('The operator has no TRACES credentials.'),
+    'OPERATOR_NO_CREDENTIALS': _lt('The company has no TRACES credentials.'),
     'OPERATOR_NO_ADDRESS': _lt('The represented operator has no address.'),
     'PRODUCT_NOT_IN_ANNEX': _lt('HS heading {hsHeading} is not in EUDR Annex I.'),
     'PRODUCT_NOT_YET_APPLICABLE': _lt('This heading only applies from {appliesFrom}.'),

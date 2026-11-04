@@ -47,7 +47,7 @@ class SourevoDds(models.Model):
     _order = 'picking_id desc, id'
 
     name = fields.Char('Internal reference', required=True,
-                       help='Unique per operator; TRACES accepts 50 characters. By default, the receipt.')
+                       help='Unique per company; TRACES accepts 50 characters. By default, the receipt.')
     picking_id = fields.Many2one('stock.picking', 'Receipt', required=True, ondelete='cascade', index=True, readonly=True)
     company_id = fields.Many2one(related='picking_id.company_id', store=True)
     product_id = fields.Many2one('product.product', 'Product', required=True, readonly=True)
@@ -59,7 +59,7 @@ class SourevoDds(models.Model):
     supplementary_unit = fields.Char('Supplementary unit', size=10)
     supplementary_qty = fields.Float('Supplementary quantity', digits=(16, 3))
     plot_ids = fields.Many2many('sourevo.plot', string='Origin plots', domain="[('partner_id', '=', partner_id)]")
-    operator_id = fields.Many2one('sourevo.operator', 'TRACES operator', domain="[('company_id', '=', company_id)]")
+    operator_id = fields.Many2one('sourevo.operator', 'Company in TRACES', domain="[('company_id', '=', company_id)]")
     operator_role = fields.Selection(OPERATOR_ROLES, 'Operator role', required=True, default='OPERATOR')
     represented_role = fields.Selection(REPRESENTED_ROLES, 'Represented role')
     activity_type = fields.Selection(ACTIVITY_TYPES, 'Activity', required=True, default='IMPORT')
@@ -178,7 +178,7 @@ class SourevoDds(models.Model):
     def _sourevo_dds_payload(self):
         self.ensure_one()
         if not self.operator_id:
-            raise UserError(_('Choose the TRACES operator of %s (Settings > Sourevo sets the default one).', self.name))
+            raise UserError(_('Choose the company in TRACES of %s (Settings > Sourevo sets the default one).', self.name))
         if self.operator_role == 'AUTHORISED_REPRESENTATIVE' and not self.represented_role:
             raise UserError(_('An authorised representative needs the represented role (%s).', self.name))
         payload = {
