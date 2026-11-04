@@ -7,7 +7,7 @@ class SourevoOperator(models.Model):
     """A company that submits to TRACES in Sourevo (GET /operators)."""
 
     _name = 'sourevo.operator'
-    _description = 'Sourevo TRACES operator'
+    _description = 'Sourevo company (TRACES)'
     _order = 'name'
 
     name = fields.Char('Legal name', required=True)
@@ -18,7 +18,7 @@ class SourevoOperator(models.Model):
     has_credentials = fields.Boolean('TRACES credentials')
     active = fields.Boolean(default=True)
 
-    _sql_constraints = [('sourevo_id_uniq', 'UNIQUE(company_id, sourevo_id)', 'This operator is already loaded.')]
+    _sql_constraints = [('sourevo_id_uniq', 'UNIQUE(company_id, sourevo_id)', 'This company is already loaded.')]
 
     @api.depends('name', 'country_code', 'has_credentials')
     def _compute_display_name(self):

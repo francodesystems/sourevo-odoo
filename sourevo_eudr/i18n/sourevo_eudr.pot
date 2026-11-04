@@ -75,7 +75,7 @@ msgstr ""
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/res_config_settings.py:0
-msgid "%s TRACES operators loaded."
+msgid "%s companies loaded from Sourevo."
 msgstr ""
 
 #. module: sourevo_eudr
@@ -314,8 +314,7 @@ msgstr ""
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_dds.py:0
-msgid ""
-"Choose the TRACES operator of %s (Settings > Sourevo sets the default one)."
+msgid "Choose the company in TRACES of %s (Settings > Sourevo sets the default one)."
 msgstr ""
 
 #. module: sourevo_eudr
@@ -377,9 +376,7 @@ msgstr ""
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/res_config_settings.py:0
-msgid ""
-"Connected to %(org)s. Plan: %(plan)s. Mode: %(mode)s. Role: %(role)s. TRACES"
-" operators: %(count)s."
+msgid "Connected to %(org)s. Plan: %(plan)s. Mode: %(mode)s. Role: %(role)s. Companies: %(count)s."
 msgstr ""
 
 #. module: sourevo_eudr
@@ -466,7 +463,7 @@ msgstr ""
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_operator_id
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_operator_id
-msgid "Default TRACES operator"
+msgid "Default company in TRACES"
 msgstr ""
 
 #. module: sourevo_eudr
@@ -859,7 +856,7 @@ msgstr ""
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
-msgid "Load operators from Sourevo"
+msgid "Load companies from Sourevo"
 msgstr ""
 
 #. module: sourevo_eudr
@@ -1261,7 +1258,7 @@ msgstr ""
 
 #. module: sourevo_eudr
 #: model:ir.model,name:sourevo_eudr.model_sourevo_operator
-msgid "Sourevo TRACES operator"
+msgid "Sourevo company (TRACES)"
 msgstr ""
 
 #. module: sourevo_eudr
@@ -1509,7 +1506,7 @@ msgstr ""
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__operator_id
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
-msgid "TRACES operator"
+msgid "Company in TRACES"
 msgstr ""
 
 #. module: sourevo_eudr
@@ -1613,7 +1610,7 @@ msgstr ""
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
-msgid "The operator has no TRACES credentials."
+msgid "The company has no TRACES credentials."
 msgstr ""
 
 #. module: sourevo_eudr
@@ -1744,7 +1741,7 @@ msgstr ""
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
-msgid "This TRACES operator has no TRACES credentials in Sourevo yet."
+msgid "This company has no TRACES credentials in Sourevo yet."
 msgstr ""
 
 #. module: sourevo_eudr
@@ -1767,14 +1764,12 @@ msgstr ""
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
-msgid ""
-"This internal reference is already used by another statement of this "
-"operator."
+msgid "This internal reference is already used by another statement of this company."
 msgstr ""
 
 #. module: sourevo_eudr
 #: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_operator_sourevo_id_uniq
-msgid "This operator is already loaded."
+msgid "This company is already loaded."
 msgstr ""
 
 #. module: sourevo_eudr
@@ -1850,8 +1845,7 @@ msgstr ""
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__name
-msgid ""
-"Unique per operator; TRACES accepts 50 characters. By default, the receipt."
+msgid "Unique per company; TRACES accepts 50 characters. By default, the receipt."
 msgstr ""
 
 #. module: sourevo_eudr
@@ -2049,5 +2043,5 @@ msgstr ""
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
-msgid "The TRACES operator has no TRACES credentials in Sourevo yet."
+msgid "The company has no TRACES credentials in Sourevo yet."
 msgstr ""
