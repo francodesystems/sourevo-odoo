@@ -46,10 +46,10 @@
                         </setting>
                     </block>
                     <block title="Due diligence statements" id="sourevo_dds_defaults">
-                        <setting string="TRACES operator" help="The company that submits the statements in TRACES, as set up in Sourevo.">
+                        <setting string="Company in TRACES" help="The company that submits the statements in TRACES, as set up in Sourevo.">
                             <div class="content-group mt16">
                                 <field name="sourevo_operator_id" options="{'no_create': True}"/>
-                                <button name="action_sourevo_load_operators" type="object" string="Load operators from Sourevo" class="btn-link"/>
+                                <button name="action_sourevo_load_operators" type="object" string="Load companies from Sourevo" class="btn-link"/>
                             </div>
                         </setting>
                         <setting string="Role and activity" help="The defaults of a new statement; each receipt can change them.">

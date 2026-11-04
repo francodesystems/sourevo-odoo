@@ -29,7 +29,7 @@ class ResCompany(models.Model):
     sourevo_mode = fields.Selection([('live', 'Live'), ('simulated', 'Simulated (trial)')], 'Sourevo mode',
                                     readonly=True, copy=False)
     sourevo_organization = fields.Char('Sourevo organization', readonly=True, copy=False)
-    sourevo_operator_id = fields.Many2one('sourevo.operator', 'Default TRACES operator', copy=False,
+    sourevo_operator_id = fields.Many2one('sourevo.operator', 'Default company in TRACES', copy=False,
                                           domain="[('company_id', '=', id)]")
     sourevo_operator_role = fields.Selection(OPERATOR_ROLES, 'Default operator role', default='OPERATOR')
     sourevo_represented_role = fields.Selection(REPRESENTED_ROLES, 'Default represented role')
