@@ -3,7 +3,7 @@ import logging
 from datetime import timedelta
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.modules import module as odoo_module
 
 from .check_messages import issue_text
@@ -23,7 +23,15 @@ DDS_STATUSES = [
     ('ARCHIVED', 'Archived'),
     ('GROUPED', 'Grouped'),
     ('OBSOLETE', 'Obsolete'),
+    ('SUSPENDED', 'Suspended'),
+    ('UPDATED', 'Updated in TRACES'),
 ]
+# In TRACES and still alive: refresh asks TRACES for them (the others are drafts or final).
+TRACES_LIVE = ('SUBMITTED', 'AVAILABLE', 'GROUPED', 'SUSPENDED', 'UPDATED')
+# Statuses that need someone to look at the receipt.
+TRACES_PROBLEM = ('REJECTED', 'CANCELLED', 'WITHDRAWN', 'SUSPENDED')
+# A DdsCheckError of the API: the check report comes in error.details.
+CHECK_REASONS = ('acknowledgement_required', 'pre_submission_blocked')
 RISK_CONCLUSIONS = [
     ('NEGLIGIBLE', 'Negligible risk'),
     ('NON_NEGLIGIBLE_MITIGATED', 'Non-negligible risk, mitigated'),
@@ -60,6 +68,9 @@ class SourevoDds(models.Model):
     net_weight_kg = fields.Float('Net weight (kg)', digits=(16, 3))
     supplementary_unit = fields.Char('Supplementary unit', size=10)
     supplementary_qty = fields.Float('Supplementary quantity', digits=(16, 3))
+    harvest_start = fields.Date('Harvest from', help='Date or start of the period of production (EUDR Art. 9.1.d). '
+                                                     'Kept in the due diligence record; TRACES has no field for it.')
+    harvest_end = fields.Date('Harvest to', help='End of the period of production.')
     plot_ids = fields.Many2many('sourevo.plot', string='Origin plots', domain="[('partner_id', '=', partner_id)]")
     operator_id = fields.Many2one('sourevo.operator', 'Company in TRACES', domain="[('company_id', '=', company_id)]")
     operator_role = fields.Selection(OPERATOR_ROLES, 'Operator role', required=True, default='OPERATOR')
@@ -87,11 +98,19 @@ class SourevoDds(models.Model):
     check_blocking_codes = fields.Char(readonly=True, copy=False)
     last_synced = fields.Datetime('Updated from Sourevo', readonly=True, copy=False)
     locked = fields.Boolean(compute='_compute_locked')
+    # Plot changes sent with an amendment that TRACES has not accepted yet: Sourevo keeps them staged.
+    amend_staged = fields.Text('Plot changes waiting for TRACES', readonly=True, copy=False)
 
     @api.depends('sourevo_batch_id', 'status')
     def _compute_locked(self):
         for line in self:
             line.locked = bool(line.sourevo_batch_id) or line.status != 'new'
+
+    @api.constrains('harvest_start', 'harvest_end')
+    def _check_harvest(self):
+        for line in self:
+            if line.harvest_start and line.harvest_end and line.harvest_end < line.harvest_start:
+                raise ValidationError(_('The harvest of %s cannot end before it starts.', line.name))
 
     # Preparing the lines of a receipt
 
@@ -167,6 +186,10 @@ class SourevoDds(models.Model):
         if self.supplementary_unit and self.supplementary_qty:
             payload['supplementaryUnit'] = self.supplementary_unit
             payload['supplementaryUnitQuantity'] = self.supplementary_qty
+        if self.harvest_start:
+            payload['harvestStart'] = self.harvest_start.isoformat()
+        if self.harvest_end:
+            payload['harvestEnd'] = self.harvest_end.isoformat()
         return payload
 
     def _sourevo_dds_payload(self):
@@ -205,11 +228,13 @@ class SourevoDds(models.Model):
 
     def _sourevo_check(self):
         client = SourevoClient(self.env.company)
-        for line in self.filtered(lambda l: l.status == 'DRAFT' and l.sourevo_dds_id):
+        # An available statement is checked before an amendment, with the plot changes staged in Sourevo.
+        for line in self.filtered(lambda l: l.status in ('DRAFT', 'AVAILABLE') and l.sourevo_dds_id):
             report = client.check_dds(line.sourevo_dds_id)
             line._sourevo_apply_check(report)
 
     def _sourevo_apply_check(self, report):
+        """Stores a CheckReport, or the error.details of a refused submission (same lists, no ``ready``)."""
         self.ensure_one()
         names = {p.sourevo_id: p.name for p in self.plot_ids}
         lang = self.env.lang or self.env.user.lang or 'en_US'
@@ -217,7 +242,7 @@ class SourevoDds(models.Model):
         warnings = report.get('warnings') or []
         self.write({
             'check_date': fields.Datetime.now(),
-            'check_ready': bool(report.get('ready')) and not blocking,
+            'check_ready': bool(report.get('ready', True)) and not blocking,
             'check_blocking': '\n'.join(issue_text(i, names, lang) for i in blocking) or False,
             'check_warnings': '\n'.join(issue_text(i, names, lang) for i in warnings) or False,
             'check_warning_keys': json.dumps([i['key'] for i in warnings if i.get('key')]),
@@ -231,7 +256,7 @@ class SourevoDds(models.Model):
             try:
                 data = client.submit_dds(line.sourevo_dds_id, keys)
             except SourevoError as e:
-                if e.reason in ('acknowledgement_required', 'pre_submission_blocked'):
+                if e.reason in CHECK_REASONS:
                     line._sourevo_check()
                 raise
             line._sourevo_apply(data)
@@ -266,7 +291,7 @@ class SourevoDds(models.Model):
             if self.simulated:
                 body += ' ' + _('Sourevo trial: this statement has no legal value.')
             picking.message_post(body=body)
-        if self.status != old_status and self.status in ('REJECTED', 'CANCELLED', 'WITHDRAWN'):
+        if self.status != old_status and self.status in TRACES_PROBLEM:
             label = dict(self._fields['status']._description_selection(self.env)).get(self.status)
             picking.activity_schedule(
                 'mail.mail_activity_data_todo', user_id=picking.user_id.id or self.env.uid,
@@ -290,12 +315,67 @@ class SourevoDds(models.Model):
     def _sourevo_fetch(self, client):
         """The statement as TRACES has it now: POST refresh when it is in TRACES, GET otherwise."""
         self.ensure_one()
-        if self.status in ('SUBMITTED', 'AVAILABLE'):
+        if self.status in TRACES_LIVE:
             try:
                 return client.refresh_dds(self.sourevo_dds_id)
             except SourevoError as e:
                 _logger.info('Sourevo refresh of %s failed (%s), reading it instead', self.sourevo_dds_id, e)
         return client.dds(self.sourevo_dds_id)
+
+    # Amending the plots of a statement already in TRACES
+
+    def _sourevo_plot_changes(self, client):
+        """addPlotIds / removePlotIds that leave the batch with the plots of the line.
+
+        Sourevo stages the changes of a refused amendment; the ones the line sent before are
+        undone when the plots of the line no longer want them.
+        """
+        self.ensure_one()
+        batch = set(client.batch(self.sourevo_batch_id).get('plotIds') or [])
+        staged = json.loads(self.amend_staged or '{}')
+        current = (batch | set(staged.get('add') or [])) - set(staged.get('remove') or [])
+        wanted = set(self.plot_ids.mapped('sourevo_id'))
+        changes = {'addPlotIds': sorted(wanted - current), 'removePlotIds': sorted(current - wanted)}
+        return changes, {'add': sorted(wanted - batch), 'remove': sorted(batch - wanted)}
+
+    def _sourevo_amend(self, acknowledged_warnings=()):
+        """POST /dds/{id}/amend with the plot changes; returns False when the check stops it."""
+        self.ensure_one()
+        if self.status != 'AVAILABLE':
+            raise UserError(_('%s can only be amended once TRACES has made it available.', self.name))
+        client = SourevoClient(self.env.company)
+        changes, staged = self._sourevo_plot_changes(client)
+        if not any(changes.values()) and not json.loads(self.amend_staged or '{}'):
+            raise UserError(_('The plots of %s are the same as in TRACES: change them first.', self.name))
+        try:
+            data = client.amend_dds(self.sourevo_dds_id, changes, acknowledged_warnings)
+        except SourevoError as e:
+            if e.code == 'validation_error' and self.amend_staged:
+                # Sourevo no longer has what this line staged (discarded in the web): start from the batch.
+                self.amend_staged = False
+                return self._sourevo_amend(acknowledged_warnings)
+            if e.reason in CHECK_REASONS:
+                self.amend_staged = json.dumps(staged)
+                self._sourevo_apply_check(e.details)
+                self._sourevo_commit()
+                return False
+            raise
+        self.amend_staged = False
+        self._sourevo_apply(data)
+        self._sourevo_commit()
+        return True
+
+    def action_sourevo_amend(self):
+        """Sends the plot changes to TRACES; with warnings to acknowledge, opens the confirmation."""
+        self.ensure_one()
+        if self._sourevo_amend():
+            return True
+        wizard = self.env['sourevo.dds.submit'].create({'picking_id': self.picking_id.id, 'line_ids': [(6, 0, self.ids)],
+                                                         'amend': True})
+        return {
+            'type': 'ir.actions.act_window', 'res_model': 'sourevo.dds.submit', 'res_id': wizard.id,
+            'view_mode': 'form', 'target': 'new', 'name': _('Amend in TRACES'),
+        }
 
     def action_sourevo_discard(self):
         """Deletes the draft in Sourevo and the line in Odoo: prepare the receipt again to start over."""
@@ -321,8 +401,8 @@ class SourevoDds(models.Model):
         for company in companies:
             lines = self.sudo().search([
                 ('company_id', '=', company.id), ('sourevo_dds_id', '!=', False),
-                '|', ('submitting', '=', True),
-                '&', ('status', 'in', ('SUBMITTED', 'AVAILABLE')), ('reference_number', '=', False),
+                '|', '|', ('submitting', '=', True), ('status', '=', 'SUBMITTED'),
+                '&', ('status', '=', 'AVAILABLE'), ('reference_number', '=', False),
             ], limit=100)
             if not lines:
                 company.sudo().sourevo_last_sync = fields.Datetime.now()

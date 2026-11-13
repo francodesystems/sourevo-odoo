@@ -20,13 +20,16 @@
                 <field name="has_warnings" invisible="1"/>
                 <field name="simulated" invisible="1"/>
                 <field name="needs_credentials" invisible="1"/>
+                <field name="amend" invisible="1"/>
                 <div invisible="has_blocking or not has_warnings" class="mt-2">
                     <field name="acknowledge"/>
                     <label for="acknowledge"/>
                 </div>
                 <footer>
-                    <button name="action_submit" type="object" string="Submit to TRACES" class="btn-primary" invisible="has_blocking"
-                            data-hotkey="q"/>
+                    <button name="action_submit" type="object" string="Submit to TRACES" class="btn-primary"
+                            invisible="has_blocking or amend" data-hotkey="q"/>
+                    <button name="action_submit" type="object" string="Amend in TRACES" class="btn-primary"
+                            invisible="has_blocking or not amend" data-hotkey="q"/>
                     <button name="action_check_again" type="object" string="Check again" class="btn-secondary"/>
                     <button string="Close" class="btn-secondary" special="cancel" data-hotkey="x"/>
                 </footer>
@@ -40,9 +43,10 @@
         <field name="arch" type="xml">
             <form string="Upload plots">
                 <p class="text-muted">
-                    A GeoJSON file in WGS84 (Point, Polygon or MultiPolygon; a plot over 4 ha must be a polygon). The
-                    properties ProductionPlace, ProducerName, ProducerCountry and Area are read. Each plot is a proposal
-                    the supplier confirms, corrects or rejects in its Sourevo portal.
+                    A GeoJSON file in WGS84 (Point, Polygon or MultiPolygon; a plot over 4 ha must be a polygon, unless
+                    it is a livestock establishment). The properties ProductionPlace, ProducerName, ProducerCountry, Area
+                    and LivestockEstablishment are read. Each plot is a proposal the supplier confirms, corrects or
+                    rejects in its Sourevo portal.
                 </p>
                 <group>
                     <field name="partner_id"/>
@@ -50,6 +54,7 @@
                     <field name="filename" invisible="1"/>
                     <field name="country_id" options="{'no_create': True}"/>
                     <field name="producer_name"/>
+                    <field name="livestock_establishment"/>
                 </group>
                 <footer>
                     <button name="action_upload" type="object" string="Upload" class="btn-primary" data-hotkey="q"/>

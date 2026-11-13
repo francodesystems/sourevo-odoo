@@ -208,6 +208,81 @@ class TestSourevoFlow(SourevoCommon):
         self.assertEqual(payload['representedRole'], 'OPERATOR')
         self.assertEqual(payload['activityType'], 'EXPORT')
 
+    def test_harvest_dates_go_with_the_batch(self):
+        api = FakeSourevo()
+        picking = self._receipt()
+        with patch(REQUEST, api):
+            picking.action_sourevo_prepare()
+        line = picking.sourevo_dds_ids
+        with self.assertRaises(ValidationError):
+            line.write({'harvest_start': '2026-09-30', 'harvest_end': '2026-09-01'})
+        line.write({'harvest_start': '2026-09-01', 'harvest_end': '2026-09-30'})
+        with patch(REQUEST, api):
+            picking.action_sourevo_submit()
+        batch = next(c for c in api.calls if c['path'] == '/batches')['json']
+        self.assertEqual((batch['harvestStart'], batch['harvestEnd']), ('2026-09-01', '2026-09-30'))
+
+    def test_new_traces_statuses(self):
+        """SUSPENDED (the authority, Art. 17) is a problem on the receipt; GROUPED, SUSPENDED and UPDATED are refreshed."""
+        statuses = [k for k, _l in self.env['sourevo.dds']._fields['status'].selection]
+        for status in ('GROUPED', 'OBSOLETE', 'SUSPENDED', 'UPDATED'):
+            self.assertIn(status, statuses)
+        picking = self._receipt()
+        with patch(REQUEST, FakeSourevo()):
+            picking.action_sourevo_prepare()
+        line = picking.sourevo_dds_ids
+        line.write({'sourevo_dds_id': 'dds1', 'status': 'AVAILABLE', 'reference_number': '26ESREF'})
+        api = FakeSourevo({('POST', '/dds/dds1/refresh'): dds_json('SUSPENDED', '26ESREF', 'VER', simulated=False)})
+        with patch(REQUEST, api):
+            line.action_sourevo_refresh()
+        self.assertEqual(line.status, 'SUSPENDED')
+        self.assertEqual(picking.sourevo_state, 'problem')
+        self.assertTrue(picking.activity_ids.filtered(lambda a: 'Suspended' in (a.summary or '')))
+        api = FakeSourevo({('POST', '/dds/dds1/refresh'): dds_json('UPDATED', '26ESREF', 'VER', simulated=False)})
+        with patch(REQUEST, api):
+            line.action_sourevo_refresh()
+        self.assertEqual(api.paths('POST'), ['/dds/dds1/refresh'])
+        self.assertEqual(line.status, 'UPDATED')
+
+    def test_amend_plots(self):
+        """Plot changes go as addPlotIds / removePlotIds; warnings are acknowledged and sent again."""
+        picking = self._receipt()
+        with patch(REQUEST, FakeSourevo()):
+            picking.action_sourevo_prepare()
+        line = picking.sourevo_dds_ids
+        line.write({'sourevo_dds_id': 'dds1', 'sourevo_batch_id': 'batch1', 'status': 'AVAILABLE',
+                    'reference_number': '26ESREF', 'verification_number': 'VER'})
+        plot2 = self.supplier.sourevo_plot_ids.filtered(lambda p: p.sourevo_id == 'plot2')
+        batch = {'id': 'batch1', 'plotIds': ['plot1']}
+        with patch(REQUEST, FakeSourevo({('GET', '/batches/batch1'): batch})), self.assertRaisesRegex(UserError, 'same'):
+            line.action_sourevo_amend()
+
+        line.plot_ids = plot2
+        warning = {'key': 'plot:plot2:PLOT_UPLOADED_BY_IMPORTER', 'code': 'PLOT_UPLOADED_BY_IMPORTER',
+                   'level': 'plot', 'entityId': 'plot2'}
+        refused = (422, {'error': {'code': 'unprocessable', 'message': 'ack', 'details': {
+            'reason': 'acknowledgement_required', 'blocking': [], 'warnings': [warning], 'info': []}}})
+        api = FakeSourevo({('GET', '/batches/batch1'): batch, ('POST', '/dds/dds1/amend'): refused})
+        with patch(REQUEST, api):
+            action = line.action_sourevo_amend()
+        amend = next(c for c in api.calls if c['path'] == '/dds/dds1/amend')['json']
+        self.assertEqual(amend, {'addPlotIds': ['plot2'], 'removePlotIds': ['plot1'], 'acknowledgedWarnings': []})
+        wizard = self.env['sourevo.dds.submit'].browse(action['res_id'])
+        self.assertTrue(wizard.amend)
+        self.assertTrue(wizard.has_warnings)
+        self.assertIn('Finca 2', wizard.summary)
+
+        api = FakeSourevo({('GET', '/batches/batch1'): batch,
+                           ('POST', '/dds/dds1/amend'): dds_json('SUBMITTED', '26ESREF', 'VER', simulated=False)})
+        wizard.acknowledge = True
+        with patch(REQUEST, api):
+            wizard.action_submit()
+        amend = next(c for c in api.calls if c['path'] == '/dds/dds1/amend')['json']
+        # Already staged in Sourevo: only the acknowledgement goes now.
+        self.assertEqual(amend, {'addPlotIds': [], 'removePlotIds': [], 'acknowledgedWarnings': [warning['key']]})
+        self.assertEqual(line.status, 'SUBMITTED')
+        self.assertFalse(line.amend_staged)
+
     def test_net_weight_required(self):
         api = FakeSourevo()
         picking = self._receipt()
@@ -341,9 +416,24 @@ class TestSourevoFlow(SourevoCommon):
         upload = next(c for c in api.calls if c['path'] == '/suppliers/sup1/plots')
         self.assertEqual(upload['json']['geojson'], geojson)
         self.assertEqual(upload['json']['country'], 'BR')
+        self.assertNotIn('livestockEstablishment', upload['json'])
         plot = self.supplier.sourevo_plot_ids.filtered(lambda p: p.sourevo_id == 'plot7')
         self.assertEqual(plot.proposal_status, 'PENDING')
         self.assertTrue(plot.usable, 'Sourevo only warns about a proposal the supplier has not confirmed')
+
+    def test_upload_livestock_establishments(self):
+        geojson = {'type': 'Point', 'coordinates': [-47.9, -15.8]}
+        row = dict(plot_json('plot8', 'Curral 8', 'DECLARED'), livestockEstablishment=True, areaHa=40.0)
+        api = FakeSourevo({('POST', '/suppliers/sup1/plots'): (201, {'skippedDuplicates': 0, 'data': [row]})})
+        wizard = self.env['sourevo.plot.upload'].create({
+            'partner_id': self.supplier.id, 'livestock_establishment': True,
+            'file': base64.b64encode(json.dumps(geojson).encode()).decode()})
+        with patch(REQUEST, api):
+            wizard.action_upload()
+        upload = next(c for c in api.calls if c['path'] == '/suppliers/sup1/plots')
+        self.assertIs(upload['json']['livestockEstablishment'], True)
+        plot = self.supplier.sourevo_plot_ids.filtered(lambda p: p.sourevo_id == 'plot8')
+        self.assertTrue(plot.livestock_establishment)
 
     def test_signature(self):
         body = b'{"id":"evt"}'
