@@ -132,7 +132,7 @@ API reference for other integrations: [sourevo.com/en/developers](https://sourev
 ## Support
 
 Made and maintained by [Francodesystems](https://francodesystems.com), the company behind Sourevo.
-Questions, setup help or bugs: [juan.canton@francodesystems.com](mailto:juan.canton@francodesystems.com)
+Questions, setup help or bugs: [juan.canton@sourevo.com](mailto:juan.canton@sourevo.com)
 or a [GitHub issue](https://github.com/francodesystems/sourevo-odoo/issues).
 
 ## License
