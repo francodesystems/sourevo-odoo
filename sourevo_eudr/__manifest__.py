@@ -38,7 +38,7 @@ value. Developer documentation: https://sourevo.com/en/developers
 """,
     'author': 'Francodesystems',
     'website': 'https://sourevo.com',
-    'support': 'juan.canton@francodesystems.com',
+    'support': 'juan.canton@sourevo.com',
     'images': ['static/description/cover.png', 'static/description/receipt.png', 'static/description/submit.png',
                'static/description/supplier.png', 'static/description/settings.png'],
     'license': 'OPL-1',
