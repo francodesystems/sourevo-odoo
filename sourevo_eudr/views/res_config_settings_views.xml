@@ -9,7 +9,7 @@
             <xpath expr="//form" position="inside">
                 <app data-string="Sourevo" id="sourevo_eudr" string="Sourevo" name="sourevo_eudr" groups="base.group_system">
                     <block title="Connection" id="sourevo_connection">
-                        <setting string="API key" help="Created in Sourevo, menu API. It starts with svk_. The API is included in the Pro, Forwarder and Enterprise plans; in the 14-day trial it works in simulated mode (SIM references).">
+                        <setting string="API key" help="Created in Sourevo, menu API. It starts with svk_. The API is included in the Pro, Forwarder and Enterprise plans; in the 14-day trial it submits to the TRACES test environment (or a simulated TRACES), with numbers that have no legal value.">
                             <div class="content-group mt16">
                                 <div class="row">
                                     <label for="sourevo_api_key" string="Key" class="col-lg-3 o_light_label"/>
@@ -57,10 +57,6 @@
                                 <div class="row">
                                     <label for="sourevo_operator_role" string="Role" class="col-lg-4 o_light_label"/>
                                     <field name="sourevo_operator_role"/>
-                                </div>
-                                <div class="row" invisible="sourevo_operator_role != 'AUTHORISED_REPRESENTATIVE'">
-                                    <label for="sourevo_represented_role" string="Represents" class="col-lg-4 o_light_label"/>
-                                    <field name="sourevo_represented_role"/>
                                 </div>
                                 <div class="row">
                                     <label for="sourevo_activity_type" string="Activity" class="col-lg-4 o_light_label"/>

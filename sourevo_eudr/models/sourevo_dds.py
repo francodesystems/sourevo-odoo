@@ -7,7 +7,7 @@ from odoo.exceptions import UserError
 from odoo.modules import module as odoo_module
 
 from .check_messages import issue_text
-from .res_company import ACTIVITY_TYPES, OPERATOR_ROLES, REPRESENTED_ROLES
+from .res_company import ACTIVITY_TYPES, OPERATOR_ROLES
 from .sourevo_client import SourevoClient, SourevoError
 
 _logger = logging.getLogger(__name__)
@@ -21,6 +21,8 @@ DDS_STATUSES = [
     ('CANCELLED', 'Cancelled'),
     ('WITHDRAWN', 'Withdrawn'),
     ('ARCHIVED', 'Archived'),
+    ('GROUPED', 'Grouped'),
+    ('OBSOLETE', 'Obsolete'),
 ]
 RISK_CONCLUSIONS = [
     ('NEGLIGIBLE', 'Negligible risk'),
@@ -54,14 +56,13 @@ class SourevoDds(models.Model):
     partner_id = fields.Many2one('res.partner', 'Supplier', required=True, readonly=True)
     quantity = fields.Float('Quantity', digits='Product Unit', readonly=True)
     uom_name = fields.Char('Unit', readonly=True)
+    # Net mass only: TRACES V4 has no volume field.
     net_weight_kg = fields.Float('Net weight (kg)', digits=(16, 3))
-    volume_m3 = fields.Float('Volume (m³)', digits=(16, 3))
     supplementary_unit = fields.Char('Supplementary unit', size=10)
     supplementary_qty = fields.Float('Supplementary quantity', digits=(16, 3))
     plot_ids = fields.Many2many('sourevo.plot', string='Origin plots', domain="[('partner_id', '=', partner_id)]")
     operator_id = fields.Many2one('sourevo.operator', 'Company in TRACES', domain="[('company_id', '=', company_id)]")
     operator_role = fields.Selection(OPERATOR_ROLES, 'Operator role', required=True, default='OPERATOR')
-    represented_role = fields.Selection(REPRESENTED_ROLES, 'Represented role')
     activity_type = fields.Selection(ACTIVITY_TYPES, 'Activity', required=True, default='IMPORT')
     country_id = fields.Many2one('res.country', 'Country of activity', required=True)
     comment = fields.Text('Comment')
@@ -73,7 +74,7 @@ class SourevoDds(models.Model):
     status = fields.Selection(DDS_STATUSES, 'Status', default='new', required=True, readonly=True, copy=False)
     submitting = fields.Boolean('Being submitted', readonly=True, copy=False)
     simulated = fields.Boolean('Simulated', readonly=True, copy=False,
-                               help='Submitted to the simulated TRACES of the Sourevo trial: it never reached the Commission.')
+                               help='Submitted during the Sourevo trial (simulated TRACES or the TRACES test environment): it has no legal value.')
     reference_number = fields.Char('Reference number', readonly=True, copy=False,
                                    help='The TRACES reference number that customs ask for.')
     verification_number = fields.Char('Verification number', readonly=True, copy=False)
@@ -96,22 +97,19 @@ class SourevoDds(models.Model):
 
     @api.model
     def _sourevo_quantities(self, product, moves):
-        """Quantity, unit, net weight in kg and volume in m³ of ``moves`` of ``product``."""
+        """Quantity, unit and net weight in kg of ``moves`` of ``product``."""
         kg = self.env.ref('uom.product_uom_kgm')
-        m3 = self.env.ref('uom.product_uom_cubic_meter', raise_if_not_found=False)
-        quantity = weight = volume = 0.0
+        quantity = weight = 0.0
         for move in moves:
             uom = move.uom_id if 'uom_id' in move._fields else move.product_uom
             qty = move.quantity or move.product_uom_qty
             quantity += uom._compute_quantity(qty, product.uom_id)
             if same_kind(uom, kg):
                 weight += uom._compute_quantity(qty, kg)
-            elif m3 and same_kind(uom, m3):
-                volume += uom._compute_quantity(qty, m3)
         if not weight and product.weight and not same_kind(product.uom_id, kg):
             weight_uom = product.product_tmpl_id._get_weight_uom_id_from_ir_config_parameter()
             weight = weight_uom._compute_quantity(product.weight * quantity, kg)
-        return quantity, product.uom_id.name, round(weight, 3), round(volume, 3)
+        return quantity, product.uom_id.name, round(weight, 3)
 
     @api.model
     def _sourevo_default_plots(self, partner):
@@ -135,16 +133,15 @@ class SourevoDds(models.Model):
         country = company.country_id or self.env.ref('base.es', raise_if_not_found=False)
         lines = self.browse()
         for index, product in enumerate(products, start=len(done) + 1):
-            quantity, uom_name, weight, volume = self._sourevo_quantities(product, moves.filtered(lambda m: m.product_id == product))
+            quantity, uom_name, weight = self._sourevo_quantities(product, moves.filtered(lambda m: m.product_id == product))
             template = product.product_tmpl_id
             vals = {
                 'name': f'{picking.name}-{index}' if several else picking.name,
                 'picking_id': picking.id, 'product_id': product.id, 'partner_id': partner.id,
-                'quantity': quantity, 'uom_name': uom_name, 'net_weight_kg': weight, 'volume_m3': volume,
+                'quantity': quantity, 'uom_name': uom_name, 'net_weight_kg': weight,
                 'plot_ids': [(6, 0, self._sourevo_default_plots(partner).ids)],
                 'operator_id': company.sourevo_operator_id.id,
                 'operator_role': company.sourevo_operator_role or 'OPERATOR',
-                'represented_role': company.sourevo_represented_role,
                 'activity_type': company.sourevo_activity_type or 'IMPORT',
                 'country_id': country.id if country else False,
             }
@@ -157,7 +154,7 @@ class SourevoDds(models.Model):
 
     def _sourevo_batch_payload(self):
         self.ensure_one()
-        if not self.net_weight_kg and not self.volume_m3:
+        if self.net_weight_kg <= 0:
             raise UserError(_(
                 'Enter the net weight in kg of %(product)s in %(receipt)s: its unit is not a weight and the product '
                 'has no weight.', product=self.product_id.display_name, receipt=self.picking_id.name))
@@ -165,11 +162,8 @@ class SourevoDds(models.Model):
             'productId': self.product_id.product_tmpl_id._sourevo_ensure_product(),
             'externalRef': f'{self.picking_id.name}/{self.id}'[:100],
             'plotIds': self.plot_ids.mapped('sourevo_id'),
+            'netWeightKg': round(self.net_weight_kg, 3),
         }
-        if self.net_weight_kg:
-            payload['netWeightKg'] = round(self.net_weight_kg, 3)
-        if self.volume_m3:
-            payload['volumeM3'] = round(self.volume_m3, 3)
         if self.supplementary_unit and self.supplementary_qty:
             payload['supplementaryUnit'] = self.supplementary_unit
             payload['supplementaryUnitQuantity'] = self.supplementary_qty
@@ -179,8 +173,6 @@ class SourevoDds(models.Model):
         self.ensure_one()
         if not self.operator_id:
             raise UserError(_('Choose the company in TRACES of %s (Settings > Sourevo sets the default one).', self.name))
-        if self.operator_role == 'AUTHORISED_REPRESENTATIVE' and not self.represented_role:
-            raise UserError(_('An authorised representative needs the represented role (%s).', self.name))
         payload = {
             'batchId': self.sourevo_batch_id,
             'operatorId': self.operator_id.sourevo_id,
@@ -190,7 +182,8 @@ class SourevoDds(models.Model):
             'countryOfActivity': self.country_id.code,
         }
         if self.operator_role == 'AUTHORISED_REPRESENTATIVE':
-            payload['representedRole'] = self.represented_role
+            # Since TRACES V4 a representative only acts for an operator.
+            payload['representedRole'] = 'OPERATOR'
         if self.comment:
             payload['comment'] = self.comment
         if self.risk_conclusion:
@@ -271,7 +264,7 @@ class SourevoDds(models.Model):
                      'verification number %(ver)s.', name=self.name, product=self.product_id.display_name,
                      ref=self.reference_number, ver=self.verification_number or '—')
             if self.simulated:
-                body += ' ' + _('Simulated (Sourevo trial): it never reached TRACES.')
+                body += ' ' + _('Sourevo trial: this statement has no legal value.')
             picking.message_post(body=body)
         if self.status != old_status and self.status in ('REJECTED', 'CANCELLED', 'WITHDRAWN'):
             label = dict(self._fields['status']._description_selection(self.env)).get(self.status)
@@ -297,7 +290,7 @@ class SourevoDds(models.Model):
     def _sourevo_fetch(self, client):
         """The statement as TRACES has it now: POST refresh when it is in TRACES, GET otherwise."""
         self.ensure_one()
-        if self.status in ('SUBMITTED', 'AVAILABLE') and not self.simulated:
+        if self.status in ('SUBMITTED', 'AVAILABLE'):
             try:
                 return client.refresh_dds(self.sourevo_dds_id)
             except SourevoError as e:
