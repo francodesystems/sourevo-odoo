@@ -29,7 +29,7 @@
             <xpath expr="//notebook" position="inside">
                 <page string="EUDR" name="sourevo_eudr" invisible="not sourevo_eudr_visible">
                     <field name="sourevo_dds_ids" context="{'form_view_ref': 'sourevo_eudr.sourevo_dds_view_form'}">
-                        <list editable="bottom" create="0" delete="0" decoration-muted="status in ('CANCELLED', 'WITHDRAWN', 'ARCHIVED')"
+                        <list editable="bottom" create="0" delete="0" decoration-muted="status in ('CANCELLED', 'WITHDRAWN', 'ARCHIVED', 'OBSOLETE')"
                               decoration-danger="status == 'REJECTED'">
                             <field name="locked" column_invisible="1"/>
                             <field name="partner_id" column_invisible="1"/>
@@ -39,7 +39,6 @@
                             <field name="quantity" optional="hide"/>
                             <field name="uom_name" optional="hide"/>
                             <field name="net_weight_kg" readonly="locked"/>
-                            <field name="volume_m3" optional="hide" readonly="locked"/>
                             <field name="supplementary_qty" optional="hide" readonly="locked"/>
                             <field name="plot_ids" widget="many2many_tags" readonly="locked" options="{'no_create': True}"/>
                             <field name="risk_conclusion" optional="hide" readonly="status != 'new'"/>

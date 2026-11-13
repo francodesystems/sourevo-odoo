@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 20.0-20260926\n"
+"Project-Id-Version: Odoo Server 19.0-20260926\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 17:26+0000\n"
-"PO-Revision-Date: 2026-11-03 17:26+0000\n"
+"POT-Creation-Date: 2026-11-13 11:05+0000\n"
+"PO-Revision-Date: 2026-11-13 11:05+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -17,74 +17,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: sourevo_eudr
-#: model:ir.module.module,description:base.module_sourevo_eudr
-msgid ""
-"\n"
-"Sourevo EUDR (sourevo.com)\n"
-"==========================\n"
-"Connects Odoo with Sourevo, the EUDR compliance service for importers\n"
-"(Regulation (EU) 2023/1115): the due diligence statement (DDS) submitted to\n"
-"TRACES before customs.\n"
-"\n"
-"* Suppliers: send them to Sourevo, invite them to their portal to declare\n"
-"  their plots, see their trust level and their plots.\n"
-"* Plots: upload a GeoJSON file as proposals the supplier confirms in its\n"
-"  portal; rejections and satellite flags arrive as activities.\n"
-"* Products: EUDR flag, CN code and, for wood, pulp and paper, the scientific\n"
-"  and common name.\n"
-"* Receipts: one click prepares the statement of each EUDR product (batch with\n"
-"  its net weight and plots), checks it and submits it to TRACES; the\n"
-"  reference and verification numbers come back to the receipt and its report.\n"
-"* Stays up to date: signed Sourevo webhooks, and a scheduled action every\n"
-"  15 minutes for databases that are not reachable from the internet.\n"
-"\n"
-"Data sent to Sourevo: nothing until you enter your own API key. Then, the\n"
-"suppliers, products, plots and receipts you send (names, country, tax ID,\n"
-"address, email and phone of the supplier; description and CN code of the\n"
-"product; net weight and plots of the receipt).\n"
-"\n"
-"Requires a Sourevo account: the API is included in the Pro, Forwarder and\n"
-"Enterprise plans and, in the 14-day trial, works in simulated mode.\n"
-msgstr ""
-"\n"
-"Sourevo EUDR (sourevo.com)\n"
-"==========================\n"
-"Verbindt Odoo met Sourevo, de EUDR-compliancedienst voor importeurs\n"
-"(Verordening (EU) 2023/1115): de zorgvuldigheidsverklaring (DDS) die vóór de\n"
-"douane bij TRACES wordt ingediend.\n"
-"\n"
-"* Leveranciers: stuur ze naar Sourevo, nodig ze uit in hun portaal om hun\n"
-"  percelen op te geven, bekijk hun betrouwbaarheidsniveau en hun percelen.\n"
-"* Percelen: upload een GeoJSON-bestand als voorstellen die de leverancier in\n"
-"  zijn portaal bevestigt; afwijzingen en satellietmeldingen komen binnen als\n"
-"  activiteiten.\n"
-"* Producten: EUDR-kenmerk, GN-code en, voor hout, pulp en papier, de\n"
-"  wetenschappelijke en de gangbare naam.\n"
-"* Ontvangsten: met één klik wordt de verklaring van elk EUDR-product\n"
-"  voorbereid (partij met nettogewicht en percelen), gecontroleerd en bij\n"
-"  TRACES ingediend; het referentie- en verificatienummer komen terug in de\n"
-"  ontvangst en het bijbehorende rapport.\n"
-"* Blijft actueel: ondertekende Sourevo-webhooks en een geplande actie elke\n"
-"  15 minuten voor databases die niet vanaf internet bereikbaar zijn.\n"
-"\n"
-"Gegevens die naar Sourevo gaan: niets tot je je eigen API-sleutel invoert.\n"
-"Daarna de leveranciers, producten, percelen en ontvangsten die je verstuurt\n"
-"(naam, land, btw-nummer, adres, e-mail en telefoon van de leverancier;\n"
-"omschrijving en GN-code van het product; nettogewicht en percelen van de\n"
-"ontvangst).\n"
-"\n"
-"Vereist een Sourevo-account: de API is inbegrepen in de abonnementen Pro,\n"
-"Forwarder en Enterprise en werkt in de proefperiode van 14 dagen in\n"
-"simulatiemodus.\n"
-
-#. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/wizard/sourevo_plot_upload.py:0
 msgid ""
 "%(created)s plot(s) sent to %(supplier)s for confirmation in their portal; "
 "%(skipped)s repeated."
 msgstr ""
-"%(created)s perceel/percelen naar %(supplier)s gestuurd ter bevestiging in hun portaal; %(skipped)s dubbel."
+"%(created)s perceel/percelen naar %(supplier)s gestuurd ter bevestiging in "
+"hun portaal; %(skipped)s dubbel."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -134,7 +74,8 @@ msgstr "%s is geen ontvangst van EUDR-producten."
 msgid ""
 "%s is wood, pulp or paper: it needs the scientific and the common name."
 msgstr ""
-"%s is hout, pulp of papier: de wetenschappelijke en de gangbare naam zijn nodig."
+"%s is hout, pulp of papier: de wetenschappelijke en de gangbare naam zijn "
+"nodig."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -147,7 +88,8 @@ msgstr "%s heeft een land nodig om naar Sourevo te worden gestuurd."
 #: code:addons/sourevo_eudr/models/product_template.py:0
 msgid "%s needs its CN code (Inventory tab, EUDR) to be sent to Sourevo."
 msgstr ""
-"%s heeft een GN-code nodig (tabblad Voorraad, EUDR) om naar Sourevo te worden gestuurd."
+"%s heeft een GN-code nodig (tabblad Voorraad, EUDR) om naar Sourevo te "
+"worden gestuurd."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -198,7 +140,8 @@ msgid ""
 "<span invisible=\"not sourevo_simulated\"> · <em>simulated (Sourevo "
 "trial)</em></span>"
 msgstr ""
-"<span invisible=\"not sourevo_simulated\"> · <em>gesimuleerd (Sourevo-proefperiode)</em></span>"
+"<span invisible=\"not sourevo_simulated\"> · <em>gesimuleerd (Sourevo-"
+"proefperiode)</em></span>"
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
@@ -260,6 +203,11 @@ msgid "Activity"
 msgstr "Activiteit"
 
 #. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "Add them in Sourevo"
+msgstr "Voeg ze toe in Sourevo"
+
+#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_signal__amber
 msgid "Amber"
 msgstr "Oranje"
@@ -270,13 +218,8 @@ msgid ""
 "An EUDR statement of this receipt was rejected or withdrawn: see the EUDR "
 "tab."
 msgstr ""
-"Een EUDR-verklaring van deze ontvangst is afgewezen of ingetrokken: zie het tabblad EUDR."
-
-#. module: sourevo_eudr
-#. odoo-python
-#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
-msgid "An authorised representative needs the represented role (%s)."
-msgstr "Een gemachtigde heeft de vertegenwoordigde rol nodig (%s)."
+"Een EUDR-verklaring van deze ontvangst is afgewezen of ingetrokken: zie het "
+"tabblad EUDR."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_level__level_0_anonymous
@@ -296,8 +239,8 @@ msgstr "Oppervlakte (ha)"
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_operator_role__authorised_representative
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__operator_role__authorised_representative
-msgid "Authorised representative"
-msgstr "Gemachtigde"
+msgid "Authorised representative of an operator"
+msgstr "Gemachtigde vertegenwoordiger van een marktdeelnemer"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__available
@@ -336,6 +279,11 @@ msgid "Check"
 msgstr "Controleren"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__check_blocking_codes
+msgid "Check Blocking Codes"
+msgstr "Blokkerende codes van de controle"
+
+#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__check_warning_keys
 msgid "Check Warning Keys"
 msgstr "Sleutels van waarschuwingen"
@@ -353,8 +301,12 @@ msgstr "Gecontroleerd op"
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_dds.py:0
-msgid "Choose the company in TRACES of %s (Settings > Sourevo sets the default one)."
-msgstr "Kies het bedrijf in TRACES van %s (Instellingen > Sourevo stelt de standaard in)."
+msgid ""
+"Choose the company in TRACES of %s (Settings > Sourevo sets the default "
+"one)."
+msgstr ""
+"Kies het bedrijf in TRACES van %s (Instellingen > Sourevo stelt de standaard"
+" in)."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
@@ -385,12 +337,22 @@ msgstr "Gangbare naam"
 
 #. module: sourevo_eudr
 #: model:ir.model,name:sourevo_eudr.model_res_company
+msgid "Companies"
+msgstr "Bedrijven"
+
+#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__company_id
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__company_id
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__company_id
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__company_id
 msgid "Company"
 msgstr "Bedrijf"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__operator_id
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Company in TRACES"
+msgstr "Bedrijf in TRACES"
 
 #. module: sourevo_eudr
 #: model:ir.model,name:sourevo_eudr.model_res_config_settings
@@ -415,8 +377,12 @@ msgstr "Meldingen verbinden"
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/res_config_settings.py:0
-msgid "Connected to %(org)s. Plan: %(plan)s. Mode: %(mode)s. Role: %(role)s. Companies: %(count)s."
-msgstr "Verbonden met %(org)s. Abonnement: %(plan)s. Modus: %(mode)s. Rol: %(role)s. Bedrijven: %(count)s."
+msgid ""
+"Connected to %(org)s. Plan: %(plan)s. Mode: %(mode)s. Role: %(role)s. "
+"Companies: %(count)s."
+msgstr ""
+"Verbonden met %(org)s. Abonnement: %(plan)s. Modus: %(mode)s. Rol: %(role)s."
+" Bedrijven: %(count)s."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
@@ -480,10 +446,14 @@ msgstr "Aangemaakt in Sourevo, menu API. Begint met svk_."
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
 msgid ""
 "Created in Sourevo, menu API. It starts with svk_. The API is included in "
-"the Pro, Forwarder and Enterprise plans; in the 14-day trial it works in "
-"simulated mode (SIM references)."
+"the Pro, Forwarder and Enterprise plans; in the 14-day trial it submits to "
+"the TRACES test environment (or a simulated TRACES), with numbers that have "
+"no legal value."
 msgstr ""
-"Aangemaakt in Sourevo, menu API. Begint met svk_. De API is inbegrepen in de abonnementen Pro, Forwarder en Enterprise; in de proefperiode van 14 dagen werkt hij in simulatiemodus (SIM-referenties)."
+"Aangemaakt in Sourevo, menu API. Begint met svk_. De API is inbegrepen in de"
+" abonnementen Pro, Forwarder en Enterprise; in de proefperiode van 14 dagen "
+"dient hij in bij de TRACES-testomgeving (of een gesimuleerd TRACES), met "
+"nummers zonder juridische waarde."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__create_date
@@ -501,28 +471,22 @@ msgid "Declared"
 msgstr "Opgegeven"
 
 #. module: sourevo_eudr
-#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_operator_id
-#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_operator_id
-msgid "Default company in TRACES"
-msgstr "Standaardbedrijf in TRACES"
-
-#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_activity_type
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_activity_type
 msgid "Default activity"
 msgstr "Standaardactiviteit"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_operator_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_operator_id
+msgid "Default company in TRACES"
+msgstr "Standaardbedrijf in TRACES"
+
+#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_operator_role
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_operator_role
 msgid "Default operator role"
 msgstr "Standaardrol van de marktdeelnemer"
-
-#. module: sourevo_eudr
-#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_represented_role
-#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_represented_role
-msgid "Default represented role"
-msgstr "Standaard vertegenwoordigde rol"
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
@@ -568,7 +532,8 @@ msgid ""
 "Due diligence statement %(name)s (%(product)s) in TRACES: reference number "
 "%(ref)s, verification number %(ver)s."
 msgstr ""
-"Zorgvuldigheidsverklaring %(name)s (%(product)s) in TRACES: referentienummer %(ref)s, verificatienummer %(ver)s."
+"Zorgvuldigheidsverklaring %(name)s (%(product)s) in TRACES: referentienummer"
+" %(ref)s, verificatienummer %(ver)s."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
@@ -591,14 +556,6 @@ msgstr "EORI"
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
 msgid "EUDR"
 msgstr "EUDR"
-
-#. module: sourevo_eudr
-#: model:ir.module.module,summary:base.module_sourevo_eudr
-msgid ""
-"EUDR compliance from Odoo: suppliers, plots, receipts and the due diligence "
-"statement submitted to TRACES, with its reference number back on the receipt"
-msgstr ""
-"EUDR-compliance vanuit Odoo: leveranciers, percelen, ontvangsten en de zorgvuldigheidsverklaring die bij TRACES wordt ingediend, met het referentienummer terug in de ontvangst"
 
 #. module: sourevo_eudr
 #: model:ir.model,name:sourevo_eudr.model_sourevo_dds
@@ -676,7 +633,14 @@ msgid ""
 "Enter the net weight in kg of %(product)s in %(receipt)s: its unit is not a "
 "weight and the product has no weight."
 msgstr ""
-"Voer het nettogewicht in kg in van %(product)s in %(receipt)s: de eenheid is geen gewicht en het product heeft geen gewicht."
+"Voer het nettogewicht in kg in van %(product)s in %(receipt)s: de eenheid is"
+" geen gewicht en het product heeft geen gewicht."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "Enter the net weight in kg: more than 0, with at most 3 decimals."
+msgstr "Vul het nettogewicht in kg in: meer dan 0, met hoogstens 3 decimalen."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__name
@@ -711,7 +675,8 @@ msgid ""
 "Fix the blocking issues first (in Sourevo or in the receipt) and check "
 "again."
 msgstr ""
-"Los eerst de blokkades op (in Sourevo of in de ontvangst) en controleer opnieuw."
+"Los eerst de blokkades op (in Sourevo of in de ontvangst) en controleer "
+"opnieuw."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_plots_flagged
@@ -731,7 +696,8 @@ msgid ""
 "For the plots whose file does not say it (ProducerName). Empty: the "
 "supplier."
 msgstr ""
-"Voor de percelen waarvan het bestand het niet vermeldt (ProducerName). Leeg: de leverancier."
+"Voor de percelen waarvan het bestand het niet vermeldt (ProducerName). Leeg:"
+" de leverancier."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__file
@@ -760,10 +726,25 @@ msgid "Green"
 msgstr "Groen"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__grouped
+msgid "Grouped"
+msgstr "Gegroepeerd"
+
+#. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid "HS heading {hsHeading} is not in EUDR Annex I."
 msgstr "GS-post {hsHeading} staat niet in bijlage I van de EUDR."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Harvest in a planted forest: {natural} natural forest in 2020 (concession: "
+"{concession}). For wood this is neither deforestation nor degradation."
+msgstr ""
+"Kap in een bosplantage: {natural} natuurlijk bos in 2020 (concessie: "
+"{concession}). Bij hout is dat geen ontbossing en geen bosdegradatie."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__has_blocking
@@ -785,7 +766,8 @@ msgstr "Heeft een Sourevo-account"
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__acknowledge
 msgid "I acknowledge the warnings and submit under my responsibility"
 msgstr ""
-"Ik neem kennis van de waarschuwingen en dien in op eigen verantwoordelijkheid"
+"Ik neem kennis van de waarschuwingen en dien in op eigen "
+"verantwoordelijkheid"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_product_template__id
@@ -809,12 +791,6 @@ msgid "Import"
 msgstr "Invoer"
 
 #. module: sourevo_eudr
-#. odoo-python
-#: code:addons/sourevo_eudr/models/check_messages.py:0
-msgid "Import and export require the net weight."
-msgstr "Voor invoer en uitvoer is het nettogewicht verplicht."
-
-#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__done
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
 msgid "In TRACES"
@@ -826,7 +802,8 @@ msgid ""
 "In a supplier, EUDR tab: send it to Sourevo and upload its plots, or invite "
 "it to fill them in its portal."
 msgstr ""
-"Bij een leverancier, tabblad EUDR: stuur hem naar Sourevo en upload zijn percelen, of nodig hem uit ze in zijn portaal in te vullen."
+"Bij een leverancier, tabblad EUDR: stuur hem naar Sourevo en upload zijn "
+"percelen, of nodig hem uit ze in zijn portaal in te vullen."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__inconclusive
@@ -860,6 +837,18 @@ msgstr "Uitnodigingslink"
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_partner_form_sourevo
 msgid "Invite to the portal"
 msgstr "Uitnodigen voor het portaal"
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"It will be submitted with Sourevo's test account and you will not see it in "
+"your TRACES. To see it in your TRACES test environment, add your test "
+"credentials in Settings."
+msgstr ""
+"Ze wordt ingediend met het testaccount van Sourevo en je ziet ze niet in je "
+"TRACES. Om ze in je TRACES-testomgeving te zien, vul je testgegevens in bij "
+"Instellingen."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
@@ -913,17 +902,33 @@ msgid "Locked"
 msgstr "Vergrendeld"
 
 #. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Loss or alerts on a plot with {natural} natural forest in 2020: possible "
+"forest degradation."
+msgstr ""
+"Verlies of meldingen op een perceel met {natural} natuurlijk bos in 2020: "
+"mogelijke bosdegradatie."
+
+#. module: sourevo_eudr
 #: model_terms:ir.actions.act_window,help:sourevo_eudr.sourevo_dds_action
 msgid ""
 "Mark the products as EUDR (Inventory tab) and, in a receipt of them, click "
 "Prepare DDS."
 msgstr ""
-"Markeer de producten als EUDR (tabblad Voorraad) en klik in een ontvangst ervan op DDS voorbereiden."
+"Markeer de producten als EUDR (tabblad Voorraad) en klik in een ontvangst "
+"ervan op DDS voorbereiden."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__name
 msgid "Name"
 msgstr "Naam"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__needs_credentials
+msgid "Needs Credentials"
+msgstr "Inloggegevens nodig"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__loss_detected
@@ -963,6 +968,16 @@ msgid "No issues."
 msgstr "Geen problemen."
 
 #. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"No legality document from the supplier (FLEGT licence, legality "
+"verification, certificate or its declaration)."
+msgstr ""
+"Geen legaliteitsdocument van de leverancier (FLEGT-vergunning, "
+"legaliteitsverificatie, certificaat of eigen verklaring)."
+
+#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__no_loss_detected
 msgid "No loss detected"
 msgstr "Geen verlies gedetecteerd"
@@ -1000,19 +1015,23 @@ msgid "Notifications sent to"
 msgstr "Meldingen verstuurd naar"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__obsolete
+msgid "Obsolete"
+msgstr "Verouderd"
+
+#. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_product_product__eudr_supplementary_unit
 #: model:ir.model.fields,help:sourevo_eudr.field_product_template__eudr_supplementary_unit
 msgid ""
 "Only for CN codes with a supplementary unit (e.g. p/st for pieces): the "
 "receipt sends the quantity in it."
 msgstr ""
-"Alleen voor GN-codes met een aanvullende eenheid (bijv. p/st voor stuks): de ontvangst stuurt de hoeveelheid in die eenheid."
+"Alleen voor GN-codes met een aanvullende eenheid (bijv. p/st voor stuks): de"
+" ontvangst stuurt de hoeveelheid in die eenheid."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_operator_role__operator
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_represented_role__operator
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__operator_role__operator
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__represented_role__operator
 msgid "Operator"
 msgstr "Marktdeelnemer"
 
@@ -1050,7 +1069,8 @@ msgid ""
 "Plot in a country that is not low risk ({country}) without a current "
 "satellite check."
 msgstr ""
-"Perceel uit een land dat geen laag risico heeft ({country}) zonder geldige satellietcontrole."
+"Perceel uit een land dat geen laag risico heeft ({country}) zonder geldige "
+"satellietcontrole."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1145,7 +1165,8 @@ msgid ""
 "Reference and verification numbers of the due diligence statements, for "
 "customs."
 msgstr ""
-"Referentie- en verificatienummers van de zorgvuldigheidsverklaringen, voor de douane."
+"Referentie- en verificatienummers van de zorgvuldigheidsverklaringen, voor "
+"de douane."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__reference_number
@@ -1160,7 +1181,9 @@ msgid ""
 " %(url)s from the internet; if this database is not public, the scheduled "
 "action updates the statements every 15 minutes."
 msgstr ""
-"Geregistreerd, maar de testmelding is mislukt (%(error)s). Sourevo moet %(url)s vanaf internet kunnen bereiken; als deze database niet openbaar is, werkt de geplande actie de verklaringen elke 15 minuten bij."
+"Geregistreerd, maar de testmelding is mislukt (%(error)s). Sourevo moet "
+"%(url)s vanaf internet kunnen bereiken; als deze database niet openbaar is, "
+"werkt de geplande actie de verklaringen elke 15 minuten bij."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__rejected
@@ -1179,16 +1202,6 @@ msgstr "Afgewezen of ingetrokken"
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__rejection_reason
 msgid "Rejection reason"
 msgstr "Reden van afwijzing"
-
-#. module: sourevo_eudr
-#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__represented_role
-msgid "Represented role"
-msgstr "Vertegenwoordigde rol"
-
-#. module: sourevo_eudr
-#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
-msgid "Represents"
-msgstr "Vertegenwoordigt"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_product_product__eudr_scientific_name
@@ -1252,21 +1265,22 @@ msgid "Simulated"
 msgstr "Gesimuleerd"
 
 #. module: sourevo_eudr
-#. odoo-python
-#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
-msgid "Simulated (Sourevo trial): it never reached TRACES."
-msgstr "Gesimuleerd (Sourevo-proefperiode): is nooit bij TRACES aangekomen."
-
-#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_mode__simulated
 msgid "Simulated (trial)"
 msgstr "Gesimuleerd (proefperiode)"
 
 #. module: sourevo_eudr
-#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
-msgid "Simulated statement (Sourevo trial): it never reached TRACES."
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Since Regulation (EU) 2025/2650 traders no longer submit DDS in TRACES: only"
+" the operator or its authorised representative does. Change the role to "
+"Operator or Authorised representative of an operator."
 msgstr ""
-"Gesimuleerde verklaring (Sourevo-proefperiode): is nooit bij TRACES aangekomen."
+"Sinds Verordening (EU) 2025/2650 dienen handelaren geen "
+"zorgvuldigheidsverklaring meer in bij TRACES: alleen de marktdeelnemer of "
+"zijn gemachtigde vertegenwoordiger. Wijzig de rol in Marktdeelnemer of "
+"Gemachtigde vertegenwoordiger van een marktdeelnemer."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1291,11 +1305,6 @@ msgid "Sourevo API key"
 msgstr "Sourevo API-sleutel"
 
 #. module: sourevo_eudr
-#: model:ir.module.module,shortdesc:base.module_sourevo_eudr
-msgid "Sourevo EUDR"
-msgstr "Sourevo EUDR"
-
-#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__sourevo_eudr_visible
 msgid "Sourevo Eudr Visible"
 msgstr "Sourevo EUDR zichtbaar"
@@ -1312,14 +1321,14 @@ msgid "Sourevo Simulated"
 msgstr "Sourevo gesimuleerd"
 
 #. module: sourevo_eudr
-#: model:ir.model,name:sourevo_eudr.model_sourevo_operator
-msgid "Sourevo company (TRACES)"
-msgstr "Sourevo-bedrijf (TRACES)"
-
-#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__sourevo_batch_id
 msgid "Sourevo batch"
 msgstr "Sourevo-partij"
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_sourevo_operator
+msgid "Sourevo company (TRACES)"
+msgstr "Sourevo-bedrijf (TRACES)"
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1358,7 +1367,8 @@ msgstr "Sourevo-modus"
 msgid ""
 "Sourevo needs the scientific name for this product (wood, paper and pulp)."
 msgstr ""
-"Sourevo heeft de wetenschappelijke naam nodig voor dit product (hout, papier en pulp)."
+"Sourevo heeft de wetenschappelijke naam nodig voor dit product (hout, papier"
+" en pulp)."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_organization
@@ -1401,7 +1411,17 @@ msgid ""
 "database must be reachable from the internet; if not, the statements are "
 "updated every 15 minutes."
 msgstr ""
-"Sourevo laat Odoo weten wanneer TRACES het referentienummer geeft, wanneer een leverancier op een perceelvoorstel antwoordt en wanneer een satellietcontrole een perceel markeert. Deze database moet vanaf internet bereikbaar zijn; zo niet, dan worden de verklaringen elke 15 minuten bijgewerkt."
+"Sourevo laat Odoo weten wanneer TRACES het referentienummer geeft, wanneer "
+"een leverancier op een perceelvoorstel antwoordt en wanneer een "
+"satellietcontrole een perceel markeert. Deze database moet vanaf internet "
+"bereikbaar zijn; zo niet, dan worden de verklaringen elke 15 minuten "
+"bijgewerkt."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid "Sourevo trial: this statement has no legal value."
+msgstr "Sourevo-proefperiode: deze verklaring heeft geen juridische waarde."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_webhook_id
@@ -1420,7 +1440,8 @@ msgid ""
 "Sourevo: %(level)s%% of the statements included in your plan are used "
 "(%(included)s in the period %(period)s)."
 msgstr ""
-"Sourevo: %(level)s%% van de verklaringen in je abonnement is gebruikt (%(included)s in de periode %(period)s)."
+"Sourevo: %(level)s%% van de verklaringen in je abonnement is gebruikt "
+"(%(included)s in de periode %(period)s)."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1468,7 +1489,8 @@ msgid ""
 "Subject to the EU Deforestation Regulation (EU) 2023/1115: its receipts need"
 " a due diligence statement in TRACES."
 msgstr ""
-"Valt onder de EU-ontbossingsverordening (EU) 2023/1115: de ontvangsten ervan hebben een zorgvuldigheidsverklaring in TRACES nodig."
+"Valt onder de EU-ontbossingsverordening (EU) 2023/1115: de ontvangsten ervan"
+" hebben een zorgvuldigheidsverklaring in TRACES nodig."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
@@ -1496,10 +1518,11 @@ msgstr "Ingediend"
 #. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__simulated
 msgid ""
-"Submitted to the simulated TRACES of the Sourevo trial: it never reached the"
-" Commission."
+"Submitted during the Sourevo trial (simulated TRACES or the TRACES test "
+"environment): it has no legal value."
 msgstr ""
-"Ingediend bij het gesimuleerde TRACES van de Sourevo-proefperiode: is nooit bij de Commissie aangekomen."
+"Ingediend tijdens de Sourevo-proefperiode (gesimuleerd TRACES of TRACES-"
+"testomgeving): zonder juridische waarde."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__summary
@@ -1532,6 +1555,16 @@ msgstr "Leverancier"
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Supplier DDS not verified in TRACES. Verify it with its reference and "
+"verification numbers."
+msgstr ""
+"DDS van leverancier niet gecontroleerd in TRACES. Controleer hem met het "
+"referentie- en verificatienummer."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid "Supplier without a validated tax identity (level {trustLevel})."
 msgstr ""
 "Leverancier zonder gevalideerde fiscale identiteit (niveau {trustLevel})."
@@ -1553,7 +1586,8 @@ msgid ""
 "TRACES changed the status of the statement %(name)s to %(status)s. Review it"
 " in Sourevo."
 msgstr ""
-"TRACES heeft de status van de verklaring %(name)s gewijzigd in %(status)s. Bekijk ze in Sourevo."
+"TRACES heeft de status van de verklaring %(name)s gewijzigd in %(status)s. "
+"Bekijk ze in Sourevo."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__has_credentials
@@ -1567,10 +1601,13 @@ msgid "TRACES did not accept the request: %s"
 msgstr "TRACES heeft het verzoek niet geaccepteerd: %s"
 
 #. module: sourevo_eudr
-#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__operator_id
-#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
-msgid "Company in TRACES"
-msgstr "Bedrijf in TRACES"
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"TRACES is still analysing the statement. Try again once it is available."
+msgstr ""
+"TRACES analyseert de verklaring nog. Probeer het opnieuw zodra ze "
+"beschikbaar is."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__sourevo_references
@@ -1586,6 +1623,11 @@ msgstr "Btw-nummer opgegeven"
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_level__level_3_tax_validated
 msgid "Tax ID validated"
 msgstr "Btw-nummer gevalideerd"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_mode__test
+msgid "Test (TRACES acceptance, trial)"
+msgstr "Test (TRACES-testomgeving, proefperiode)"
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
@@ -1611,19 +1653,31 @@ msgid ""
 "The Sourevo API is available from the Pro plan. Upgrade your plan in Sourevo"
 " to use it from Odoo."
 msgstr ""
-"De Sourevo-API is beschikbaar vanaf het abonnement Pro. Upgrade je abonnement in Sourevo om hem vanuit Odoo te gebruiken."
+"De Sourevo-API is beschikbaar vanaf het abonnement Pro. Upgrade je "
+"abonnement in Sourevo om hem vanuit Odoo te gebruiken."
 
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid "The Sourevo API key is not valid. Check it in Settings > Sourevo."
 msgstr ""
-"De Sourevo API-sleutel is ongeldig. Controleer hem in Instellingen > Sourevo."
+"De Sourevo API-sleutel is ongeldig. Controleer hem in Instellingen > "
+"Sourevo."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__reference_number
 msgid "The TRACES reference number that customs ask for."
 msgstr "Het TRACES-referentienummer waar de douane om vraagt."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The assessment concluded \"negligible risk\", but the data shows {n} "
+"unresolved legal gaps. Conclude the risk again."
+msgstr ""
+"De beoordeling concludeerde „verwaarloosbaar risico”, maar de gegevens tonen"
+" {n} onopgeloste wettelijke tekortkomingen. Concludeer het risico opnieuw."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1638,11 +1692,35 @@ msgid "The comment exceeds {max} characters."
 msgstr "De opmerking is langer dan {max} tekens."
 
 #. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The company has no EORI number in Sourevo. TRACES refuses an import or "
+"export when the operator’s TRACES profile lacks it: add it in Settings and "
+"check it is in TRACES too."
+msgstr ""
+"Het bedrijf heeft geen EORI-nummer in Sourevo. TRACES weigert een invoer of "
+"uitvoer als het TRACES-profiel van de marktdeelnemer het niet heeft: voeg "
+"het toe bij Instellingen en controleer dat het ook in TRACES staat."
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "The company has no TRACES credentials in Sourevo yet."
+msgstr "Het bedrijf heeft nog geen TRACES-inloggegevens in Sourevo."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The company has no TRACES credentials."
+msgstr "Het bedrijf heeft geen TRACES-inloggegevens."
+
+#. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
 msgid ""
 "The company that submits the statements in TRACES, as set up in Sourevo."
 msgstr ""
-"Het bedrijf dat de verklaringen in TRACES indient, zoals ingesteld in Sourevo."
+"Het bedrijf dat de verklaringen in TRACES indient, zoals ingesteld in "
+"Sourevo."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1651,17 +1729,40 @@ msgid "The country is missing or not valid."
 msgstr "Het land ontbreekt of is ongeldig."
 
 #. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The country’s official map shows deforestation on the plot after 2020 "
+"({source}). It is a signal like the satellite’s: it has to be cleared up."
+msgstr ""
+"De officiële kaart van het land toont ontbossing op het perceel na 2020 "
+"({source}). Het is een signaal zoals dat van de satelliet: het moet worden "
+"opgehelderd."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"The daily limit of the Sourevo TRACES test account was reached. Try again "
+"tomorrow or add your own TRACES test credentials in Sourevo."
+msgstr ""
+"De daglimiet van het TRACES-testaccount van Sourevo is bereikt. Probeer het "
+"morgen opnieuw of vul je eigen TRACES-testgegevens in bij Sourevo."
+
+#. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
 msgid "The defaults of a new statement; each receipt can change them."
 msgstr ""
-"De standaardwaarden van een nieuwe verklaring; elke ontvangst kan ze wijzigen."
+"De standaardwaarden van een nieuwe verklaring; elke ontvangst kan ze "
+"wijzigen."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
 msgid ""
 "The draft is deleted in Sourevo; prepare the receipt again to start over."
 msgstr ""
-"Het concept is in Sourevo verwijderd; bereid de ontvangst opnieuw voor om opnieuw te beginnen."
+"Het concept is in Sourevo verwijderd; bereid de ontvangst opnieuw voor om "
+"opnieuw te beginnen."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1678,8 +1779,8 @@ msgstr "De interne referentie is langer dan {max} tekens."
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
-msgid "The company has no TRACES credentials."
-msgstr "Het bedrijf heeft geen TRACES-inloggegevens."
+msgid "The net weight in kg is required."
+msgstr "Het nettogewicht in kg is verplicht."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1688,7 +1789,29 @@ msgid ""
 "The owner of this API key can no longer use the API in Sourevo. Create a new"
 " key."
 msgstr ""
-"De eigenaar van deze API-sleutel kan de API in Sourevo niet meer gebruiken. Maak een nieuwe sleutel aan."
+"De eigenaar van deze API-sleutel kan de API in Sourevo niet meer gebruiken. "
+"Maak een nieuwe sleutel aan."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The plot lies inside a protected area ({name}). Producing there may be "
+"forbidden or need a permit."
+msgstr ""
+"Het perceel ligt in een beschermd gebied ({name}). Daar produceren kan "
+"verboden zijn of een vergunning vereisen."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The plot lies inside an indigenous territory ({name}). The EUDR requires "
+"respect for their rights and their free, prior and informed consent."
+msgstr ""
+"Het perceel ligt in een inheems gebied ({name}). De EUDR vereist dat hun "
+"rechten en hun vrije, voorafgaande en geïnformeerde toestemming worden "
+"gerespecteerd."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1722,7 +1845,9 @@ msgid ""
 " %(supplier)s (%(loss)s ha). It needs a human review in Sourevo: it does not"
 " mean it was deforested."
 msgstr ""
-"De satellietcontrole ziet na 2020 verlies van boomkroonbedekking op het perceel %(plot)s van %(supplier)s (%(loss)s ha). Het moet door een persoon in Sourevo worden beoordeeld: het betekent niet dat het ontbost is."
+"De satellietcontrole ziet na 2020 verlies van boomkroonbedekking op het "
+"perceel %(plot)s van %(supplier)s (%(loss)s ha). Het moet door een persoon "
+"in Sourevo worden beoordeeld: het betekent niet dat het ontbost is."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1731,14 +1856,16 @@ msgid ""
 "The satellite check found tree cover loss after 2020 on this plot. Review it"
 " before submitting."
 msgstr ""
-"De satellietcontrole ziet na 2020 verlies van boomkroonbedekking op dit perceel. Controleer het voordat je indient."
+"De satellietcontrole ziet na 2020 verlies van boomkroonbedekking op dit "
+"perceel. Controleer het voordat je indient."
 
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid "The satellite check of this plot could not be completed. Run it again."
 msgstr ""
-"De satellietcontrole van dit perceel kon niet worden voltooid. Start hem opnieuw."
+"De satellietcontrole van dit perceel kon niet worden voltooid. Start hem "
+"opnieuw."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1747,7 +1874,8 @@ msgid ""
 "The satellite check of this plot was inconclusive. Review it on the map "
 "before submitting."
 msgstr ""
-"De satellietcontrole van dit perceel is niet eenduidig. Bekijk het op de kaart voordat je indient."
+"De satellietcontrole van dit perceel is niet eenduidig. Bekijk het op de "
+"kaart voordat je indient."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1755,7 +1883,8 @@ msgstr ""
 msgid ""
 "The statement has blocking issues: check it again and fix them in Sourevo."
 msgstr ""
-"De verklaring heeft blokkades: controleer ze opnieuw en los ze op in Sourevo."
+"De verklaring heeft blokkades: controleer ze opnieuw en los ze op in "
+"Sourevo."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1768,6 +1897,16 @@ msgstr "De verklaring wordt bij TRACES ingediend. Vernieuw ze zo meteen."
 #: code:addons/sourevo_eudr/models/stock_picking.py:0
 msgid "The statements of %s are already submitted."
 msgstr "De verklaringen van %s zijn al ingediend."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The supplier DDS gave {result} when verified in TRACES: you cannot rely on "
+"it."
+msgstr ""
+"De DDS van de leverancier gaf {result} bij de controle in TRACES: je kunt er"
+" niet op steunen."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1790,6 +1929,12 @@ msgstr "De statutaire naam van de leverancier ontbreekt (art. 9 EUDR)."
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The supplier's legality documents have expired ({n})."
+msgstr "De legaliteitsdocumenten van de leverancier zijn verlopen ({n})."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid "The supplier's postal address is missing (EUDR Art. 9)."
 msgstr "Het postadres van de leverancier ontbreekt (art. 9 EUDR)."
 
@@ -1805,20 +1950,37 @@ msgid ""
 "There are blocking issues (in red). Fix them in Sourevo or in the receipt "
 "and check again."
 msgstr ""
-"Er zijn blokkades (in het rood). Los ze op in Sourevo of in de ontvangst en controleer opnieuw."
+"Er zijn blokkades (in het rood). Los ze op in Sourevo of in de ontvangst en "
+"controleer opnieuw."
 
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid "There are new warnings to acknowledge: check the statement again."
 msgstr ""
-"Er zijn nieuwe waarschuwingen om te bevestigen: controleer de verklaring opnieuw."
+"Er zijn nieuwe waarschuwingen om te bevestigen: controleer de verklaring "
+"opnieuw."
 
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid "This company has no TRACES credentials in Sourevo yet."
 msgstr "Dit bedrijf heeft nog geen TRACES-inloggegevens in Sourevo."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"This company has no TRACES test credentials in Sourevo, and the Sourevo test"
+" account is not available."
+msgstr ""
+"Dit bedrijf heeft geen TRACES-testgegevens in Sourevo en het testaccount van"
+" Sourevo is niet beschikbaar."
+
+#. module: sourevo_eudr
+#: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_operator_sourevo_id_uniq
+msgid "This company is already loaded."
+msgstr "Dit bedrijf is al geladen."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1841,18 +2003,39 @@ msgstr "Deze post is pas verplicht vanaf {appliesFrom}."
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
-msgid "This internal reference is already used by another statement of this company."
-msgstr "Deze interne referentie wordt al gebruikt door een andere verklaring van dit bedrijf."
-
-#. module: sourevo_eudr
-#: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_operator_sourevo_id_uniq
-msgid "This company is already loaded."
-msgstr "Dit bedrijf is al geladen."
+msgid ""
+"This internal reference is already used by another statement of this "
+"company."
+msgstr ""
+"Deze interne referentie wordt al gebruikt door een andere verklaring van dit"
+" bedrijf."
 
 #. module: sourevo_eudr
 #: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_plot_sourevo_id_uniq
 msgid "This plot is already in Odoo."
 msgstr "Dit perceel staat al in Odoo."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"This plot's satellite check is more than 30 days old or was made with older "
+"data than the current one. It will be kept as it is in the record: update it"
+" before submitting if you can."
+msgstr ""
+"De satellietcontrole van dit perceel is ouder dan 30 dagen of gedaan met "
+"oudere gegevens dan de huidige. Ze wordt zo in het dossier bewaard: werk ze "
+"bij voor het indienen als dat kan."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"This receipt line already has a statement in TRACES: amend or retract it in "
+"Sourevo."
+msgstr ""
+"Deze ontvangstregel heeft al een verklaring in TRACES: wijzig of trek ze in "
+"bij Sourevo."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1865,6 +2048,16 @@ msgstr "Vink aan dat je kennisneemt van de waarschuwingen om in te dienen."
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
 msgid "To submit"
 msgstr "In te dienen"
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"To submit during the trial, add this company's TRACES test username and key "
+"in Settings."
+msgstr ""
+"Om tijdens de proef in te dienen, vul de TRACES-testgebruikersnaam en "
+"-sleutel van dit bedrijf in bij Instellingen."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1883,26 +2076,22 @@ msgstr "Te veel producenten (maximaal {max})."
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid "Too many requests to Sourevo (120 per minute). Try again in a minute."
 msgstr ""
-"Te veel verzoeken aan Sourevo (120 per minuut). Probeer het over een minuut opnieuw."
-
-#. module: sourevo_eudr
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_activity_type__trade
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__activity_type__trade
-msgid "Trade"
-msgstr "Handel"
-
-#. module: sourevo_eudr
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_operator_role__trader
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_represented_role__trader
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__operator_role__trader
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__represented_role__trader
-msgid "Trader"
-msgstr "Handelaar"
+"Te veel verzoeken aan Sourevo (120 per minuut). Probeer het over een minuut "
+"opnieuw."
 
 #. module: sourevo_eudr
 #: model:ir.model,name:sourevo_eudr.model_stock_picking
 msgid "Transfer"
 msgstr "Verplaatsing"
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid ""
+"Trial statement (simulated TRACES or the TRACES test environment): it has no"
+" legal value."
+msgstr ""
+"Proefverklaring (gesimuleerd TRACES of TRACES-testomgeving): zonder "
+"juridische waarde."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_trust_level
@@ -1923,8 +2112,10 @@ msgstr "Type"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__name
-msgid "Unique per company; TRACES accepts 50 characters. By default, the receipt."
-msgstr "Uniek per bedrijf; TRACES accepteert 50 tekens. Standaard de ontvangst."
+msgid ""
+"Unique per company; TRACES accepts 50 characters. By default, the receipt."
+msgstr ""
+"Uniek per bedrijf; TRACES accepteert 50 tekens. Standaard de ontvangst."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__uom_name
@@ -2025,11 +2216,6 @@ msgid "Verify"
 msgstr "Verifiëren"
 
 #. module: sourevo_eudr
-#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__volume_m3
-msgid "Volume (m³)"
-msgstr "Volume (m³)"
-
-#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__submitted
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
 msgid "Waiting for TRACES"
@@ -2059,6 +2245,19 @@ msgstr "Ingetrokken"
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Wood from {country}: EU sanctions ban imports of wood products of that "
+"origin (Regulation (EU) 833/2014 for Russia, Regulation (EC) 765/2006 for "
+"Belarus). No DDS can fix it: remove those plots or change the origin."
+msgstr ""
+"Hout uit {country}: de EU-sancties verbieden de invoer van houtproducten van"
+" die oorsprong (Verordening (EU) 833/2014 voor Rusland, Verordening (EG) "
+"765/2006 voor Belarus). Geen enkele DDS lost dit op: verwijder die percelen "
+"of kies een andere oorsprong."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid "You asked for this plot to be corrected."
 msgstr "Je hebt gevraagd dit perceel te corrigeren."
 
@@ -2075,15 +2274,18 @@ msgid ""
 "You uploaded this plot on behalf of the supplier and the supplier has not "
 "confirmed it yet."
 msgstr ""
-"Perceel dat jij namens de leverancier hebt geüpload. De leverancier heeft het nog niet bevestigd."
+"Perceel dat jij namens de leverancier hebt geüpload. De leverancier heeft "
+"het nog niet bevestigd."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
 msgid ""
-"Your Sourevo account is in trial: the statements go to the simulated TRACES "
-"(SIM references) and never reach the Commission."
+"Your Sourevo account is in trial: the statements go to the TRACES test "
+"environment (or the simulated TRACES) and have no legal value."
 msgstr ""
-"Je Sourevo-account is in de proefperiode: de verklaringen gaan naar het gesimuleerde TRACES (SIM-referenties) en komen nooit bij de Commissie aan."
+"Je Sourevo-account is in de proefperiode: de verklaringen gaan naar de "
+"TRACES-testomgeving (of het gesimuleerde TRACES) en hebben geen juridische "
+"waarde."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -2105,6 +2307,12 @@ msgstr "gesimuleerd (SIM-referenties)"
 
 #. module: sourevo_eudr
 #. odoo-python
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+msgid "test (TRACES acceptance, numbers without legal value)"
+msgstr "test (TRACES-testomgeving, nummers zonder juridische waarde)"
+
+#. module: sourevo_eudr
+#. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid "unknown error"
 msgstr "onbekende fout"
@@ -2118,11 +2326,10 @@ msgstr ""
 "Perceel van {areaHa} ha met een punt: boven {max} ha is een polygoon nodig."
 
 #. module: sourevo_eudr
-#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
-msgid "Add them in Sourevo"
-msgstr "Voeg ze toe in Sourevo"
-
-#. module: sourevo_eudr
-#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
-msgid "The company has no TRACES credentials in Sourevo yet."
-msgstr "Het bedrijf heeft nog geen TRACES-inloggegevens in Sourevo."
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"{n} plots taken from a supplier document, with the proof of origin kept."
+msgstr ""
+"{n} percelen overgenomen uit een document van de leverancier, met het bewijs"
+" van herkomst bewaard."

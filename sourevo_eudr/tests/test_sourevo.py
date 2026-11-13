@@ -186,6 +186,38 @@ class TestSourevoFlow(SourevoCommon):
         self.assertEqual(picking.sourevo_references, 'SIM26ES00001 / SIMVER01')
         self.assertIn('SIM26ES00001', picking.message_ids[0].body)
 
+    def test_traces_v4_roles_and_net_mass(self):
+        """TRACES V4: no trader role or trade activity, a representative acts for an operator, net mass only."""
+        dds = self.env['sourevo.dds']
+        self.assertEqual([k for k, _l in dds._fields['operator_role'].selection], ['OPERATOR', 'AUTHORISED_REPRESENTATIVE'])
+        self.assertEqual([k for k, _l in dds._fields['activity_type'].selection], ['IMPORT', 'EXPORT', 'DOMESTIC'])
+        self.assertNotIn('volume_m3', dds._fields)
+        api = FakeSourevo()
+        picking = self._receipt()
+        with patch(REQUEST, api):
+            picking.action_sourevo_prepare()
+        line = picking.sourevo_dds_ids
+        line.write({'operator_role': 'AUTHORISED_REPRESENTATIVE', 'activity_type': 'EXPORT'})
+        with patch(REQUEST, api):
+            picking.action_sourevo_submit()
+        batch = next(c for c in api.calls if c['path'] == '/batches')
+        self.assertNotIn('volumeM3', batch['json'])
+        self.assertEqual(batch['json']['netWeightKg'], 1000.0)
+        payload = next(c for c in api.calls if c['path'] == '/dds')['json']
+        self.assertEqual(payload['operatorRole'], 'AUTHORISED_REPRESENTATIVE')
+        self.assertEqual(payload['representedRole'], 'OPERATOR')
+        self.assertEqual(payload['activityType'], 'EXPORT')
+
+    def test_net_weight_required(self):
+        api = FakeSourevo()
+        picking = self._receipt()
+        with patch(REQUEST, api):
+            picking.action_sourevo_prepare()
+        picking.sourevo_dds_ids.net_weight_kg = 0
+        with patch(REQUEST, api), self.assertRaises(UserError):
+            picking.action_sourevo_submit()
+        self.assertNotIn('/batches', api.paths())
+
     def test_blocking_issues_stop_the_submission(self):
         api = FakeSourevo({('GET', '/dds/dds1/check'): {'ready': False, 'warnings': [], 'blocking': [
             {'key': 'b1', 'code': 'BATCH_NO_PLOT', 'level': 'batch', 'entityId': 'batch1'}]}})

@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 20.0-20260926\n"
+"Project-Id-Version: Odoo Server 19.0-20260926\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 17:26+0000\n"
-"PO-Revision-Date: 2026-11-03 17:26+0000\n"
+"POT-Creation-Date: 2026-11-13 11:05+0000\n"
+"PO-Revision-Date: 2026-11-13 11:05+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -17,69 +17,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: sourevo_eudr
-#: model:ir.module.module,description:base.module_sourevo_eudr
-msgid ""
-"\n"
-"Sourevo EUDR (sourevo.com)\n"
-"==========================\n"
-"Connects Odoo with Sourevo, the EUDR compliance service for importers\n"
-"(Regulation (EU) 2023/1115): the due diligence statement (DDS) submitted to\n"
-"TRACES before customs.\n"
-"\n"
-"* Suppliers: send them to Sourevo, invite them to their portal to declare\n"
-"  their plots, see their trust level and their plots.\n"
-"* Plots: upload a GeoJSON file as proposals the supplier confirms in its\n"
-"  portal; rejections and satellite flags arrive as activities.\n"
-"* Products: EUDR flag, CN code and, for wood, pulp and paper, the scientific\n"
-"  and common name.\n"
-"* Receipts: one click prepares the statement of each EUDR product (batch with\n"
-"  its net weight and plots), checks it and submits it to TRACES; the\n"
-"  reference and verification numbers come back to the receipt and its report.\n"
-"* Stays up to date: signed Sourevo webhooks, and a scheduled action every\n"
-"  15 minutes for databases that are not reachable from the internet.\n"
-"\n"
-"Data sent to Sourevo: nothing until you enter your own API key. Then, the\n"
-"suppliers, products, plots and receipts you send (names, country, tax ID,\n"
-"address, email and phone of the supplier; description and CN code of the\n"
-"product; net weight and plots of the receipt).\n"
-"\n"
-"Requires a Sourevo account: the API is included in the Pro, Forwarder and\n"
-"Enterprise plans and, in the 14-day trial, works in simulated mode.\n"
-msgstr ""
-"\n"
-"Sourevo EUDR (sourevo.com)\n"
-"==========================\n"
-"Liga o Odoo ao Sourevo, o serviço de conformidade EUDR para importadores\n"
-"(Regulamento (UE) 2023/1115): a declaração de diligência devida (DDS) submetida\n"
-"ao TRACES antes da alfândega.\n"
-"\n"
-"* Fornecedores: envie-os para o Sourevo, convide-os para o seu portal para\n"
-"  declararem as suas parcelas, veja o seu nível de confiança e as suas parcelas.\n"
-"* Parcelas: carregue um ficheiro GeoJSON como propostas que o fornecedor\n"
-"  confirma no seu portal; as recusas e os alertas de satélite chegam como atividades.\n"
-"* Produtos: indicador EUDR, código NC e, para madeira, pasta e papel, o nome\n"
-"  científico e o nome comum.\n"
-"* Receções: um clique prepara a declaração de cada produto EUDR (lote com\n"
-"  o seu peso líquido e parcelas), verifica-a e submete-a ao TRACES; o\n"
-"  número de referência e o número de verificação voltam à receção e ao seu relatório.\n"
-"* Sempre atualizado: webhooks assinados do Sourevo e uma ação agendada a cada\n"
-"  15 minutos para bases de dados que não são acessíveis a partir da internet.\n"
-"\n"
-"Dados enviados ao Sourevo: nada até introduzir a sua própria chave de API. Depois,\n"
-"os fornecedores, produtos, parcelas e receções que enviar (nome, país, NIF,\n"
-"morada, e-mail e telefone do fornecedor; descrição e código NC do\n"
-"produto; peso líquido e parcelas da receção).\n"
-"\n"
-"Requer uma conta Sourevo: a API está incluída nos planos Pro, Forwarder e\n"
-"Enterprise e, no teste gratuito de 14 dias, funciona em modo simulado.\n"
-
-#. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/wizard/sourevo_plot_upload.py:0
 msgid ""
 "%(created)s plot(s) sent to %(supplier)s for confirmation in their portal; "
 "%(skipped)s repeated."
-msgstr "%(created)s parcela(s) enviada(s) a %(supplier)s para confirmação no seu portal; %(skipped)s repetida(s)."
+msgstr ""
+"%(created)s parcela(s) enviada(s) a %(supplier)s para confirmação no seu "
+"portal; %(skipped)s repetida(s)."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -128,7 +73,8 @@ msgstr "%s não é uma receção de produtos EUDR."
 #: code:addons/sourevo_eudr/models/product_template.py:0
 msgid ""
 "%s is wood, pulp or paper: it needs the scientific and the common name."
-msgstr "%s é madeira, pasta ou papel: precisa do nome científico e do nome comum."
+msgstr ""
+"%s é madeira, pasta ou papel: precisa do nome científico e do nome comum."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -140,7 +86,9 @@ msgstr "%s precisa de um país para ser enviado ao Sourevo."
 #. odoo-python
 #: code:addons/sourevo_eudr/models/product_template.py:0
 msgid "%s needs its CN code (Inventory tab, EUDR) to be sent to Sourevo."
-msgstr "%s precisa do seu código NC (separador Inventário, EUDR) para ser enviado ao Sourevo."
+msgstr ""
+"%s precisa do seu código NC (separador Inventário, EUDR) para ser enviado ao"
+" Sourevo."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -190,7 +138,9 @@ msgstr "<span class=\"text-muted\">Enviado para </span>"
 msgid ""
 "<span invisible=\"not sourevo_simulated\"> · <em>simulated (Sourevo "
 "trial)</em></span>"
-msgstr "<span invisible=\"not sourevo_simulated\"> · <em>simulado (teste do Sourevo)</em></span>"
+msgstr ""
+"<span invisible=\"not sourevo_simulated\"> · <em>simulado (teste do "
+"Sourevo)</em></span>"
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
@@ -252,6 +202,11 @@ msgid "Activity"
 msgstr "Atividade"
 
 #. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "Add them in Sourevo"
+msgstr "Adicione-as no Sourevo"
+
+#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_signal__amber
 msgid "Amber"
 msgstr "Âmbar"
@@ -261,13 +216,9 @@ msgstr "Âmbar"
 msgid ""
 "An EUDR statement of this receipt was rejected or withdrawn: see the EUDR "
 "tab."
-msgstr "Uma declaração EUDR desta receção foi rejeitada ou retirada: veja o separador EUDR."
-
-#. module: sourevo_eudr
-#. odoo-python
-#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
-msgid "An authorised representative needs the represented role (%s)."
-msgstr "Um mandatário precisa da função representada (%s)."
+msgstr ""
+"Uma declaração EUDR desta receção foi rejeitada ou retirada: veja o "
+"separador EUDR."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_level__level_0_anonymous
@@ -287,8 +238,8 @@ msgstr "Área (ha)"
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_operator_role__authorised_representative
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__operator_role__authorised_representative
-msgid "Authorised representative"
-msgstr "Mandatário"
+msgid "Authorised representative of an operator"
+msgstr "Mandatário de um operador"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__available
@@ -327,6 +278,11 @@ msgid "Check"
 msgstr "Verificar"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__check_blocking_codes
+msgid "Check Blocking Codes"
+msgstr "Códigos de bloqueio da verificação"
+
+#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__check_warning_keys
 msgid "Check Warning Keys"
 msgstr "Chaves de avisos verificados"
@@ -344,8 +300,12 @@ msgstr "Verificado em"
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_dds.py:0
-msgid "Choose the company in TRACES of %s (Settings > Sourevo sets the default one)."
-msgstr "Escolha a empresa no TRACES de %s (Definições > Sourevo define a predefinida)."
+msgid ""
+"Choose the company in TRACES of %s (Settings > Sourevo sets the default "
+"one)."
+msgstr ""
+"Escolha a empresa no TRACES de %s (Definições > Sourevo define a "
+"predefinida)."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
@@ -376,12 +336,22 @@ msgstr "Nome comum"
 
 #. module: sourevo_eudr
 #: model:ir.model,name:sourevo_eudr.model_res_company
+msgid "Companies"
+msgstr "Empresas"
+
+#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__company_id
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__company_id
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__company_id
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__company_id
 msgid "Company"
 msgstr "Empresa"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__operator_id
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
+msgid "Company in TRACES"
+msgstr "Empresa no TRACES"
 
 #. module: sourevo_eudr
 #: model:ir.model,name:sourevo_eudr.model_res_config_settings
@@ -406,8 +376,12 @@ msgstr "Ligar notificações"
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/res_config_settings.py:0
-msgid "Connected to %(org)s. Plan: %(plan)s. Mode: %(mode)s. Role: %(role)s. Companies: %(count)s."
-msgstr "Ligado a %(org)s. Plano: %(plan)s. Modo: %(mode)s. Função: %(role)s. Empresas: %(count)s."
+msgid ""
+"Connected to %(org)s. Plan: %(plan)s. Mode: %(mode)s. Role: %(role)s. "
+"Companies: %(count)s."
+msgstr ""
+"Ligado a %(org)s. Plano: %(plan)s. Modo: %(mode)s. Função: %(role)s. "
+"Empresas: %(count)s."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
@@ -471,9 +445,14 @@ msgstr "Criada no Sourevo, menu API. Começa por svk_."
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
 msgid ""
 "Created in Sourevo, menu API. It starts with svk_. The API is included in "
-"the Pro, Forwarder and Enterprise plans; in the 14-day trial it works in "
-"simulated mode (SIM references)."
-msgstr "Criada no Sourevo, menu API. Começa por svk_. A API está incluída nos planos Pro, Forwarder e Enterprise; no teste gratuito de 14 dias funciona em modo simulado (referências SIM)."
+"the Pro, Forwarder and Enterprise plans; in the 14-day trial it submits to "
+"the TRACES test environment (or a simulated TRACES), with numbers that have "
+"no legal value."
+msgstr ""
+"Criada no Sourevo, menu API. Começa por svk_. A API está incluída nos planos"
+" Pro, Forwarder e Enterprise; no teste gratuito de 14 dias submete no "
+"ambiente de testes do TRACES (ou num TRACES simulado), com números sem valor"
+" legal."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__create_date
@@ -491,28 +470,22 @@ msgid "Declared"
 msgstr "Declarada"
 
 #. module: sourevo_eudr
-#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_operator_id
-#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_operator_id
-msgid "Default company in TRACES"
-msgstr "Empresa no TRACES predefinida"
-
-#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_activity_type
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_activity_type
 msgid "Default activity"
 msgstr "Atividade predefinida"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_operator_id
+#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_operator_id
+msgid "Default company in TRACES"
+msgstr "Empresa no TRACES predefinida"
+
+#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_operator_role
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_operator_role
 msgid "Default operator role"
 msgstr "Função de operador predefinida"
-
-#. module: sourevo_eudr
-#: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_represented_role
-#: model:ir.model.fields,field_description:sourevo_eudr.field_res_config_settings__sourevo_represented_role
-msgid "Default represented role"
-msgstr "Função representada predefinida"
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
@@ -557,7 +530,9 @@ msgstr "Rascunho"
 msgid ""
 "Due diligence statement %(name)s (%(product)s) in TRACES: reference number "
 "%(ref)s, verification number %(ver)s."
-msgstr "Declaração de diligência devida %(name)s (%(product)s) no TRACES: número de referência %(ref)s, número de verificação %(ver)s."
+msgstr ""
+"Declaração de diligência devida %(name)s (%(product)s) no TRACES: número de "
+"referência %(ref)s, número de verificação %(ver)s."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
@@ -580,13 +555,6 @@ msgstr "EORI"
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
 msgid "EUDR"
 msgstr "EUDR"
-
-#. module: sourevo_eudr
-#: model:ir.module.module,summary:base.module_sourevo_eudr
-msgid ""
-"EUDR compliance from Odoo: suppliers, plots, receipts and the due diligence "
-"statement submitted to TRACES, with its reference number back on the receipt"
-msgstr "Conformidade EUDR a partir do Odoo: fornecedores, parcelas, receções e a declaração de diligência devida submetida ao TRACES, com o número de referência de volta na receção"
 
 #. module: sourevo_eudr
 #: model:ir.model,name:sourevo_eudr.model_sourevo_dds
@@ -663,7 +631,16 @@ msgstr "E-mail verificado"
 msgid ""
 "Enter the net weight in kg of %(product)s in %(receipt)s: its unit is not a "
 "weight and the product has no weight."
-msgstr "Introduza o peso líquido em kg de %(product)s em %(receipt)s: a sua unidade não é um peso e o produto não tem peso."
+msgstr ""
+"Introduza o peso líquido em kg de %(product)s em %(receipt)s: a sua unidade "
+"não é um peso e o produto não tem peso."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid "Enter the net weight in kg: more than 0, with at most 3 decimals."
+msgstr ""
+"Indique o peso líquido em kg: maior que 0 e com 3 casas decimais no máximo."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_webhook_event__name
@@ -697,7 +674,9 @@ msgstr "Nome do ficheiro"
 msgid ""
 "Fix the blocking issues first (in Sourevo or in the receipt) and check "
 "again."
-msgstr "Corrija primeiro os problemas bloqueantes (no Sourevo ou na receção) e verifique novamente."
+msgstr ""
+"Corrija primeiro os problemas bloqueantes (no Sourevo ou na receção) e "
+"verifique novamente."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_plots_flagged
@@ -715,7 +694,9 @@ msgstr "Para as parcelas cujo ficheiro não o indica (ProducerCountry)."
 msgid ""
 "For the plots whose file does not say it (ProducerName). Empty: the "
 "supplier."
-msgstr "Para as parcelas cujo ficheiro não o indica (ProducerName). Vazio: o fornecedor."
+msgstr ""
+"Para as parcelas cujo ficheiro não o indica (ProducerName). Vazio: o "
+"fornecedor."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__file
@@ -744,10 +725,26 @@ msgid "Green"
 msgstr "Verde"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__grouped
+msgid "Grouped"
+msgstr "Agrupada"
+
+#. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid "HS heading {hsHeading} is not in EUDR Annex I."
 msgstr "A posição {hsHeading} não consta do Anexo I do EUDR."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Harvest in a planted forest: {natural} natural forest in 2020 (concession: "
+"{concession}). For wood this is neither deforestation nor degradation."
+msgstr ""
+"Corte numa plantação florestal: {natural} de floresta natural em 2020 "
+"(concessão: {concession}). Na madeira não é desflorestação nem degradação "
+"florestal."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__has_blocking
@@ -792,12 +789,6 @@ msgid "Import"
 msgstr "Importação"
 
 #. module: sourevo_eudr
-#. odoo-python
-#: code:addons/sourevo_eudr/models/check_messages.py:0
-msgid "Import and export require the net weight."
-msgstr "A importação e a exportação exigem o peso líquido."
-
-#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__done
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
 msgid "In TRACES"
@@ -808,7 +799,9 @@ msgstr "No TRACES"
 msgid ""
 "In a supplier, EUDR tab: send it to Sourevo and upload its plots, or invite "
 "it to fill them in its portal."
-msgstr "Num fornecedor, separador EUDR: envie-o para o Sourevo e carregue as suas parcelas, ou convide-o a preenchê-las no seu portal."
+msgstr ""
+"Num fornecedor, separador EUDR: envie-o para o Sourevo e carregue as suas "
+"parcelas, ou convide-o a preenchê-las no seu portal."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__inconclusive
@@ -842,6 +835,18 @@ msgstr "Ligação do convite"
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_partner_form_sourevo
 msgid "Invite to the portal"
 msgstr "Convidar para o portal"
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"It will be submitted with Sourevo's test account and you will not see it in "
+"your TRACES. To see it in your TRACES test environment, add your test "
+"credentials in Settings."
+msgstr ""
+"Será submetida com a conta de testes da Sourevo e não a verá no seu TRACES. "
+"Para a ver no seu TRACES de testes, introduza as suas credenciais de testes "
+"em Configuração."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
@@ -895,16 +900,33 @@ msgid "Locked"
 msgstr "Bloqueada"
 
 #. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Loss or alerts on a plot with {natural} natural forest in 2020: possible "
+"forest degradation."
+msgstr ""
+"Perda ou alertas numa parcela com {natural} de floresta natural em 2020: "
+"possível degradação florestal."
+
+#. module: sourevo_eudr
 #: model_terms:ir.actions.act_window,help:sourevo_eudr.sourevo_dds_action
 msgid ""
 "Mark the products as EUDR (Inventory tab) and, in a receipt of them, click "
 "Prepare DDS."
-msgstr "Marque os produtos como EUDR (separador Inventário) e, numa receção deles, clique em Preparar DDS."
+msgstr ""
+"Marque os produtos como EUDR (separador Inventário) e, numa receção deles, "
+"clique em Preparar DDS."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__name
 msgid "Name"
 msgstr "Nome"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__needs_credentials
+msgid "Needs Credentials"
+msgstr "Precisa de credenciais"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__loss_detected
@@ -944,6 +966,16 @@ msgid "No issues."
 msgstr "Sem problemas."
 
 #. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"No legality document from the supplier (FLEGT licence, legality "
+"verification, certificate or its declaration)."
+msgstr ""
+"Nenhum documento de legalidade do fornecedor (licença FLEGT, verificação de "
+"legalidade, certificado ou a sua declaração)."
+
+#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__satellite_verdict__no_loss_detected
 msgid "No loss detected"
 msgstr "Sem perda detetada"
@@ -981,18 +1013,23 @@ msgid "Notifications sent to"
 msgstr "Notificações enviadas para"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__obsolete
+msgid "Obsolete"
+msgstr "Obsoleta"
+
+#. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_product_product__eudr_supplementary_unit
 #: model:ir.model.fields,help:sourevo_eudr.field_product_template__eudr_supplementary_unit
 msgid ""
 "Only for CN codes with a supplementary unit (e.g. p/st for pieces): the "
 "receipt sends the quantity in it."
-msgstr "Só para códigos NC com unidade suplementar (p. ex. p/st para peças): a receção envia a quantidade nessa unidade."
+msgstr ""
+"Só para códigos NC com unidade suplementar (p. ex. p/st para peças): a "
+"receção envia a quantidade nessa unidade."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_operator_role__operator
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_represented_role__operator
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__operator_role__operator
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__represented_role__operator
 msgid "Operator"
 msgstr "Operador"
 
@@ -1028,7 +1065,9 @@ msgstr "Parcela declarada pelo fornecedor e ainda não verificada por si."
 msgid ""
 "Plot in a country that is not low risk ({country}) without a current "
 "satellite check."
-msgstr "Parcela de um país que não é de risco baixo ({country}) sem verificação por satélite atualizada."
+msgstr ""
+"Parcela de um país que não é de risco baixo ({country}) sem verificação por "
+"satélite atualizada."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1122,7 +1161,9 @@ msgstr "Vermelho"
 msgid ""
 "Reference and verification numbers of the due diligence statements, for "
 "customs."
-msgstr "Números de referência e de verificação das declarações de diligência devida, para a alfândega."
+msgstr ""
+"Números de referência e de verificação das declarações de diligência devida,"
+" para a alfândega."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__reference_number
@@ -1136,7 +1177,10 @@ msgid ""
 "Registered, but the test notification failed (%(error)s). Sourevo must reach"
 " %(url)s from the internet; if this database is not public, the scheduled "
 "action updates the statements every 15 minutes."
-msgstr "Registado, mas a notificação de teste falhou (%(error)s). O Sourevo tem de aceder a %(url)s a partir da internet; se esta base de dados não for pública, a ação agendada atualiza as declarações a cada 15 minutos."
+msgstr ""
+"Registado, mas a notificação de teste falhou (%(error)s). O Sourevo tem de "
+"aceder a %(url)s a partir da internet; se esta base de dados não for "
+"pública, a ação agendada atualiza as declarações a cada 15 minutos."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__rejected
@@ -1155,16 +1199,6 @@ msgstr "Rejeitada ou retirada"
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__rejection_reason
 msgid "Rejection reason"
 msgstr "Motivo da recusa"
-
-#. module: sourevo_eudr
-#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__represented_role
-msgid "Represented role"
-msgstr "Função representada"
-
-#. module: sourevo_eudr
-#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
-msgid "Represents"
-msgstr "Representa"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_product_product__eudr_scientific_name
@@ -1228,20 +1262,21 @@ msgid "Simulated"
 msgstr "Simulada"
 
 #. module: sourevo_eudr
-#. odoo-python
-#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
-msgid "Simulated (Sourevo trial): it never reached TRACES."
-msgstr "Simulada (teste do Sourevo): nunca chegou ao TRACES."
-
-#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_mode__simulated
 msgid "Simulated (trial)"
 msgstr "Simulado (teste)"
 
 #. module: sourevo_eudr
-#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
-msgid "Simulated statement (Sourevo trial): it never reached TRACES."
-msgstr "Declaração simulada (teste do Sourevo): nunca chegou ao TRACES."
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Since Regulation (EU) 2025/2650 traders no longer submit DDS in TRACES: only"
+" the operator or its authorised representative does. Change the role to "
+"Operator or Authorised representative of an operator."
+msgstr ""
+"Desde o Regulamento (UE) 2025/2650 os comerciantes deixaram de apresentar "
+"declarações de diligência devida no TRACES: só o operador ou o seu "
+"mandatário. Mude o papel para Operador ou Mandatário de um operador."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1266,11 +1301,6 @@ msgid "Sourevo API key"
 msgstr "Chave de API do Sourevo"
 
 #. module: sourevo_eudr
-#: model:ir.module.module,shortdesc:base.module_sourevo_eudr
-msgid "Sourevo EUDR"
-msgstr "Sourevo EUDR"
-
-#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__sourevo_eudr_visible
 msgid "Sourevo Eudr Visible"
 msgstr "Sourevo EUDR visível"
@@ -1287,14 +1317,14 @@ msgid "Sourevo Simulated"
 msgstr "Sourevo simulado"
 
 #. module: sourevo_eudr
-#: model:ir.model,name:sourevo_eudr.model_sourevo_operator
-msgid "Sourevo company (TRACES)"
-msgstr "Empresa do Sourevo (TRACES)"
-
-#. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__sourevo_batch_id
 msgid "Sourevo batch"
 msgstr "Lote do Sourevo"
+
+#. module: sourevo_eudr
+#: model:ir.model,name:sourevo_eudr.model_sourevo_operator
+msgid "Sourevo company (TRACES)"
+msgstr "Empresa do Sourevo (TRACES)"
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1312,7 +1342,9 @@ msgstr "O Sourevo não aceita este código NC."
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid "Sourevo is not available right now. Try again in a few minutes."
-msgstr "O Sourevo não está disponível neste momento. Tente novamente dentro de alguns minutos."
+msgstr ""
+"O Sourevo não está disponível neste momento. Tente novamente dentro de "
+"alguns minutos."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1331,7 +1363,8 @@ msgstr "Modo Sourevo"
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid ""
 "Sourevo needs the scientific name for this product (wood, paper and pulp)."
-msgstr "O Sourevo precisa do nome científico deste produto (madeira, papel e pasta)."
+msgstr ""
+"O Sourevo precisa do nome científico deste produto (madeira, papel e pasta)."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_organization
@@ -1373,7 +1406,18 @@ msgid ""
 "answers a plot proposal and when a satellite check flags a plot. This "
 "database must be reachable from the internet; if not, the statements are "
 "updated every 15 minutes."
-msgstr "O Sourevo avisa o Odoo quando o TRACES atribui o número de referência, quando um fornecedor responde a uma proposta de parcela e quando uma verificação por satélite assinala uma parcela. Esta base de dados tem de ser acessível a partir da internet; caso contrário, as declarações são atualizadas a cada 15 minutos."
+msgstr ""
+"O Sourevo avisa o Odoo quando o TRACES atribui o número de referência, "
+"quando um fornecedor responde a uma proposta de parcela e quando uma "
+"verificação por satélite assinala uma parcela. Esta base de dados tem de ser"
+" acessível a partir da internet; caso contrário, as declarações são "
+"atualizadas a cada 15 minutos."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+msgid "Sourevo trial: this statement has no legal value."
+msgstr "Teste do Sourevo: esta declaração não tem valor legal."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_company__sourevo_webhook_id
@@ -1391,7 +1435,9 @@ msgstr "Evento de webhook do Sourevo"
 msgid ""
 "Sourevo: %(level)s%% of the statements included in your plan are used "
 "(%(included)s in the period %(period)s)."
-msgstr "Sourevo: está utilizado %(level)s%% das declarações incluídas no seu plano (%(included)s no período %(period)s)."
+msgstr ""
+"Sourevo: está utilizado %(level)s%% das declarações incluídas no seu plano "
+"(%(included)s no período %(period)s)."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1438,7 +1484,9 @@ msgstr "Estado"
 msgid ""
 "Subject to the EU Deforestation Regulation (EU) 2023/1115: its receipts need"
 " a due diligence statement in TRACES."
-msgstr "Sujeito ao Regulamento Desflorestação da UE (UE) 2023/1115: as suas receções precisam de uma declaração de diligência devida no TRACES."
+msgstr ""
+"Sujeito ao Regulamento Desflorestação da UE (UE) 2023/1115: as suas receções"
+" precisam de uma declaração de diligência devida no TRACES."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
@@ -1466,9 +1514,11 @@ msgstr "Submetida"
 #. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__simulated
 msgid ""
-"Submitted to the simulated TRACES of the Sourevo trial: it never reached the"
-" Commission."
-msgstr "Submetida ao TRACES simulado do teste do Sourevo: nunca chegou à Comissão."
+"Submitted during the Sourevo trial (simulated TRACES or the TRACES test "
+"environment): it has no legal value."
+msgstr ""
+"Submetida durante o teste do Sourevo (TRACES simulado ou ambiente de testes "
+"do TRACES): não tem valor legal."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__summary
@@ -1501,6 +1551,16 @@ msgstr "Fornecedor"
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Supplier DDS not verified in TRACES. Verify it with its reference and "
+"verification numbers."
+msgstr ""
+"DDS do fornecedor não verificada no TRACES. Verifique-a com os números de "
+"referência e de verificação."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid "Supplier without a validated tax identity (level {trustLevel})."
 msgstr "Fornecedor sem identidade fiscal validada (nível {trustLevel})."
 
@@ -1520,7 +1580,9 @@ msgstr "UUID do TRACES"
 msgid ""
 "TRACES changed the status of the statement %(name)s to %(status)s. Review it"
 " in Sourevo."
-msgstr "O TRACES alterou o estado da declaração %(name)s para %(status)s. Reveja-a no Sourevo."
+msgstr ""
+"O TRACES alterou o estado da declaração %(name)s para %(status)s. Reveja-a "
+"no Sourevo."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_operator__has_credentials
@@ -1534,10 +1596,13 @@ msgid "TRACES did not accept the request: %s"
 msgstr "O TRACES não aceitou o pedido: %s"
 
 #. module: sourevo_eudr
-#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__operator_id
-#: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
-msgid "Company in TRACES"
-msgstr "Empresa no TRACES"
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"TRACES is still analysing the statement. Try again once it is available."
+msgstr ""
+"O TRACES ainda está a analisar a declaração. Tente de novo quando estiver "
+"disponível."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_stock_picking__sourevo_references
@@ -1553,6 +1618,11 @@ msgstr "NIF declarado"
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_level__level_3_tax_validated
 msgid "Tax ID validated"
 msgstr "NIF validado"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_mode__test
+msgid "Test (TRACES acceptance, trial)"
+msgstr "Testes (TRACES de testes, período de teste)"
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
@@ -1577,18 +1647,31 @@ msgstr "O ficheiro GeoJSON não é válido (%(reason)s): %(message)s"
 msgid ""
 "The Sourevo API is available from the Pro plan. Upgrade your plan in Sourevo"
 " to use it from Odoo."
-msgstr "A API do Sourevo está disponível a partir do plano Pro. Mude de plano no Sourevo para a utilizar a partir do Odoo."
+msgstr ""
+"A API do Sourevo está disponível a partir do plano Pro. Mude de plano no "
+"Sourevo para a utilizar a partir do Odoo."
 
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid "The Sourevo API key is not valid. Check it in Settings > Sourevo."
-msgstr "A chave de API do Sourevo não é válida. Verifique-a em Definições > Sourevo."
+msgstr ""
+"A chave de API do Sourevo não é válida. Verifique-a em Definições > Sourevo."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__reference_number
 msgid "The TRACES reference number that customs ask for."
 msgstr "O número de referência do TRACES que a alfândega pede."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The assessment concluded \"negligible risk\", but the data shows {n} "
+"unresolved legal gaps. Conclude the risk again."
+msgstr ""
+"A avaliação concluiu «risco negligenciável», mas os dados mostram {n} "
+"lacunas legais por resolver. Volte a concluir o risco."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1603,10 +1686,35 @@ msgid "The comment exceeds {max} characters."
 msgstr "O comentário excede {max} caracteres."
 
 #. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The company has no EORI number in Sourevo. TRACES refuses an import or "
+"export when the operator’s TRACES profile lacks it: add it in Settings and "
+"check it is in TRACES too."
+msgstr ""
+"A empresa não tem número EORI no Sourevo. O TRACES recusa uma importação ou "
+"exportação se o perfil do operador no TRACES não o tiver: indique-o em "
+"Configuração e confirme que também está no TRACES."
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+msgid "The company has no TRACES credentials in Sourevo yet."
+msgstr "A empresa ainda não tem credenciais do TRACES no Sourevo."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The company has no TRACES credentials."
+msgstr "A empresa não tem credenciais do TRACES."
+
+#. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
 msgid ""
 "The company that submits the statements in TRACES, as set up in Sourevo."
-msgstr "A empresa que submete as declarações no TRACES, tal como configurada no Sourevo."
+msgstr ""
+"A empresa que submete as declarações no TRACES, tal como configurada no "
+"Sourevo."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1615,15 +1723,40 @@ msgid "The country is missing or not valid."
 msgstr "O país está em falta ou não é válido."
 
 #. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The country’s official map shows deforestation on the plot after 2020 "
+"({source}). It is a signal like the satellite’s: it has to be cleared up."
+msgstr ""
+"O mapa oficial do país assinala desflorestação na parcela depois de 2020 "
+"({source}). É um sinal como o do satélite: tem de ser esclarecido."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"The daily limit of the Sourevo TRACES test account was reached. Try again "
+"tomorrow or add your own TRACES test credentials in Sourevo."
+msgstr ""
+"Foi atingido o limite diário da conta de testes do TRACES do Sourevo. Tente "
+"amanhã ou introduza as suas próprias credenciais de testes do TRACES no "
+"Sourevo."
+
+#. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
 msgid "The defaults of a new statement; each receipt can change them."
-msgstr "Os valores predefinidos de uma nova declaração; cada receção pode alterá-los."
+msgstr ""
+"Os valores predefinidos de uma nova declaração; cada receção pode alterá-"
+"los."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
 msgid ""
 "The draft is deleted in Sourevo; prepare the receipt again to start over."
-msgstr "O rascunho foi eliminado no Sourevo; prepare novamente a receção para recomeçar."
+msgstr ""
+"O rascunho foi eliminado no Sourevo; prepare novamente a receção para "
+"recomeçar."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1640,8 +1773,8 @@ msgstr "A referência interna excede {max} caracteres."
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
-msgid "The company has no TRACES credentials."
-msgstr "A empresa não tem credenciais do TRACES."
+msgid "The net weight in kg is required."
+msgstr "O peso líquido em kg é obrigatório."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1649,7 +1782,30 @@ msgstr "A empresa não tem credenciais do TRACES."
 msgid ""
 "The owner of this API key can no longer use the API in Sourevo. Create a new"
 " key."
-msgstr "O titular desta chave de API já não pode utilizar a API no Sourevo. Crie uma nova chave."
+msgstr ""
+"O titular desta chave de API já não pode utilizar a API no Sourevo. Crie uma"
+" nova chave."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The plot lies inside a protected area ({name}). Producing there may be "
+"forbidden or need a permit."
+msgstr ""
+"A parcela fica dentro de uma área protegida ({name}). Produzir aí pode estar"
+" proibido ou exigir uma licença."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The plot lies inside an indigenous territory ({name}). The EUDR requires "
+"respect for their rights and their free, prior and informed consent."
+msgstr ""
+"A parcela fica dentro de um território indígena ({name}). O EUDR exige que "
+"se respeitem os seus direitos e o seu consentimento livre, prévio e "
+"informado."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1682,7 +1838,10 @@ msgid ""
 "The satellite check found tree cover loss after 2020 on the plot %(plot)s of"
 " %(supplier)s (%(loss)s ha). It needs a human review in Sourevo: it does not"
 " mean it was deforested."
-msgstr "A verificação por satélite detetou perda de coberto arbóreo depois de 2020 na parcela %(plot)s de %(supplier)s (%(loss)s ha). Requer uma revisão humana no Sourevo: não significa que tenha sido desflorestada."
+msgstr ""
+"A verificação por satélite detetou perda de coberto arbóreo depois de 2020 "
+"na parcela %(plot)s de %(supplier)s (%(loss)s ha). Requer uma revisão humana"
+" no Sourevo: não significa que tenha sido desflorestada."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1690,13 +1849,17 @@ msgstr "A verificação por satélite detetou perda de coberto arbóreo depois d
 msgid ""
 "The satellite check found tree cover loss after 2020 on this plot. Review it"
 " before submitting."
-msgstr "A verificação por satélite deteta perda de coberto arbóreo depois de 2020 nesta parcela. Reveja-a antes de submeter."
+msgstr ""
+"A verificação por satélite deteta perda de coberto arbóreo depois de 2020 "
+"nesta parcela. Reveja-a antes de submeter."
 
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid "The satellite check of this plot could not be completed. Run it again."
-msgstr "Não foi possível concluir a verificação por satélite desta parcela. Volte a executá-la."
+msgstr ""
+"Não foi possível concluir a verificação por satélite desta parcela. Volte a "
+"executá-la."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1704,26 +1867,41 @@ msgstr "Não foi possível concluir a verificação por satélite desta parcela.
 msgid ""
 "The satellite check of this plot was inconclusive. Review it on the map "
 "before submitting."
-msgstr "A verificação por satélite desta parcela não é conclusiva. Reveja-a no mapa antes de submeter."
+msgstr ""
+"A verificação por satélite desta parcela não é conclusiva. Reveja-a no mapa "
+"antes de submeter."
 
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid ""
 "The statement has blocking issues: check it again and fix them in Sourevo."
-msgstr "A declaração tem problemas bloqueantes: verifique-a novamente e corrija-os no Sourevo."
+msgstr ""
+"A declaração tem problemas bloqueantes: verifique-a novamente e corrija-os "
+"no Sourevo."
 
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid "The statement is being submitted to TRACES. Refresh it in a moment."
-msgstr "A declaração está a ser submetida ao TRACES. Atualize-a daqui a pouco."
+msgstr ""
+"A declaração está a ser submetida ao TRACES. Atualize-a daqui a pouco."
 
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/stock_picking.py:0
 msgid "The statements of %s are already submitted."
 msgstr "As declarações de %s já foram submetidas."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"The supplier DDS gave {result} when verified in TRACES: you cannot rely on "
+"it."
+msgstr ""
+"A DDS do fornecedor deu {result} ao ser verificada no TRACES: não se pode "
+"apoiar nela."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1746,6 +1924,12 @@ msgstr "Falta a denominação social do fornecedor (art. 9.º EUDR)."
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid "The supplier's legality documents have expired ({n})."
+msgstr "Os documentos de legalidade do fornecedor caducaram ({n})."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid "The supplier's postal address is missing (EUDR Art. 9)."
 msgstr "Falta a morada postal do fornecedor (art. 9.º EUDR)."
 
@@ -1760,7 +1944,9 @@ msgstr "O NIF não corresponde ao formato do seu país."
 msgid ""
 "There are blocking issues (in red). Fix them in Sourevo or in the receipt "
 "and check again."
-msgstr "Há problemas bloqueantes (a vermelho). Corrija-os no Sourevo ou na receção e verifique novamente."
+msgstr ""
+"Há problemas bloqueantes (a vermelho). Corrija-os no Sourevo ou na receção e"
+" verifique novamente."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1776,9 +1962,26 @@ msgstr "Esta empresa ainda não tem credenciais do TRACES no Sourevo."
 
 #. module: sourevo_eudr
 #. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"This company has no TRACES test credentials in Sourevo, and the Sourevo test"
+" account is not available."
+msgstr ""
+"Esta empresa não tem credenciais de testes do TRACES no Sourevo e a conta de"
+" testes do Sourevo não está disponível."
+
+#. module: sourevo_eudr
+#: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_operator_sourevo_id_uniq
+msgid "This company is already loaded."
+msgstr "Esta empresa já está carregada."
+
+#. module: sourevo_eudr
+#. odoo-python
 #: code:addons/sourevo_eudr/models/res_config_settings.py:0
 msgid "This database has no public address (system parameter web.base.url)."
-msgstr "Esta base de dados não tem endereço público (parâmetro de sistema web.base.url)."
+msgstr ""
+"Esta base de dados não tem endereço público (parâmetro de sistema "
+"web.base.url)."
 
 #. module: sourevo_eudr
 #: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_webhook_event_name_uniq
@@ -1794,18 +1997,38 @@ msgstr "Esta posição só é exigível a partir de {appliesFrom}."
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
-msgid "This internal reference is already used by another statement of this company."
-msgstr "Esta referência interna já é utilizada por outra declaração desta empresa."
-
-#. module: sourevo_eudr
-#: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_operator_sourevo_id_uniq
-msgid "This company is already loaded."
-msgstr "Esta empresa já está carregada."
+msgid ""
+"This internal reference is already used by another statement of this "
+"company."
+msgstr ""
+"Esta referência interna já é utilizada por outra declaração desta empresa."
 
 #. module: sourevo_eudr
 #: model:ir.model.constraint,message:sourevo_eudr.constraint_sourevo_plot_sourevo_id_uniq
 msgid "This plot is already in Odoo."
 msgstr "Esta parcela já está no Odoo."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"This plot's satellite check is more than 30 days old or was made with older "
+"data than the current one. It will be kept as it is in the record: update it"
+" before submitting if you can."
+msgstr ""
+"A verificação por satélite desta parcela tem mais de 30 dias ou foi feita "
+"com dados anteriores aos atuais. Ficará guardada tal como está no processo: "
+"atualize-a antes de submeter, se puder."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+msgid ""
+"This receipt line already has a statement in TRACES: amend or retract it in "
+"Sourevo."
+msgstr ""
+"Esta linha da receção já tem uma declaração no TRACES: altere-a ou retire-a "
+"no Sourevo."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1818,6 +2041,16 @@ msgstr "Assinale que toma conhecimento dos avisos para submeter."
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
 msgid "To submit"
 msgstr "A submeter"
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"To submit during the trial, add this company's TRACES test username and key "
+"in Settings."
+msgstr ""
+"Para submeter durante o teste, introduza o utilizador e a chave de testes do"
+" TRACES desta empresa em Configuração."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1835,26 +2068,23 @@ msgstr "Demasiados produtores (máximo {max})."
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid "Too many requests to Sourevo (120 per minute). Try again in a minute."
-msgstr "Demasiados pedidos ao Sourevo (120 por minuto). Tente novamente dentro de um minuto."
-
-#. module: sourevo_eudr
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_activity_type__trade
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__activity_type__trade
-msgid "Trade"
-msgstr "Comércio"
-
-#. module: sourevo_eudr
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_operator_role__trader
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_represented_role__trader
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__operator_role__trader
-#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__represented_role__trader
-msgid "Trader"
-msgstr "Comerciante"
+msgstr ""
+"Demasiados pedidos ao Sourevo (120 por minuto). Tente novamente dentro de um"
+" minuto."
 
 #. module: sourevo_eudr
 #: model:ir.model,name:sourevo_eudr.model_stock_picking
 msgid "Transfer"
 msgstr "Transferência"
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid ""
+"Trial statement (simulated TRACES or the TRACES test environment): it has no"
+" legal value."
+msgstr ""
+"Declaração de teste (TRACES simulado ou ambiente de testes do TRACES): não "
+"tem valor legal."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_res_partner__sourevo_trust_level
@@ -1875,8 +2105,11 @@ msgstr "Tipo"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__name
-msgid "Unique per company; TRACES accepts 50 characters. By default, the receipt."
-msgstr "Única por empresa; o TRACES aceita 50 caracteres. Por predefinição, a receção."
+msgid ""
+"Unique per company; TRACES accepts 50 characters. By default, the receipt."
+msgstr ""
+"Única por empresa; o TRACES aceita 50 caracteres. Por predefinição, a "
+"receção."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__uom_name
@@ -1977,11 +2210,6 @@ msgid "Verify"
 msgstr "Verificar"
 
 #. module: sourevo_eudr
-#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__volume_m3
-msgid "Volume (m³)"
-msgstr "Volume (m³)"
-
-#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__submitted
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
 msgid "Waiting for TRACES"
@@ -2011,6 +2239,19 @@ msgstr "Retirada"
 #. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"Wood from {country}: EU sanctions ban imports of wood products of that "
+"origin (Regulation (EU) 833/2014 for Russia, Regulation (EC) 765/2006 for "
+"Belarus). No DDS can fix it: remove those plots or change the origin."
+msgstr ""
+"Madeira de {country}: as sanções da UE proíbem importar produtos de madeira "
+"dessa origem (Regulamento (UE) 833/2014 para a Rússia, Regulamento (CE) "
+"765/2006 para a Bielorrússia). Nenhuma DDS o resolve: retire essas parcelas "
+"ou mude de origem."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid "You asked for this plot to be corrected."
 msgstr "Pediu a correção desta parcela."
 
@@ -2026,14 +2267,18 @@ msgstr "Atingiu as declarações incluídas no seu plano Sourevo."
 msgid ""
 "You uploaded this plot on behalf of the supplier and the supplier has not "
 "confirmed it yet."
-msgstr "Parcela carregada por si em nome do fornecedor. O fornecedor ainda não a confirmou."
+msgstr ""
+"Parcela carregada por si em nome do fornecedor. O fornecedor ainda não a "
+"confirmou."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
 msgid ""
-"Your Sourevo account is in trial: the statements go to the simulated TRACES "
-"(SIM references) and never reach the Commission."
-msgstr "A sua conta Sourevo está em teste: as declarações vão para o TRACES simulado (referências SIM) e nunca chegam à Comissão."
+"Your Sourevo account is in trial: the statements go to the TRACES test "
+"environment (or the simulated TRACES) and have no legal value."
+msgstr ""
+"A sua conta Sourevo está em teste: as declarações vão para o ambiente de "
+"testes do TRACES (ou o TRACES simulado) e não têm valor legal."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -2055,6 +2300,12 @@ msgstr "simulado (referências SIM)"
 
 #. module: sourevo_eudr
 #. odoo-python
+#: code:addons/sourevo_eudr/models/res_config_settings.py:0
+msgid "test (TRACES acceptance, numbers without legal value)"
+msgstr "testes (TRACES de testes, números sem valor legal)"
+
+#. module: sourevo_eudr
+#. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 msgid "unknown error"
 msgstr "erro desconhecido"
@@ -2064,14 +2315,15 @@ msgstr "erro desconhecido"
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 msgid ""
 "{areaHa} ha plot given as a point: above {max} ha a polygon is required."
-msgstr "Parcela de {areaHa} ha indicada com um ponto: acima de {max} ha é obrigatório um polígono."
+msgstr ""
+"Parcela de {areaHa} ha indicada com um ponto: acima de {max} ha é "
+"obrigatório um polígono."
 
 #. module: sourevo_eudr
-#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
-msgid "Add them in Sourevo"
-msgstr "Adicione-as no Sourevo"
-
-#. module: sourevo_eudr
-#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
-msgid "The company has no TRACES credentials in Sourevo yet."
-msgstr "A empresa ainda não tem credenciais do TRACES no Sourevo."
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+msgid ""
+"{n} plots taken from a supplier document, with the proof of origin kept."
+msgstr ""
+"{n} parcelas retiradas de um documento do fornecedor, com a prova de origem "
+"guardada."

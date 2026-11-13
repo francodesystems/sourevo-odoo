@@ -13,7 +13,7 @@
                 </header>
                 <sheet>
                     <div class="alert alert-info" role="status" invisible="not simulated">
-                        Simulated statement (Sourevo trial): it never reached TRACES.
+                        Trial statement (simulated TRACES or the TRACES test environment): it has no legal value.
                     </div>
                     <div class="oe_title">
                         <label for="name"/>
@@ -31,7 +31,6 @@
                             <label for="quantity"/>
                             <div class="o_row"><field name="quantity"/><field name="uom_name"/></div>
                             <field name="net_weight_kg" readonly="locked"/>
-                            <field name="volume_m3" readonly="locked"/>
                             <field name="supplementary_unit" readonly="locked"/>
                             <field name="supplementary_qty" readonly="locked" invisible="not supplementary_unit"/>
                         </group>
@@ -49,7 +48,6 @@
                                 <group>
                                     <field name="operator_id" readonly="status != 'new'" options="{'no_create': True}"/>
                                     <field name="operator_role" readonly="status != 'new'"/>
-                                    <field name="represented_role" readonly="status != 'new'" invisible="operator_role != 'AUTHORISED_REPRESENTATIVE'"/>
                                     <field name="activity_type" readonly="status != 'new'"/>
                                     <field name="country_id" readonly="status != 'new'"/>
                                 </group>
@@ -90,7 +88,7 @@
         <field name="name">sourevo.dds.list</field>
         <field name="model">sourevo.dds</field>
         <field name="arch" type="xml">
-            <list create="0" decoration-danger="status == 'REJECTED'" decoration-muted="status in ('CANCELLED', 'WITHDRAWN', 'ARCHIVED')">
+            <list create="0" decoration-danger="status == 'REJECTED'" decoration-muted="status in ('CANCELLED', 'WITHDRAWN', 'ARCHIVED', 'OBSOLETE')">
                 <field name="name"/>
                 <field name="picking_id"/>
                 <field name="partner_id"/>

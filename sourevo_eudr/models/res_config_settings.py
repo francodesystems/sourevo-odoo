@@ -4,6 +4,7 @@ from odoo.modules import module as odoo_module
 
 from .sourevo_client import SourevoClient, SourevoError
 
+# Only the events the module handles (sourevo.webhook.event).
 WEBHOOK_EVENTS = ['dds.submitted', 'dds.status_changed', 'plot.proposal_answered', 'plot.satellite_flagged',
                   'supplier.claimed', 'plan.quota_80', 'plan.quota_100']
 
@@ -17,7 +18,6 @@ class ResConfigSettings(models.TransientModel):
     sourevo_organization = fields.Char(related='company_id.sourevo_organization')
     sourevo_operator_id = fields.Many2one(related='company_id.sourevo_operator_id', readonly=False)
     sourevo_operator_role = fields.Selection(related='company_id.sourevo_operator_role', readonly=False)
-    sourevo_represented_role = fields.Selection(related='company_id.sourevo_represented_role', readonly=False)
     sourevo_activity_type = fields.Selection(related='company_id.sourevo_activity_type', readonly=False)
     sourevo_webhook_url = fields.Char(related='company_id.sourevo_webhook_url')
     sourevo_last_sync = fields.Datetime(related='company_id.sourevo_last_sync')
@@ -39,7 +39,10 @@ class ResConfigSettings(models.TransientModel):
             company.sourevo_operator_id = operators
         plan = me.get('plan') or {}
         plan_name = plan.get('name') or plan.get('productCode') or plan.get('kind') or '—'
-        mode = _('live') if me.get('mode') == 'live' else _('simulated (SIM references)')
+        mode = {
+            'live': _('live'),
+            'test': _('test (TRACES acceptance, numbers without legal value)'),
+        }.get(me.get('mode'), _('simulated (SIM references)'))
         return self._sourevo_notify(_(
             'Connected to %(org)s. Plan: %(plan)s. Mode: %(mode)s. Role: %(role)s. Companies: %(count)s.',
             org=(me.get('organization') or {}).get('name') or '—', plan=plan_name, mode=mode,

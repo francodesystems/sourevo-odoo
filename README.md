@@ -9,7 +9,7 @@ recepciones de Odoo, con el número de referencia de vuelta en el albarán.
 | `sourevo_eudr` | Sourevo EUDR | Ajustes (clave `svk_`, probar conexión, operador de TRACES, avisos firmados); proveedores a Sourevo con invitación a su portal, nivel de confianza y parcelas; parcelas desde un GeoJSON; productos EUDR con código NC; en la recepción, una DDS por producto EUDR (lote con peso neto y parcelas), comprobación con bloqueos y avisos, presentación en TRACES y números de referencia y verificación en el albarán y su informe. |
 
 Una rama por versión de Odoo: `20.0`, `19.0`, `18.0`, `17.0`. Necesita una cuenta de Sourevo con la API
-(planes Pro, Transitario y Empresa; en la prueba de 14 días, en modo simulado con referencias SIM); el
+(planes Pro, Transitario y Empresa; en la prueba de 14 días presenta en el entorno de pruebas de TRACES, o en un TRACES simulado, con números sin valor legal); el
 módulo es gratis. API: https://sourevo.com/es/desarrolladores (OpenAPI en `/api/v1/openapi.json`).
 
 Textos en inglés con traducciones en `i18n/` (es, fr, pt, de, it, nl, pl). La ficha de la tienda
