@@ -20,6 +20,10 @@ class SourevoPlotUpload(models.TransientModel):
                                  help='For the plots whose file does not say it (ProducerCountry).')
     producer_name = fields.Char('Producer', help='For the plots whose file does not say it (ProducerName). '
                                                  'Empty: the supplier.')
+    livestock_establishment = fields.Boolean(
+        'Livestock establishments', help='Cattle: every point of the file is an establishment (EUDR Art. 2.28), so the '
+                                         '4 ha polygon rule does not apply. The file can also say it per plot '
+                                         '(LivestockEstablishment).')
 
     def action_upload(self):
         self.ensure_one()
@@ -36,6 +40,8 @@ class SourevoPlotUpload(models.TransientModel):
             payload['country'] = country.code
         if self.producer_name:
             payload['producerName'] = self.producer_name
+        if self.livestock_establishment:
+            payload['livestockEstablishment'] = True
         data = SourevoClient(self.env.company).upload_plots(partner._sourevo_ensure_supplier(), payload)
         Plot = self.env['sourevo.plot']
         for row in data.get('data') or []:
