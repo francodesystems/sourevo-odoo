@@ -1,6 +1,8 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
+from .sourevo_dds import TRACES_PROBLEM
+
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
@@ -13,7 +15,7 @@ class StockPicking(models.Model):
         ('draft', 'To submit'),
         ('submitted', 'Waiting for TRACES'),
         ('done', 'In TRACES'),
-        ('problem', 'Rejected or withdrawn'),
+        ('problem', 'Rejected, withdrawn or suspended'),
     ], 'EUDR', compute='_compute_sourevo_state')
     sourevo_references = fields.Char('TRACES reference', compute='_compute_sourevo_state',
                                      help='Reference and verification numbers of the due diligence statements, for customs.')
@@ -33,7 +35,7 @@ class StockPicking(models.Model):
             statuses = set(lines.mapped('status'))
             if not lines:
                 state = 'none'
-            elif statuses & {'REJECTED', 'CANCELLED', 'WITHDRAWN'}:
+            elif statuses & set(TRACES_PROBLEM):
                 state = 'problem'
             elif statuses & {'new', 'DRAFT'}:
                 state = 'draft'

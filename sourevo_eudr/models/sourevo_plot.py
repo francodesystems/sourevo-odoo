@@ -35,6 +35,8 @@ class SourevoPlot(models.Model):
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company, readonly=True)
     country_code = fields.Char('Country', readonly=True)
     producer_name = fields.Char('Producer', readonly=True)
+    livestock_establishment = fields.Boolean('Livestock establishment', readonly=True,
+                                             help='A cattle establishment (EUDR Art. 2.28): its point stands whatever the area.')
     area_ha = fields.Float('Area (ha)', digits=(16, 4), readonly=True)
     geometry_type = fields.Char('Geometry', readonly=True)
     source = fields.Selection([('SUPPLIER', 'Supplier'), ('IMPORTER', 'Us')], 'Uploaded by', readonly=True)
@@ -61,6 +63,7 @@ class SourevoPlot(models.Model):
             'name': row.get('name') or row['id'],
             'country_code': row.get('country'),
             'producer_name': row.get('producerName'),
+            'livestock_establishment': bool(row.get('livestockEstablishment')),
             'area_ha': row.get('areaHa') or 0.0,
             'geometry_type': (row.get('geometry') or {}).get('type'),
             'source': row.get('source'),

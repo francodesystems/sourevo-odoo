@@ -1,3 +1,5 @@
+import json
+
 from markupsafe import Markup
 
 from odoo import _, api, fields, models
@@ -5,13 +7,14 @@ from odoo.exceptions import UserError
 
 
 class SourevoDdsSubmit(models.TransientModel):
-    """The check of the statements of a receipt and their submission to TRACES."""
+    """The check of the statements of a receipt and their submission to TRACES (or of an amendment)."""
 
     _name = 'sourevo.dds.submit'
     _description = 'Submit EUDR statements to TRACES'
 
     picking_id = fields.Many2one('stock.picking', required=True, readonly=True)
     line_ids = fields.Many2many('sourevo.dds', string='Statements', readonly=True)
+    amend = fields.Boolean('Amendment', readonly=True, help='The plot changes of a statement already in TRACES.')
     summary = fields.Html(compute='_compute_summary', sanitize=False)
     has_blocking = fields.Boolean(compute='_compute_summary')
     has_warnings = fields.Boolean(compute='_compute_summary')
@@ -43,11 +46,14 @@ class SourevoDdsSubmit(models.TransientModel):
         return {'type': 'ir.actions.act_url', 'target': 'new',
                 'url': self.picking_id.company_id._sourevo_web_url('/dds/operators')}
 
+    def _reopen(self):
+        return {'type': 'ir.actions.act_window', 'res_model': self._name, 'res_id': self.id, 'view_mode': 'form',
+                'target': 'new', 'name': _('Amend in TRACES') if self.amend else _('Submit to TRACES')}
+
     def action_check_again(self):
         self.ensure_one()
         self.line_ids._sourevo_check()
-        return {'type': 'ir.actions.act_window', 'res_model': self._name, 'res_id': self.id, 'view_mode': 'form',
-                'target': 'new', 'name': _('Submit to TRACES')}
+        return self._reopen()
 
     def action_submit(self):
         self.ensure_one()
@@ -55,5 +61,13 @@ class SourevoDdsSubmit(models.TransientModel):
             raise UserError(_('Fix the blocking issues first (in Sourevo or in the receipt) and check again.'))
         if self.has_warnings and not self.acknowledge:
             raise UserError(_('Tick that you acknowledge the warnings to submit.'))
+        if self.amend:
+            for line in self.line_ids:
+                keys = json.loads(line.check_warning_keys or '[]')
+                if not line._sourevo_amend(keys):
+                    # New warnings appeared with the staged plots: they have to be acknowledged too.
+                    self.acknowledge = False
+                    return self._reopen()
+            return {'type': 'ir.actions.act_window_close'}
         self.line_ids._sourevo_submit()
         return {'type': 'ir.actions.act_window_close'}
