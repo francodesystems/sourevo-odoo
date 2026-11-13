@@ -33,7 +33,7 @@ class SourevoDdsSubmit(models.TransientModel):
             wizard.summary = Markup('').join(parts)
             wizard.has_blocking = any(line.check_blocking or not line.check_ready for line in wizard.line_ids)
             wizard.has_warnings = any(wizard.line_ids.mapped('check_warnings'))
-            wizard.simulated = wizard.picking_id.company_id.sourevo_mode == 'simulated'
+            wizard.simulated = wizard.picking_id.company_id.sourevo_mode in ('simulated', 'test')
             wizard.needs_credentials = any('OPERATOR_NO_CREDENTIALS' in (line.check_blocking_codes or '')
                                            for line in wizard.line_ids)
 

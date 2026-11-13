@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <form string="Submit to TRACES">
                 <div class="alert alert-info" role="status" invisible="not simulated">
-                    Your Sourevo account is in trial: the statements go to the simulated TRACES (SIM references) and never reach the Commission.
+                    Your Sourevo account is in trial: the statements go to the TRACES test environment (or the simulated TRACES) and have no legal value.
                 </div>
                 <div class="alert alert-danger" role="alert" invisible="not has_blocking">
                     There are blocking issues (in red). Fix them in Sourevo or in the receipt and check again.

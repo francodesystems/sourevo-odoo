@@ -58,6 +58,16 @@ def error_message(status, error, context=None):
         return _('The tax ID does not match the format of its country.')
     if reason == 'operator_without_credentials':
         return _('This company has no TRACES credentials in Sourevo yet.')
+    if reason == 'operator_without_test_credentials':
+        return _('This company has no TRACES test credentials in Sourevo, and the Sourevo test account is not available.')
+    if reason == 'shared_test_account_daily_limit':
+        return _('The daily limit of the Sourevo TRACES test account was reached. Try again tomorrow or add your own TRACES test credentials in Sourevo.')
+    if reason in ('invalid_quantity', 'quantity_required'):
+        return _('Enter the net weight in kg: more than 0, with at most 3 decimals.')
+    if reason in ('batch_frozen', 'batch_has_live_dds'):
+        return _('This receipt line already has a statement in TRACES: amend or retract it in Sourevo.')
+    if reason == 'not_yet_available':
+        return _('TRACES is still analysing the statement. Try again once it is available.')
     if reason == 'pre_submission_blocked':
         return _('The statement has blocking issues: check it again and fix them in Sourevo.')
     if reason == 'acknowledgement_required':

@@ -29,7 +29,8 @@ address, email and phone of the supplier; description and CN code of the
 product; net weight and plots of the receipt).
 
 Requires a Sourevo account: the API is included in the Pro, Forwarder and
-Enterprise plans and, in the 14-day trial, works in simulated mode.
+Enterprise plans and, in the 14-day trial, submits to the TRACES test
+environment (or a simulated TRACES), with numbers that have no legal value.
 """,
     'author': 'Francodesystems',
     'website': 'https://sourevo.com',
