@@ -37,6 +37,7 @@ CHECK_MESSAGES = {
     'OPERATOR_NO_TEST_CREDENTIALS': _lt("To submit during the trial, add this company's TRACES test username and key in Settings."),
     'ROLE_NOT_SUBMITTABLE': _lt('Since Regulation (EU) 2025/2650 traders no longer submit DDS in TRACES: only the operator or its authorised representative does. Change the role to Operator or Authorised representative of an operator.'),
     'PLOT_SATELLITE_OUTDATED': _lt("This plot's satellite check is more than 30 days old or was made with older data than the current one. It will be kept as it is in the record: update it before submitting if you can."),
+    'PLOT_PLANTATION_HARVEST_NO_CONCESSION': _lt('Harvest in a planted forest: {natural} natural forest in 2020. For wood this is neither deforestation nor degradation.'),
     'PLOT_NATURAL_FOREST_LOSS': _lt('Loss or alerts on a plot with {natural} natural forest in 2020: possible forest degradation.'),
     'PLOT_PLANTATION_HARVEST': _lt('Harvest in a planted forest: {natural} natural forest in 2020 (concession: {concession}). For wood this is neither deforestation nor degradation.'),
     'PLOT_INDIGENOUS_LAND': _lt('The plot lies inside an indigenous territory ({name}). The EUDR requires respect for their rights and their free, prior and informed consent.'),
@@ -49,6 +50,7 @@ CHECK_MESSAGES = {
     'ASSOCIATED_INVALID': _lt('The supplier DDS gave {result} when verified in TRACES: you cannot rely on it.'),
     'ASSOCIATED_NOT_VERIFIED': _lt('Supplier DDS not verified in TRACES. Verify it with its reference and verification numbers.'),
     'ORIGIN_SANCTIONED': _lt('Wood from {country}: EU sanctions ban imports of wood products of that origin (Regulation (EU) 833/2014 for Russia, Regulation (EC) 765/2006 for Belarus). No DDS can fix it: remove those plots or change the origin.'),
+    'RISK_ACCEPTED_GAPS': _lt('You submit with the risk conclusion sealed under your own responsibility: Sourevo still sees {n} legal gap(s). By submitting you declare that you carried out due diligence and that the risk is nil or negligible (EUDR Art. 4(2)).'),
     'TRIAL_SHARED_ACCOUNT': _lt("It will be submitted with Sourevo's test account and you will not see it in your TRACES. To see it in your TRACES test environment, add your test credentials in Settings."),
 }
 
@@ -57,6 +59,8 @@ def issue_text(issue, plot_names=None, lang=None):
     """The text of a CheckIssue ({key, code, level, entityId, data}), with the plot name when there is one."""
     code = issue.get('code') or ''
     data = defaultdict(lambda: '?', {k: v for k, v in (issue.get('data') or {}).items() if v is not None})
+    if code == 'PLOT_PLANTATION_HARVEST' and 'concession' not in data:
+        code = 'PLOT_PLANTATION_HARVEST_NO_CONCESSION'
     template = CHECK_MESSAGES.get(code)
     # _lt reads the language from this local, as _() does.
     context = {'lang': lang or 'en_US'}  # noqa: F841

@@ -23,14 +23,14 @@
                     <span invisible="not sourevo_simulated"> · <em>simulated (Sourevo trial)</em></span>
                 </div>
                 <div class="alert alert-warning mb-0 text-center" role="status" invisible="sourevo_state != 'problem'">
-                    An EUDR statement of this receipt was rejected or withdrawn: see the EUDR tab.
+                    An EUDR statement of this receipt was rejected, withdrawn or suspended: see the EUDR tab.
                 </div>
             </xpath>
             <xpath expr="//notebook" position="inside">
                 <page string="EUDR" name="sourevo_eudr" invisible="not sourevo_eudr_visible">
                     <field name="sourevo_dds_ids" context="{'form_view_ref': 'sourevo_eudr.sourevo_dds_view_form'}">
                         <tree editable="bottom" create="0" delete="0" decoration-muted="status in ('CANCELLED', 'WITHDRAWN', 'ARCHIVED', 'OBSOLETE')"
-                              decoration-danger="status == 'REJECTED'">
+                              decoration-danger="status in ('REJECTED', 'SUSPENDED')">
                             <field name="locked" column_invisible="1"/>
                             <field name="partner_id" column_invisible="1"/>
                             <field name="company_id" column_invisible="1"/>
@@ -40,6 +40,8 @@
                             <field name="uom_name" optional="hide"/>
                             <field name="net_weight_kg" readonly="locked"/>
                             <field name="supplementary_qty" optional="hide" readonly="locked"/>
+                            <field name="harvest_start" optional="hide" readonly="locked"/>
+                            <field name="harvest_end" optional="hide" readonly="locked"/>
                             <field name="plot_ids" widget="many2many_tags" readonly="locked" options="{'no_create': True}"/>
                             <field name="risk_conclusion" optional="hide" readonly="status != 'new'"/>
                             <field name="status" widget="badge" decoration-success="status == 'AVAILABLE'" decoration-info="status in ('DRAFT', 'SUBMITTED')"/>

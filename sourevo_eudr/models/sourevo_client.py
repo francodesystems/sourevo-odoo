@@ -64,10 +64,20 @@ def error_message(status, error, context=None):
         return _('The daily limit of the Sourevo TRACES test account was reached. Try again tomorrow or add your own TRACES test credentials in Sourevo.')
     if reason in ('invalid_quantity', 'quantity_required'):
         return _('Enter the net weight in kg: more than 0, with at most 3 decimals.')
+    if reason in ('invalid_harvest_date', 'harvest_end_before_start'):
+        return _('The harvest dates are not valid: the end cannot be before the start.')
     if reason in ('batch_frozen', 'batch_has_live_dds'):
         return _('This receipt line already has a statement in TRACES: amend or retract it in Sourevo.')
     if reason == 'not_yet_available':
         return _('TRACES is still analysing the statement. Try again once it is available.')
+    if reason == 'suspended':
+        return _('The competent authority suspended the statement (EUDR Art. 17): it cannot be amended or retracted while suspended.')
+    if reason in ('not_submitted', 'invalid_status'):
+        return _('The status of the statement in TRACES does not allow this. Update it and try again.')
+    if reason == 'plot_rejected':
+        return _('The supplier rejected one of these plots: it cannot be used.')
+    if reason in ('test_credentials_missing', 'shared_test_account_missing'):
+        return _('The TRACES test account this statement was submitted with is no longer available in Sourevo.')
     if reason == 'pre_submission_blocked':
         return _('The statement has blocking issues: check it again and fix them in Sourevo.')
     if reason == 'acknowledgement_required':
@@ -77,7 +87,7 @@ def error_message(status, error, context=None):
     if reason == 'submission_in_progress':
         return _('The statement is being submitted to TRACES. Refresh it in a moment.')
     if reason == 'polygon_required_over_4_ha':
-        return _('A plot over 4 ha must be a polygon, not a point.')
+        return _('A plot over 4 ha must be a polygon, not a point (unless it is a livestock establishment).')
     if reason and reason.startswith('geojson_'):
         return _('The GeoJSON file is not valid (%(reason)s): %(message)s', reason=reason, message=error.get('message') or '')
     if reason in ('traces_rejected', 'traces_fault', 'traces_permission_denied') or code == 'upstream_error':
@@ -195,6 +205,9 @@ class SourevoClient:
     def create_batch(self, payload):
         return self._request('POST', '/batches', payload)
 
+    def batch(self, batch_id):
+        return self._request('GET', f'/batches/{batch_id}')
+
     def create_dds(self, payload):
         return self._request('POST', '/dds', payload)
 
@@ -210,6 +223,10 @@ class SourevoClient:
     def submit_dds(self, dds_id, acknowledged_warnings):
         return self._request('POST', f'/dds/{dds_id}/submit', {'acknowledgedWarnings': list(acknowledged_warnings)},
                              timeout=TIMEOUT_TRACES)
+
+    def amend_dds(self, dds_id, payload, acknowledged_warnings=()):
+        return self._request('POST', f'/dds/{dds_id}/amend',
+                             dict(payload, acknowledgedWarnings=list(acknowledged_warnings)), timeout=TIMEOUT_TRACES)
 
     def refresh_dds(self, dds_id):
         return self._request('POST', f'/dds/{dds_id}/refresh', {}, timeout=TIMEOUT_TRACES)

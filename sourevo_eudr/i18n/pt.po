@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0-20260908\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-13 12:08+0000\n"
-"PO-Revision-Date: 2026-11-13 12:08+0000\n"
+"POT-Creation-Date: 2026-11-13 12:09+0000\n"
+"PO-Revision-Date: 2026-11-13 12:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -47,6 +47,13 @@ msgstr "%(supplier)s corrigiu a parcela %(plot)s."
 #, python-format
 msgid "%(supplier)s rejected the plot %(plot)s. Reason: %(reason)s"
 msgstr "%(supplier)s recusou a parcela %(plot)s. Motivo: %(reason)s"
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+#, python-format
+msgid "%s can only be amended once TRACES has made it available."
+msgstr "%s só pode ser alterada quando o TRACES a tiver disponibilizado."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -169,13 +176,24 @@ msgstr "<strong>EUDR · TRACES:</strong>"
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_upload_view_form
 msgid ""
-"A GeoJSON file in WGS84 (Point, Polygon or MultiPolygon; a plot over 4 ha must be a polygon). The\n"
-"                    properties ProductionPlace, ProducerName, ProducerCountry and Area are read. Each plot is a proposal\n"
-"                    the supplier confirms, corrects or rejects in its Sourevo portal."
+"A GeoJSON file in WGS84 (Point, Polygon or MultiPolygon; a plot over 4 ha must be a polygon, unless\n"
+"                    it is a livestock establishment). The properties ProductionPlace, ProducerName, ProducerCountry, Area\n"
+"                    and LivestockEstablishment are read. Each plot is a proposal the supplier confirms, corrects or\n"
+"                    rejects in its Sourevo portal."
 msgstr ""
-"Um ficheiro GeoJSON em WGS84 (Point, Polygon ou MultiPolygon; uma parcela com mais de 4 ha tem de ser um polígono). São\n"
-"                    lidas as propriedades ProductionPlace, ProducerName, ProducerCountry e Area. Cada parcela é uma proposta\n"
-"                    que o fornecedor confirma, corrige ou recusa no seu portal Sourevo."
+"Um ficheiro GeoJSON em WGS84 (Point, Polygon ou MultiPolygon; uma parcela "
+"com mais de 4 ha tem de ser um polígono, salvo se for uma exploração "
+"pecuária). São lidas as propriedades ProductionPlace, ProducerName, "
+"ProducerCountry, Area e LivestockEstablishment. Cada parcela é uma proposta "
+"que o fornecedor confirma, corrige ou rejeita no seu portal Sourevo."
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_sourevo_plot__livestock_establishment
+msgid ""
+"A cattle establishment (EUDR Art. 2.28): its point stands whatever the area."
+msgstr ""
+"Uma exploração pecuária de bovinos (art. 2.28 do EUDR): o seu ponto é válido"
+" seja qual for a área."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -188,8 +206,12 @@ msgstr "Uma parcela do lote já não está partilhada consigo."
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 #, python-format
-msgid "A plot over 4 ha must be a polygon, not a point."
-msgstr "Uma parcela com mais de 4 ha tem de ser um polígono, não um ponto."
+msgid ""
+"A plot over 4 ha must be a polygon, not a point (unless it is a livestock "
+"establishment)."
+msgstr ""
+"Uma parcela com mais de 4 ha tem de ser um polígono, não um ponto (salvo se "
+"for uma exploração pecuária)."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
@@ -228,13 +250,32 @@ msgid "Amber"
 msgstr "Âmbar"
 
 #. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+#: code:addons/sourevo_eudr/wizard/sourevo_dds_submit.py:0
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_submit_view_form
+#, python-format
+msgid "Amend in TRACES"
+msgstr "Alterar no TRACES"
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid "Amend plots in TRACES"
+msgstr "Alterar parcelas no TRACES"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__amend
+msgid "Amendment"
+msgstr "Alteração"
+
+#. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.view_picking_form_sourevo
 msgid ""
-"An EUDR statement of this receipt was rejected or withdrawn: see the EUDR "
-"tab."
+"An EUDR statement of this receipt was rejected, withdrawn or suspended: see "
+"the EUDR tab."
 msgstr ""
-"Uma declaração EUDR desta receção foi rejeitada ou retirada: veja o "
-"separador EUDR."
+"Uma declaração EUDR desta receção foi rejeitada, retirada ou suspensa: veja "
+"o separador EUDR."
 
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_partner__sourevo_trust_level__level_0_anonymous
@@ -287,6 +328,17 @@ msgstr "Cancelar"
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__cancelled
 msgid "Cancelled"
 msgstr "Anulada"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_sourevo_plot_upload__livestock_establishment
+msgid ""
+"Cattle: every point of the file is an establishment (EUDR Art. 2.28), so the"
+" 4 ha polygon rule does not apply. The file can also say it per plot "
+"(LivestockEstablishment)."
+msgstr ""
+"Bovinos: cada ponto do ficheiro é uma exploração (art. 2.28 do EUDR), pelo "
+"que a regra do polígono acima de 4 ha não se aplica. O ficheiro também o "
+"pode indicar por parcela (LivestockEstablishment)."
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
@@ -484,6 +536,15 @@ msgid "Created on"
 msgstr "Criado em"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__harvest_start
+msgid ""
+"Date or start of the period of production (EUDR Art. 9.1.d). Kept in the due"
+" diligence record; TRACES has no field for it."
+msgstr ""
+"Data ou início do período de produção (art. 9.1.d do EUDR). Fica no registo "
+"da diligência devida; o TRACES não tem campo para ela."
+
+#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_plot__verification_status__declared
 msgid "Declared"
 msgstr "Declarada"
@@ -646,6 +707,11 @@ msgid "Email verified"
 msgstr "E-mail verificado"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds__harvest_end
+msgid "End of the period of production."
+msgstr "Fim do período de produção."
+
+#. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_dds.py:0
 #, python-format
@@ -761,6 +827,11 @@ msgid "HS heading {hsHeading} is not in EUDR Annex I."
 msgstr "A posição {hsHeading} não consta do Anexo I do EUDR."
 
 #. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__harvest_start
+msgid "Harvest from"
+msgstr "Colheita desde"
+
+#. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 #, python-format
@@ -771,6 +842,22 @@ msgstr ""
 "Corte numa plantação florestal: {natural} de floresta natural em 2020 "
 "(concessão: {concession}). Na madeira não é desflorestação nem degradação "
 "florestal."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+#, python-format
+msgid ""
+"Harvest in a planted forest: {natural} natural forest in 2020. For wood this"
+" is neither deforestation nor degradation."
+msgstr ""
+"Corte numa floresta plantada: {natural} de floresta natural em 2020. Para a "
+"madeira, não é desflorestação nem degradação."
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__harvest_end
+msgid "Harvest to"
+msgstr "Colheita até"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds_submit__has_blocking
@@ -912,6 +999,16 @@ msgstr "Denominação social"
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__res_company__sourevo_mode__live
 msgid "Live"
 msgstr "Produção"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__livestock_establishment
+msgid "Livestock establishment"
+msgstr "Exploração pecuária"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot_upload__livestock_establishment
+msgid "Livestock establishments"
+msgstr "Explorações pecuárias"
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.res_config_settings_view_form_sourevo
@@ -1082,6 +1179,11 @@ msgid "Picking"
 msgstr "Transferência"
 
 #. module: sourevo_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__amend_staged
+msgid "Plot changes waiting for TRACES"
+msgstr "Alterações de parcelas à espera do TRACES"
+
+#. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 #, python-format
@@ -1226,8 +1328,8 @@ msgstr "Rejeitada"
 #. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__problem
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
-msgid "Rejected or withdrawn"
-msgstr "Rejeitada ou retirada"
+msgid "Rejected, withdrawn or suspended"
+msgstr "Rejeitada, retirada ou suspensa"
 
 #. module: sourevo_eudr
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_plot__rejection_reason
@@ -1614,6 +1716,11 @@ msgid "Supplier without a validated tax identity (level {trustLevel})."
 msgstr "Fornecedor sem identidade fiscal validada (nível {trustLevel})."
 
 #. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__suspended
+msgid "Suspended"
+msgstr "Suspensa"
+
+#. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
 msgid "TRACES"
 msgstr "TRACES"
@@ -1721,6 +1828,17 @@ msgstr "O número de referência do TRACES que a alfândega pede."
 
 #. module: sourevo_eudr
 #. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+#, python-format
+msgid ""
+"The TRACES test account this statement was submitted with is no longer "
+"available in Sourevo."
+msgstr ""
+"A conta de testes do TRACES com que esta declaração foi submetida já não "
+"está disponível no Sourevo."
+
+#. module: sourevo_eudr
+#. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 #, python-format
 msgid ""
@@ -1781,6 +1899,26 @@ msgstr ""
 #. odoo-python
 #: code:addons/sourevo_eudr/models/sourevo_client.py:0
 #, python-format
+msgid ""
+"The competent authority suspended the statement (EUDR Art. 17): it cannot be"
+" amended or retracted while suspended."
+msgstr ""
+"A autoridade competente suspendeu a declaração (art. 17 do EUDR): enquanto "
+"estiver suspensa, não pode ser alterada nem retirada."
+
+#. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid ""
+"The competent authority suspended this statement for a check (EUDR Art. 17). It cannot be\n"
+"                        amended or retracted until the check ends."
+msgstr ""
+"A autoridade competente suspendeu esta declaração para um controlo (art. 17 "
+"do EUDR). Não pode ser alterada nem retirada até o controlo terminar."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+#, python-format
 msgid "The country is missing or not valid."
 msgstr "O país está em falta ou não é válido."
 
@@ -1831,6 +1969,21 @@ msgstr "O ficheiro não é GeoJSON: %s"
 
 #. module: sourevo_eudr
 #. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+#, python-format
+msgid "The harvest dates are not valid: the end cannot be before the start."
+msgstr ""
+"As datas de colheita não são válidas: o fim não pode ser anterior ao início."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+#, python-format
+msgid "The harvest of %s cannot end before it starts."
+msgstr "A colheita de %s não pode terminar antes de começar."
+
+#. module: sourevo_eudr
+#. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 #, python-format
 msgid "The internal reference exceeds {max} characters."
@@ -1855,6 +2008,11 @@ msgstr ""
 " nova chave."
 
 #. module: sourevo_eudr
+#: model:ir.model.fields,help:sourevo_eudr.field_sourevo_dds_submit__amend
+msgid "The plot changes of a statement already in TRACES."
+msgstr "As alterações de parcelas de uma declaração que já está no TRACES."
+
+#. module: sourevo_eudr
 #. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 #, python-format
@@ -1876,6 +2034,13 @@ msgstr ""
 "A parcela fica dentro de um território indígena ({name}). O EUDR exige que "
 "se respeitem os seus direitos e o seu consentimento livre, prévio e "
 "informado."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_dds.py:0
+#, python-format
+msgid "The plots of %s are the same as in TRACES: change them first."
+msgstr "As parcelas de %s são as mesmas que no TRACES: altere-as primeiro."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -1976,6 +2141,17 @@ msgstr "As declarações de %s já foram submetidas."
 
 #. module: sourevo_eudr
 #. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+#, python-format
+msgid ""
+"The status of the statement in TRACES does not allow this. Update it and try"
+" again."
+msgstr ""
+"O estado da declaração no TRACES não o permite. Atualize-a e tente "
+"novamente."
+
+#. module: sourevo_eudr
+#. odoo-python
 #: code:addons/sourevo_eudr/models/check_messages.py:0
 #, python-format
 msgid ""
@@ -1984,6 +2160,13 @@ msgid ""
 msgstr ""
 "A DDS do fornecedor deu {result} ao ser verificada no TRACES: não se pode "
 "apoiar nela."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/sourevo_client.py:0
+#, python-format
+msgid "The supplier rejected one of these plots: it cannot be used."
+msgstr "O fornecedor rejeitou uma destas parcelas: não pode ser usada."
 
 #. module: sourevo_eudr
 #. odoo-python
@@ -2134,6 +2317,15 @@ msgid "Tick that you acknowledge the warnings to submit."
 msgstr "Assinale que toma conhecimento dos avisos para submeter."
 
 #. module: sourevo_eudr
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_form
+msgid ""
+"To add or remove origin plots, change them in the Plots tab, save and click "
+"Amend plots in TRACES."
+msgstr ""
+"Para adicionar ou retirar parcelas de origem, altere-as no separador "
+"Parcelas, guarde e clique em Alterar parcelas no TRACES."
+
+#. module: sourevo_eudr
 #: model:ir.model.fields.selection,name:sourevo_eudr.selection__stock_picking__sourevo_state__draft
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_dds_view_search
 msgid "To submit"
@@ -2241,6 +2433,11 @@ msgstr "Atualizar agora"
 #: model:ir.model.fields,field_description:sourevo_eudr.field_sourevo_dds__last_synced
 msgid "Updated from Sourevo"
 msgstr "Atualizado a partir do Sourevo"
+
+#. module: sourevo_eudr
+#: model:ir.model.fields.selection,name:sourevo_eudr.selection__sourevo_dds__status__updated
+msgid "Updated in TRACES"
+msgstr "Atualizada no TRACES"
 
 #. module: sourevo_eudr
 #: model_terms:ir.ui.view,arch_db:sourevo_eudr.sourevo_plot_upload_view_form
@@ -2365,6 +2562,21 @@ msgstr "Pediu a correção desta parcela."
 #, python-format
 msgid "You have reached the statements included in your Sourevo plan."
 msgstr "Atingiu as declarações incluídas no seu plano Sourevo."
+
+#. module: sourevo_eudr
+#. odoo-python
+#: code:addons/sourevo_eudr/models/check_messages.py:0
+#, python-format
+msgid ""
+"You submit with the risk conclusion sealed under your own responsibility: "
+"Sourevo still sees {n} legal gap(s). By submitting you declare that you "
+"carried out due diligence and that the risk is nil or negligible (EUDR Art. "
+"4(2))."
+msgstr ""
+"Submete com a conclusão do risco selada sob a sua responsabilidade: o "
+"Sourevo ainda vê {n} lacuna(s) legal(is). Ao submeter, declara que exerceu a"
+" diligência devida e que o risco é nulo ou negligenciável (art. 4.º, n.º 2, "
+"do EUDR)."
 
 #. module: sourevo_eudr
 #. odoo-python

@@ -6,11 +6,16 @@ recepciones de Odoo, con el número de referencia de vuelta en el albarán.
 
 | Módulo | Nombre en la tienda | Qué hace |
 |---|---|---|
-| `sourevo_eudr` | Sourevo EUDR | Ajustes (clave `svk_`, probar conexión, operador de TRACES, avisos firmados); proveedores a Sourevo con invitación a su portal, nivel de confianza y parcelas; parcelas desde un GeoJSON; productos EUDR con código NC; en la recepción, una DDS por producto EUDR (lote con peso neto y parcelas), comprobación con bloqueos y avisos, presentación en TRACES y números de referencia y verificación en el albarán y su informe. |
+| `sourevo_eudr` | Sourevo EUDR | Ajustes (clave `svk_`, probar conexión, operador de TRACES, avisos firmados); proveedores a Sourevo con invitación a su portal, nivel de confianza y parcelas; parcelas desde un GeoJSON (también establecimientos ganaderos de vacuno); productos EUDR con código NC; en la recepción, una DDS por producto EUDR (lote con peso neto, fechas de cosecha y parcelas), comprobación con bloqueos y avisos, presentación en TRACES, números de referencia y verificación en el albarán y su informe, y modificación de las parcelas de una DDS ya disponible en TRACES. |
 
 Una rama por versión de Odoo: `20.0`, `19.0`, `18.0`, `17.0`. Necesita una cuenta de Sourevo con la API
 (planes Pro, Transitario y Empresa; en la prueba de 14 días presenta en el entorno de pruebas de TRACES, o en un TRACES simulado, con números sin valor legal); el
 módulo es gratis. API: https://sourevo.com/es/desarrolladores (OpenAPI en `/api/v1/openapi.json`).
+
+TRACES V4 (Reglamento (UE) 2025/2650): solo presentan el operador o su representante autorizado (sin
+comerciante ni actividad de comercio), solo masa neta (sin volumen), y los estados de TRACES incluyen
+agrupada, obsoleta, suspendida por la autoridad (art. 17) y actualizada en TRACES. Retirar una DDS se hace en
+Sourevo.
 
 Textos en inglés con traducciones en `i18n/` (es, fr, pt, de, it, nl, pl). La ficha de la tienda
 (`static/description/index.html`) y la portada salen de `fds-odoo-apps/scripts/store_page.py` y

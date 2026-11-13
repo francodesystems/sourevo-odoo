@@ -6,6 +6,8 @@
         <field name="arch" type="xml">
             <form string="EUDR statement" create="0">
                 <header>
+                    <button name="action_sourevo_amend" type="object" string="Amend plots in TRACES" class="btn-primary"
+                            invisible="status != 'AVAILABLE'"/>
                     <button name="action_sourevo_refresh" type="object" string="Update" invisible="not sourevo_dds_id"/>
                     <button name="action_sourevo_discard" type="object" string="Discard" invisible="status not in ('new', 'DRAFT')"
                             confirm="The draft is deleted in Sourevo; prepare the receipt again to start over."/>
@@ -14,6 +16,13 @@
                 <sheet>
                     <div class="alert alert-info" role="status" invisible="not simulated">
                         Trial statement (simulated TRACES or the TRACES test environment): it has no legal value.
+                    </div>
+                    <div class="alert alert-danger" role="alert" invisible="status != 'SUSPENDED'">
+                        The competent authority suspended this statement for a check (EUDR Art. 17). It cannot be
+                        amended or retracted until the check ends.
+                    </div>
+                    <div class="alert alert-info" role="status" invisible="status != 'AVAILABLE'">
+                        To add or remove origin plots, change them in the Plots tab, save and click Amend plots in TRACES.
                     </div>
                     <div class="oe_title">
                         <label for="name"/>
@@ -33,6 +42,8 @@
                             <field name="net_weight_kg" readonly="locked"/>
                             <field name="supplementary_unit" readonly="locked"/>
                             <field name="supplementary_qty" readonly="locked" invisible="not supplementary_unit"/>
+                            <field name="harvest_start" readonly="locked"/>
+                            <field name="harvest_end" readonly="locked"/>
                         </group>
                         <group string="TRACES">
                             <field name="reference_number" class="fw-bold"/>
@@ -59,11 +70,12 @@
                             </group>
                         </page>
                         <page string="Plots" name="plots">
-                            <field name="plot_ids" readonly="locked" options="{'no_create': True}">
+                            <field name="plot_ids" readonly="locked and status != 'AVAILABLE'" options="{'no_create': True}">
                                 <tree>
                                     <field name="name"/>
                                     <field name="country_code"/>
                                     <field name="area_ha"/>
+                                    <field name="livestock_establishment" optional="hide"/>
                                     <field name="proposal_status"/>
                                     <field name="verification_status"/>
                                     <field name="satellite_verdict"/>
@@ -88,7 +100,7 @@
         <field name="name">sourevo.dds.list</field>
         <field name="model">sourevo.dds</field>
         <field name="arch" type="xml">
-            <tree create="0" decoration-danger="status == 'REJECTED'" decoration-muted="status in ('CANCELLED', 'WITHDRAWN', 'ARCHIVED', 'OBSOLETE')">
+            <tree create="0" decoration-danger="status in ('REJECTED', 'SUSPENDED')" decoration-muted="status in ('CANCELLED', 'WITHDRAWN', 'ARCHIVED', 'OBSOLETE')">
                 <field name="name"/>
                 <field name="picking_id"/>
                 <field name="partner_id"/>
@@ -116,7 +128,7 @@
                 <filter string="To submit" name="to_submit" domain="[('status', 'in', ('new', 'DRAFT'))]"/>
                 <filter string="Waiting for TRACES" name="waiting" domain="[('status', '=', 'SUBMITTED'), ('reference_number', '=', False)]"/>
                 <filter string="In TRACES" name="in_traces" domain="[('reference_number', '!=', False)]"/>
-                <filter string="Rejected or withdrawn" name="problem" domain="[('status', 'in', ('REJECTED', 'CANCELLED', 'WITHDRAWN'))]"/>
+                <filter string="Rejected, withdrawn or suspended" name="problem" domain="[('status', 'in', ('REJECTED', 'CANCELLED', 'WITHDRAWN', 'SUSPENDED'))]"/>
                 <separator/>
                 <filter string="Simulated" name="simulated" domain="[('simulated', '=', True)]"/>
                 <group>
@@ -147,6 +159,7 @@
                 <field name="country_code"/>
                 <field name="producer_name" optional="show"/>
                 <field name="area_ha"/>
+                <field name="livestock_establishment" optional="hide"/>
                 <field name="geometry_type" optional="hide"/>
                 <field name="source" optional="hide"/>
                 <field name="proposal_status" widget="badge" decoration-danger="proposal_status == 'REJECTED'" decoration-info="proposal_status == 'PENDING'"/>
@@ -174,6 +187,7 @@
                             <field name="country_code"/>
                             <field name="producer_name"/>
                             <field name="area_ha"/>
+                            <field name="livestock_establishment"/>
                             <field name="geometry_type"/>
                             <field name="source"/>
                         </group>
