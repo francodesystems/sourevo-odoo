@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sourevo_trade_reference_user,sourevo.trade.reference user,model_sourevo_trade_reference,base.group_user,1,0,0,0
+access_sourevo_trade_reference_stock,sourevo.trade.reference stock,model_sourevo_trade_reference,stock.group_stock_user,1,1,1,1
+access_sourevo_trade_reference_purchase,sourevo.trade.reference purchase,model_sourevo_trade_reference,purchase.group_purchase_user,1,1,1,1
+access_sourevo_trade_line_user,sourevo.trade.line user,model_sourevo_trade_line,base.group_user,1,0,0,0
+access_sourevo_trade_line_stock,sourevo.trade.line stock,model_sourevo_trade_line,stock.group_stock_user,1,1,1,0
+access_sourevo_trade_reject_stock,sourevo.trade.reject stock,model_sourevo_trade_reject,stock.group_stock_user,1,1,1,1
+access_sourevo_trade_reject_purchase,sourevo.trade.reject purchase,model_sourevo_trade_reject,purchase.group_purchase_user,1,1,1,1

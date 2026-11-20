@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form_sourevo_trade" model="ir.ui.view">
+        <field name="name">stock.picking.form.sourevo.trade</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="sourevo_trade_visible" invisible="1"/>
+                <field name="sourevo_trade_missing" invisible="1"/>
+                <field name="sourevo_trade_proposed" invisible="1"/>
+                <field name="sourevo_trade_state" invisible="1"/>
+                <button name="action_sourevo_trade_ask" type="object" string="Ask the supplier for the EUDR number" class="btn-secondary"
+                        groups="stock.group_stock_user,purchase.group_purchase_user"
+                        invisible="not sourevo_trade_missing or state != 'done' or sourevo_trade_proposed"/>
+                <button name="action_sourevo_trade_send" type="object" string="Send to the EUDR register" class="btn-secondary"
+                        groups="stock.group_stock_user" invisible="state != 'done' or sourevo_trade_state not in ('pending', 'error')"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-success mb-0 text-center" role="status" invisible="not sourevo_trade_reference_text">
+                    <strong>EUDR: </strong><field name="sourevo_trade_reference_text" class="d-inline fw-bold"/>
+                </div>
+                <div class="alert alert-warning mb-0 text-center" role="status" invisible="not sourevo_trade_missing">
+                    The supplier is an operator and gave no EUDR reference number: without it you cannot sell the product (EUDR Art. 5.1).
+                </div>
+                <div class="alert alert-info mb-0 text-center" role="status" invisible="not sourevo_trade_proposed">
+                    The supplier proposed an EUDR reference number: accept or reject it in the EUDR tab.
+                </div>
+                <div class="alert alert-danger mb-0 text-center" role="alert" invisible="sourevo_trade_state != 'error'">
+                    <field name="sourevo_trade_error" class="d-inline"/>
+                </div>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="EUDR" name="sourevo_eudr_lite" invisible="not sourevo_trade_visible">
+                    <group invisible="picking_type_code != 'outgoing'">
+                        <field name="sourevo_trade_source_picking_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                    </group>
+                    <field name="sourevo_trade_reference_ids" invisible="picking_type_code != 'incoming'">
+                        <tree editable="bottom" decoration-muted="state == 'rejected'" decoration-info="state == 'proposed'">
+                            <field name="kind" readonly="state != 'accepted' or sourevo_reference_id"/>
+                            <field name="reference_number" readonly="state != 'accepted' or sourevo_reference_id"/>
+                            <field name="verification_number" readonly="state != 'accepted' or sourevo_reference_id"/>
+                            <field name="state" widget="badge" decoration-success="state == 'accepted'" decoration-info="state == 'proposed'"/>
+                            <field name="reject_reason" optional="hide"/>
+                            <field name="sourevo_reference_id" column_invisible="1"/>
+                            <button name="action_accept" type="object" string="Accept" class="btn-link" invisible="state != 'proposed'"/>
+                            <button name="action_reject" type="object" string="Reject" class="btn-link" invisible="state != 'proposed'"/>
+                        </tree>
+                    </field>
+                    <field name="sourevo_trade_line_ids">
+                        <tree create="0" delete="0" decoration-danger="state == 'error'">
+                            <field name="direction"/>
+                            <field name="product_id"/>
+                            <field name="state" widget="badge" decoration-success="state == 'sent'" decoration-danger="state == 'error'"/>
+                            <field name="warning"/>
+                            <field name="error" optional="hide"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="vpicktree_sourevo_trade" model="ir.ui.view">
+        <field name="name">stock.picking.list.sourevo.trade</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <field name="origin" position="after">
+                <field name="sourevo_trade_reference_text" optional="hide"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_picking_internal_search_sourevo_trade" model="ir.ui.view">
+        <field name="name">stock.picking.search.sourevo.trade</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <filter name="late" position="before">
+                <filter string="EUDR number missing" name="sourevo_trade_missing" domain="[('sourevo_trade_missing', '=', True)]"/>
+            </filter>
+        </field>
+    </record>
+</odoo>

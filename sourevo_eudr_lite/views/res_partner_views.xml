@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_sourevo_trade" model="ir.ui.view">
+        <field name="name">res.partner.form.sourevo.trade</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="EUDR register" name="sourevo_eudr_lite" invisible="parent_id" groups="stock.group_stock_user,purchase.group_purchase_user">
+                    <group>
+                        <group string="As a supplier">
+                            <field name="sourevo_trade_supplier_kind"/>
+                        </group>
+                        <group string="As a customer">
+                            <field name="sourevo_trade_consumer"/>
+                        </group>
+                    </group>
+                    <p class="text-muted">
+                        EUDR Art. 5.3 asks you to keep the name, postal address, email and website of each supplier and of each
+                        customer that is a trader or downstream operator, for five years. They are sent to Sourevo with the first
+                        receipt or delivery of an EUDR product; a change later is kept as a new version.
+                    </p>
+                    <group invisible="not sourevo_trade_partner_id">
+                        <field name="sourevo_trade_partner_id"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
