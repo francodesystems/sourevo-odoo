@@ -1,0 +1,1193 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sourevo_eudr_lite
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0-20260926\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-19 17:12+0000\n"
+"PO-Revision-Date: 2026-11-19 17:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: sourevo_eudr_lite
+#: model:ir.module.module,description:base.module_sourevo_eudr_lite
+msgid ""
+"\n"
+"Sourevo EUDR Lite\n"
+"=================\n"
+"What Article 5 of the EUDR (Regulation (EU) 2023/1115 as amended by Regulation\n"
+"(EU) 2025/2650) asks of traders and downstream operators, from Odoo Inventory,\n"
+"Purchase and Sales, kept for five years in the free trader plan of Sourevo.\n"
+"\n"
+"* Receipts: the reference and verification numbers of the due diligence\n"
+"  statements your supplier gives you, with a warning when an operator's number\n"
+"  is missing. Recorded in Sourevo as purchases when the receipt is validated.\n"
+"* Ask your supplier: Sourevo emails a one-time link where the supplier types\n"
+"  the number, without an account. The answer arrives in Odoo as a proposal you\n"
+"  accept or reject.\n"
+"* Lots: each lot shows the numbers of the receipt that brought it in.\n"
+"* Deliveries: the numbers come from the lots delivered (or the receipts you\n"
+"  choose) and are recorded in Sourevo as a sale linked to those purchases.\n"
+"* Delivery slips and customer invoices print the numbers for your customer.\n"
+"* Contacts: supplier kind (operator, downstream operator, trader) and the data\n"
+"  Article 5.3 asks for, with their history in Sourevo.\n"
+"\n"
+"Free, with no end date: the trader plan of Sourevo (sourevo.com). Data sent to\n"
+"Sourevo: nothing until you enter your API key. Then the EUDR receipts and\n"
+"deliveries you validate (date, product description, CN code, quantity, the\n"
+"numbers) and their suppliers and customers (name, address, email, website,\n"
+"country, tax ID).\n"
+"\n"
+"Importers who submit statements to TRACES: see the module Sourevo EUDR.\n"
+msgstr ""
+"\n"
+"Sourevo EUDR Lite\n"
+"=================\n"
+"O que o artigo 5.º do EUDR (Regulamento (UE) 2023/1115 alterado pelo Regulamento\n"
+"(UE) 2025/2650) pede aos comerciantes e aos operadores a jusante, a partir do\n"
+"Inventário, Compras e Vendas do Odoo, guardado cinco anos no plano Comerciante\n"
+"gratuito da Sourevo.\n"
+"\n"
+"* Receções: os números de referência e de verificação das declarações de\n"
+"  diligência devida que o seu fornecedor lhe dá, com um aviso quando falta o\n"
+"  número de um operador. Registadas na Sourevo como compras ao validar a\n"
+"  receção.\n"
+"* Pedir ao fornecedor: a Sourevo envia por e-mail uma ligação de utilização\n"
+"  única onde o fornecedor escreve o número, sem conta. A resposta chega ao Odoo\n"
+"  como uma proposta que aceita ou rejeita.\n"
+"* Lotes: cada lote mostra os números da receção com que entrou.\n"
+"* Entregas: os números vêm dos lotes entregues (ou das receções que escolher) e\n"
+"  são registados na Sourevo como uma venda ligada a essas compras.\n"
+"* As guias de remessa e as faturas de cliente imprimem os números para o seu\n"
+"  cliente.\n"
+"* Contactos: tipo de fornecedor (operador, operador a jusante, comerciante) e os\n"
+"  dados que o artigo 5.º, n.º 3, pede, com o respetivo histórico na Sourevo.\n"
+"\n"
+"Gratuito e sem data de fim: o plano Comerciante da Sourevo (sourevo.com). Dados\n"
+"enviados à Sourevo: nenhuns até introduzir a sua chave de API. Depois, as\n"
+"receções e entregas EUDR que valida (data, descrição do produto, código NC,\n"
+"quantidade, os números) e os respetivos fornecedores e clientes (nome, morada,\n"
+"e-mail, sítio Web, país, NIF).\n"
+"\n"
+"Importadores que apresentam declarações no TRACES: ver o módulo Sourevo EUDR.\n"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_partner.py:0
+msgid "%(name)s needs %(missing)s for the EUDR register (Art. 5.3)."
+msgstr "Para o registo EUDR (art. 5.3), falta em %(name)s: %(missing)s."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/stock_picking.py:0
+msgid "%s has no EUDR products."
+msgstr "%s não tem produtos EUDR."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_product_product__sourevo_trade_cn_code
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_product_template__sourevo_trade_cn_code
+msgid "4, 6 or 8 digits, e.g. 0901 11 00."
+msgstr "4, 6 ou 8 dígitos, p. ex. 0901 11 00."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "<span class=\"text-muted\"> · </span>"
+msgstr "<span class=\"text-muted\"> · </span>"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "<span class=\"text-muted\">Connected to </span>"
+msgstr "<span class=\"text-muted\">Ligado a </span>"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "<span class=\"text-muted\">Last update: </span>"
+msgstr "<span class=\"text-muted\">Última atualização: </span>"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "<span class=\"text-muted\">No account yet? </span>"
+msgstr "<span class=\"text-muted\">Ainda não tem conta? </span>"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "<span class=\"text-muted\">Sent to </span>"
+msgstr "<span class=\"text-muted\">Enviadas para </span>"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.report_invoice_document_sourevo_trade
+msgid "<strong>EUDR · DDS reference / verification numbers:</strong>"
+msgstr "<strong>EUDR · Números de referência / verificação das DDS:</strong>"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.report_delivery_document_sourevo_trade
+msgid "<strong>EUDR · DDS:</strong>"
+msgstr "<strong>EUDR · DDS:</strong>"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_picking_form_sourevo_trade
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_production_lot_form_sourevo_trade
+msgid "<strong>EUDR: </strong>"
+msgstr "<strong>EUDR: </strong>"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid ""
+"A receipt already linked to a sale in Sourevo cannot be unlinked (records "
+"are kept five years)."
+msgstr ""
+"Uma receção já ligada a uma venda na Sourevo não pode ser desligada (os "
+"registos são conservados cinco anos)."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "API URL"
+msgstr "URL da API"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "API key"
+msgstr "Chave de API"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_picking_form_sourevo_trade
+msgid "Accept"
+msgstr "Aceitar"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/stock_picking.py:0
+msgid "Accept or reject it in the EUDR tab: %s"
+msgstr "Aceite-o ou rejeite-o no separador EUDR: %s"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__sourevo_trade_reference__state__accepted
+msgid "Accepted"
+msgstr "Aceite"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.constraint,message:sourevo_eudr_lite.constraint_sourevo_trade_line_move_uniq
+msgid "An EUDR move is recorded once."
+msgstr "Um movimento EUDR só é registado uma vez."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_res_partner__sourevo_trade_supplier_kind
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_res_users__sourevo_trade_supplier_kind
+msgid ""
+"An operator (importer or producer in the EU) must give you the reference "
+"number of its DDS (EUDR Art. 5.3.a)."
+msgstr ""
+"Um operador (importador ou produtor na UE) tem de lhe dar o número de "
+"referência da sua DDS (art. 5.3.a do EUDR)."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_partner_form_sourevo_trade
+msgid "As a customer"
+msgstr "Como cliente"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_partner_form_sourevo_trade
+msgid "As a supplier"
+msgstr "Como fornecedor"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_picking_form_sourevo_trade
+msgid "Ask the supplier for the EUDR number"
+msgstr "Pedir o número EUDR ao fornecedor"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_product_product__sourevo_trade_cn_code
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_product_template__sourevo_trade_cn_code
+msgid "CN or HS code"
+msgstr "Código NC ou SH"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.sourevo_trade_reject_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_product_product__sourevo_trade_eudr
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_product_template__sourevo_trade_eudr
+msgid ""
+"Coffee, cocoa, wood, soy, palm oil, rubber, cattle or a product of Annex I "
+"of the EUDR: its receipts and deliveries go to the EUDR register."
+msgstr ""
+"Café, cacau, madeira, soja, óleo de palma, borracha, bovinos ou um produto "
+"do anexo I do EUDR: as suas receções e entregas vão para o registo EUDR."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model,name:sourevo_eudr_lite.model_res_company
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__company_id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__company_id
+msgid "Company"
+msgstr "Empresa"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model,name:sourevo_eudr_lite.model_res_config_settings
+msgid "Config Settings"
+msgstr "Definições de configuração"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Connect again"
+msgstr "Voltar a ligar"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Connect notifications"
+msgstr "Ligar as notificações"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_config_settings.py:0
+msgid "Connected to %(org)s as %(role)s."
+msgstr "Ligado a %(org)s como %(role)s."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_config_settings.py:0
+msgid ""
+"Connected to %(org)s, but its trade records are off. Turn them on in "
+"Sourevo: Trade > Settings."
+msgstr ""
+"Ligado a %(org)s, mas os registos comerciais estão desativados. Ative-os na "
+"Sourevo: Comércio > Definições."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Connection"
+msgstr "Ligação"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model,name:sourevo_eudr_lite.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "Could not connect to Sourevo (%s)."
+msgstr "Não foi possível ligar à Sourevo (%s)."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Create a free trader account in Sourevo"
+msgstr "Criar uma conta de comerciante gratuita na Sourevo"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__create_uid
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__create_uid
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reject__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_res_company__sourevo_trade_api_key
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_res_config_settings__sourevo_trade_api_key
+msgid "Created in Sourevo, menu API. It starts with svk_."
+msgstr "Criada na Sourevo, menu API. Começa por svk_."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid ""
+"Created in Sourevo, menu API. It starts with svk_. The trader plan of "
+"Sourevo is free, with no end date."
+msgstr ""
+"Criada na Sourevo, menu API. Começa por svk_. O plano Comerciante da "
+"Sourevo é gratuito, sem data de fim."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__create_date
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__create_date
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reject__create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__direction
+msgid "Direction"
+msgstr "Sentido"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Disconnect"
+msgstr "Desligar"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_account_move__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_product_template__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_company__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_partner__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reject__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_lot__display_name
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__display_name
+msgid "Display Name"
+msgstr "Nome exibido"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__res_company__sourevo_trade_role__downstream_operator
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__res_partner__sourevo_trade_supplier_kind__downstream_operator
+msgid "Downstream operator"
+msgstr "Operador a jusante"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__sourevo_trade_reference__kind__dds
+msgid "Due diligence statement"
+msgstr "Declaração de diligência devida"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_picking_form_sourevo_trade
+msgid "EUDR"
+msgstr "EUDR"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_partner_form_sourevo_trade
+msgid ""
+"EUDR Art. 5.3 asks you to keep the name, postal address, email and website of each supplier and of each\n"
+"                        customer that is a trader or downstream operator, for five years. They are sent to Sourevo with the first\n"
+"                        receipt or delivery of an EUDR product; a change later is kept as a new version."
+msgstr ""
+"O art. 5.3 do EUDR pede-lhe que guarde cinco anos o nome, a morada, o e-mail e o sítio Web de cada fornecedor e de cada\n"
+"                        cliente que seja comerciante ou operador a jusante. São enviados para a Sourevo com a primeira\n"
+"                        receção ou entrega de um produto EUDR; uma alteração posterior é guardada como uma nova versão."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/sourevo_trade_reference.py:0
+msgid "EUDR number accepted."
+msgstr "Número EUDR aceite."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__sourevo_trade_missing
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_picking_internal_search_sourevo_trade
+msgid "EUDR number missing"
+msgstr "Falta o número EUDR"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__sourevo_trade_reference_text
+msgid "EUDR numbers"
+msgstr "Números EUDR"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_product_product__sourevo_trade_eudr
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_product_template__sourevo_trade_eudr
+msgid "EUDR product (trade records)"
+msgstr "Produto EUDR (registos comerciais)"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__sourevo_trade_source_picking_ids
+msgid "EUDR receipts of origin"
+msgstr "Receções EUDR de origem"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_config_settings.py:0
+msgid "EUDR records updated with Sourevo."
+msgstr "Registos EUDR atualizados com a Sourevo."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model,name:sourevo_eudr_lite.model_sourevo_trade_reference
+msgid "EUDR reference number of a receipt"
+msgstr "Número de referência EUDR de uma receção"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_account_bank_statement_line__sourevo_trade_reference_text
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_account_move__sourevo_trade_reference_text
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_lot__sourevo_trade_reference_text
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__sourevo_trade_reference_ids
+msgid "EUDR reference numbers"
+msgstr "Números de referência EUDR"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__sourevo_trade_state
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.product_template_form_view_sourevo_trade
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.product_template_search_view_sourevo_trade
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_partner_form_sourevo_trade
+msgid "EUDR register"
+msgstr "Registo EUDR"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model,name:sourevo_eudr_lite.model_sourevo_trade_line
+msgid "EUDR register line"
+msgstr "Linha do registo EUDR"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__sourevo_trade_line_ids
+msgid "EUDR register lines"
+msgstr "Linhas do registo EUDR"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_company__sourevo_trade_role
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_config_settings__sourevo_trade_role
+msgid "EUDR role in Sourevo"
+msgstr "Função EUDR na Sourevo"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_partner__sourevo_trade_supplier_kind
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_users__sourevo_trade_supplier_kind
+msgid "EUDR supplier kind"
+msgstr "Tipo de fornecedor EUDR"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/stock_picking.py:0
+msgid "EUDR: the supplier proposed a reference number"
+msgstr "EUDR: o fornecedor propôs um número de referência"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__error
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__sourevo_trade_line__state__error
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__stock_picking__sourevo_trade_state__error
+msgid "Error"
+msgstr "Erro"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_partner__sourevo_trade_consumer
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_users__sourevo_trade_consumer
+msgid "Final consumer (EUDR)"
+msgstr "Consumidor final (EUDR)"
+
+#. module: sourevo_eudr_lite
+#: model:ir.module.module,summary:base.module_sourevo_eudr_lite
+msgid ""
+"Free EUDR records for traders and downstream operators: DDS reference "
+"numbers on receipts, lots, delivery slips and invoices, asked to your "
+"supplier and kept for five years in Sourevo"
+msgstr ""
+"Registos EUDR gratuitos para comerciantes e operadores a jusante: números "
+"de referência das DDS nas receções, lotes, guias de remessa e faturas, "
+"pedidos ao seu fornecedor e guardados cinco anos na Sourevo"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_account_move__id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_product_template__id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_company__id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_config_settings__id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_partner__id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reject__id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_lot__id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__sourevo_trade_line__state__sent
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__stock_picking__sourevo_trade_state__sent
+msgid "In Sourevo"
+msgstr "Na Sourevo"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model,name:sourevo_eudr_lite.model_account_move
+msgid "Journal Entry"
+msgstr "Lançamento contabilístico"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_sourevo_trade_reject__reason
+msgid "Kept in your register; the supplier does not see it."
+msgstr "Fica no seu registo; o fornecedor não o vê."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Key"
+msgstr "Chave"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__kind
+msgid "Kind"
+msgstr "Tipo"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__write_uid
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__write_uid
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reject__write_uid
+msgid "Last Updated by"
+msgstr "Última atualização por"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__write_date
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__write_date
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reject__write_date
+msgid "Last Updated on"
+msgstr "Última atualização em"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_company__sourevo_trade_last_sync
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_config_settings__sourevo_trade_last_sync
+msgid "Last update from Sourevo (Lite)"
+msgstr "Última atualização a partir da Sourevo (Lite)"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_company__sourevo_trade_webhook_url
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_config_settings__sourevo_trade_webhook_url
+msgid "Lite notifications sent to"
+msgstr "Notificações Lite enviadas para"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_company__sourevo_trade_webhook_secret
+msgid "Lite webhook secret"
+msgstr "Segredo do webhook Lite"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model,name:sourevo_eudr_lite.model_stock_lot
+msgid "Lot/Serial"
+msgstr "Lote/Número de série"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__move_id
+msgid "Move"
+msgstr "Movimento"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/sourevo_trade_line.py:0
+msgid "No reference number: an operator must give you one (EUDR Art. 5.1)."
+msgstr ""
+"Sem número de referência: um operador tem de lho dar (art. 5.1 do EUDR)."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__stock_picking__sourevo_trade_state__none
+msgid "Not recorded"
+msgstr "Não registado"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Notifications"
+msgstr "Notificações"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_config_settings.py:0
+msgid "Notifications connected: Sourevo sends a test ping now."
+msgstr "Notificações ligadas: a Sourevo envia agora um ping de teste."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/sourevo_trade_reference.py:0
+msgid "Only a proposed number can be rejected."
+msgstr "Só se pode rejeitar um número proposto."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Open the register in Sourevo"
+msgstr "Abrir o registo na Sourevo"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__res_partner__sourevo_trade_supplier_kind__operator
+msgid "Operator (imports or produces: gives DDS numbers)"
+msgstr "Operador (importa ou produz: dá números de DDS)"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__picking_id
+msgid "Picking"
+msgstr "Transferência"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model,name:sourevo_eudr_lite.model_product_template
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__product_id
+msgid "Product"
+msgstr "Produto"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__sourevo_trade_reference__state__proposed
+msgid "Proposed by the supplier"
+msgstr "Proposto pelo fornecedor"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__sourevo_trade_line__direction__in
+msgid "Purchase"
+msgstr "Compra"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__reject_reason
+msgid "Reason"
+msgstr "Motivo"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__picking_id
+msgid "Receipt"
+msgstr "Receção"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reject__reference_id
+msgid "Reference"
+msgstr "Referência"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_stock_picking__sourevo_trade_reference_text
+msgid "Reference and verification numbers of the due diligence statements."
+msgstr ""
+"Números de referência e de verificação das declarações de diligência devida."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__reference_number
+msgid "Reference number"
+msgstr "Número de referência"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_config_settings.py:0
+msgid ""
+"Registered, but the test notification failed (%(error)s). Sourevo must reach"
+" %(url)s from the internet; if this database is not public, the scheduled "
+"action checks every 15 minutes."
+msgstr ""
+"Registado, mas a notificação de teste falhou (%(error)s). A Sourevo tem de "
+"conseguir chegar a %(url)s a partir da Internet; se esta base de dados não "
+"for pública, a ação agendada verifica a cada 15 minutos."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.sourevo_trade_reject_view_form
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_picking_form_sourevo_trade
+msgid "Reject"
+msgstr "Rejeitar"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model,name:sourevo_eudr_lite.model_sourevo_trade_reject
+msgid "Reject a proposed EUDR number"
+msgstr "Rejeitar um número EUDR proposto"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/sourevo_trade_reference.py:0
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.sourevo_trade_reject_view_form
+msgid "Reject the number"
+msgstr "Rejeitar o número"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__sourevo_trade_reference__state__rejected
+msgid "Rejected"
+msgstr "Rejeitado"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/stock_picking.py:0
+msgid "Request sent to %s. The answer arrives here as a proposal."
+msgstr "Pedido enviado a %s. A resposta chega aqui como proposta."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__sourevo_trade_line__direction__out
+msgid "Sale"
+msgstr "Venda"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_res_partner__sourevo_trade_consumer
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_res_users__sourevo_trade_consumer
+msgid ""
+"Sales to this contact are recorded without its data: EUDR Art. 5.3.b only "
+"asks for customers that are traders or downstream operators."
+msgstr ""
+"As vendas a este contacto são registadas sem os seus dados: o art. 5.3.b do "
+"EUDR só os pede para os clientes que são comerciantes ou operadores a "
+"jusante."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_picking_form_sourevo_trade
+msgid "Send to the EUDR register"
+msgstr "Enviar para o registo EUDR"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_partner.py:0
+msgid ""
+"Set the EUDR supplier kind of %s (operator, downstream operator or trader)."
+msgstr ""
+"Indique o tipo de fornecedor EUDR de %s (operador, operador a jusante ou "
+"comerciante)."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__sourevo_trade_reference__kind__simplified_declaration
+msgid "Simplified declaration"
+msgstr "Declaração simplificada"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_company__sourevo_trade_url
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_config_settings__sourevo_trade_url
+msgid "Sourevo API URL (Lite)"
+msgstr "URL da API da Sourevo (Lite)"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_company__sourevo_trade_api_key
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_config_settings__sourevo_trade_api_key
+msgid "Sourevo API key (Lite)"
+msgstr "Chave de API da Sourevo (Lite)"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_config_settings.py:0
+#: code:addons/sourevo_eudr_lite/models/stock_picking.py:0
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Sourevo EUDR Lite"
+msgstr "Sourevo EUDR Lite"
+
+#. module: sourevo_eudr_lite
+#: model:ir.actions.act_window,name:sourevo_eudr_lite.sourevo_trade_config_settings_action
+msgid "Sourevo EUDR Lite settings"
+msgstr "Definições do Sourevo EUDR Lite"
+
+#. module: sourevo_eudr_lite
+#: model:ir.module.module,shortdesc:base.module_sourevo_eudr_lite
+msgid ""
+"Sourevo EUDR Lite: free EUDR records for traders and downstream operators"
+msgstr ""
+"Sourevo EUDR Lite: registos EUDR gratuitos para comerciantes e operadores a "
+"jusante"
+
+#. module: sourevo_eudr_lite
+#: model:ir.actions.server,name:sourevo_eudr_lite.ir_cron_sourevo_trade_ir_actions_server
+msgid "Sourevo EUDR Lite: send and update the EUDR register"
+msgstr "Sourevo EUDR Lite: enviar e atualizar o registo EUDR"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__sourevo_trade_error
+msgid "Sourevo Trade Error"
+msgstr "Sourevo (comércio): erro"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_partner__sourevo_trade_is_customer
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_users__sourevo_trade_is_customer
+msgid "Sourevo Trade Is Customer"
+msgstr "Sourevo (comércio): é cliente"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_partner__sourevo_trade_is_supplier
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_users__sourevo_trade_is_supplier
+msgid "Sourevo Trade Is Supplier"
+msgstr "Sourevo (comércio): é fornecedor"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_partner__sourevo_trade_partner_hash
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_users__sourevo_trade_partner_hash
+msgid "Sourevo Trade Partner Hash"
+msgstr "Sourevo (comércio): hash do contacto"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__sourevo_trade_proposed
+msgid "Sourevo Trade Proposed"
+msgstr "Sourevo (comércio): proposto"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__sourevo_trade_visible
+msgid "Sourevo Trade Visible"
+msgstr "Sourevo (comércio): visível"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/stock_picking.py:0
+msgid "Sourevo asked %s for the EUDR reference number."
+msgstr "A Sourevo pediu a %s o número de referência EUDR."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "Sourevo did not answer in time. Try again in a moment."
+msgstr "A Sourevo não respondeu a tempo. Tente novamente daqui a pouco."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "Sourevo does not know this record any more."
+msgstr "A Sourevo já não conhece este registo."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "Sourevo is not available right now. Try again in a few minutes."
+msgstr ""
+"A Sourevo não está disponível neste momento. Tente novamente dentro de "
+"alguns minutos."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "Sourevo is not connected yet: Settings > Sourevo EUDR Lite > API key."
+msgstr ""
+"A Sourevo ainda não está ligada: Definições > Sourevo EUDR Lite > Chave de "
+"API."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid ""
+"Sourevo needs the date, description, CN code (4, 6 or 8 digits), quantity "
+"and unit of this line."
+msgstr ""
+"A Sourevo precisa da data, da descrição, do código NC (4, 6 ou 8 dígitos), "
+"da quantidade e da unidade desta linha."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid ""
+"Sourevo needs the name, postal address, a valid email and the country of "
+"this contact (EUDR Art. 5.3)."
+msgstr ""
+"A Sourevo precisa do nome, da morada, de um e-mail válido e do país deste "
+"contacto (art. 5.3 do EUDR)."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_company__sourevo_trade_organization
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_config_settings__sourevo_trade_organization
+msgid "Sourevo organization (Lite)"
+msgstr "Organização da Sourevo (Lite)"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_partner__sourevo_trade_partner_id
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_users__sourevo_trade_partner_id
+msgid "Sourevo partner"
+msgstr "Contacto da Sourevo"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__sourevo_id
+msgid "Sourevo record"
+msgstr "Registo da Sourevo"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__sourevo_reference_id
+msgid "Sourevo reference"
+msgstr "Referência da Sourevo"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid ""
+"Sourevo tells Odoo when a supplier proposes a reference number. This "
+"database must be reachable from the internet; if not, the scheduled action "
+"checks every 15 minutes."
+msgstr ""
+"A Sourevo avisa o Odoo quando um fornecedor propõe um número de referência. "
+"Esta base de dados tem de estar acessível a partir da Internet; se não "
+"estiver, a ação agendada verifica a cada 15 minutos."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__warning
+msgid "Sourevo warning"
+msgstr "Aviso da Sourevo"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_res_company__sourevo_trade_webhook_id
+msgid "Sourevo webhook (Lite)"
+msgstr "Webhook da Sourevo (Lite)"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "Sourevo: %(message)s (%(status)s)"
+msgstr "Sourevo: %(message)s (%(status)s)"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__state
+msgid "State"
+msgstr "Estado"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__state
+msgid "Status"
+msgstr "Estado"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_stock_picking__sourevo_trade_asked_at
+msgid "Supplier asked on"
+msgstr "Pedido ao fornecedor em"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Test connection"
+msgstr "Testar ligação"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/product_template.py:0
+msgid "The CN or HS code of an EUDR product has 4, 6 or 8 digits."
+msgstr "O código NC ou SH de um produto EUDR tem 4, 6 ou 8 dígitos."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid ""
+"The Sourevo API key is not valid. Check it in Settings > Sourevo EUDR Lite."
+msgstr ""
+"A chave de API da Sourevo não é válida. Verifique-a em Definições > Sourevo "
+"EUDR Lite."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "The free trader plan only covers the trade records."
+msgstr "O plano Comerciante gratuito só abrange os registos comerciais."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "The number of this receipt was already asked for three times."
+msgstr "O número desta receção já foi pedido três vezes."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_stock_lot__sourevo_trade_reference_text
+msgid "The numbers of the receipts that brought this lot in."
+msgstr "Os números das receções com que este lote entrou."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid ""
+"The owner of this API key is no longer an owner or administrator in Sourevo."
+" Create a new key."
+msgstr ""
+"O titular desta chave de API já não é proprietário nem administrador na "
+"Sourevo. Crie uma chave nova."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/sourevo_trade_line.py:0
+msgid "The receipt %s has no supplier."
+msgstr "A receção %s não tem fornecedor."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_stock_picking__sourevo_trade_source_picking_ids
+msgid ""
+"The receipts whose reference numbers this delivery passes on: taken from the"
+" lots delivered; choose them when the products have no lots."
+msgstr ""
+"As receções cujos números de referência esta entrega transmite: vêm dos "
+"lotes entregues; escolha-as quando os produtos não têm lotes."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/sourevo_trade_reference.py:0
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid ""
+"The reference number has up to 50 characters and the verification number 5 "
+"to 35."
+msgstr ""
+"O número de referência tem até 50 caracteres e o de verificação de 5 a 35."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_picking_form_sourevo_trade
+msgid ""
+"The supplier is an operator and gave no EUDR reference number: without it "
+"you cannot sell the product (EUDR Art. 5.1)."
+msgstr ""
+"O fornecedor é um operador e não deu nenhum número de referência EUDR: sem "
+"ele não pode vender o produto (art. 5.1 do EUDR)."
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.view_picking_form_sourevo_trade
+msgid ""
+"The supplier proposed an EUDR reference number: accept or reject it in the "
+"EUDR tab."
+msgstr ""
+"O fornecedor propôs um número de referência EUDR: aceite-o ou rejeite-o no "
+"separador EUDR."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "The supplier was asked less than three days ago."
+msgstr "O pedido ao fornecedor foi feito há menos de três dias."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_product_product__sourevo_trade_unit
+#: model:ir.model.fields,help:sourevo_eudr_lite.field_product_template__sourevo_trade_unit
+msgid ""
+"The unit of the quantities sent to Sourevo; they are converted to the unit "
+"of measure of the product first, so both must match."
+msgstr ""
+"A unidade das quantidades enviadas para a Sourevo; primeiro são convertidas "
+"para a unidade de medida do produto, por isso as duas têm de coincidir."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "The yearly limit of the free trader plan is reached. Write to Sourevo."
+msgstr ""
+"Foi atingido o limite anual do plano Comerciante gratuito. Escreva à "
+"Sourevo."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "This contact is recorded in Sourevo as a customer only."
+msgstr "Este contacto está registado na Sourevo só como cliente."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "This contact is recorded in Sourevo as a supplier only."
+msgstr "Este contacto está registado na Sourevo só como fornecedor."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_config_settings.py:0
+msgid "This database has no public address (system parameter web.base.url)."
+msgstr ""
+"Esta base de dados não tem endereço público (parâmetro de sistema "
+"web.base.url)."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "This number was already accepted or rejected in Sourevo."
+msgstr "Este número já foi aceite ou rejeitado na Sourevo."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__sourevo_trade_line__state__pending
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__stock_picking__sourevo_trade_state__pending
+msgid "To send"
+msgstr "Por enviar"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "Today's limit of requests to suppliers is reached. Try again tomorrow."
+msgstr ""
+"Foi atingido o limite de hoje de pedidos a fornecedores. Tente novamente "
+"amanhã."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid ""
+"Too many requests to Sourevo (30 per minute on the trader plan). Try again "
+"in a minute."
+msgstr ""
+"Demasiados pedidos à Sourevo (30 por minuto no plano Comerciante). Tente "
+"novamente dentro de um minuto."
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid ""
+"Trade records are not turned on in Sourevo: turn them on in Sourevo, Trade >"
+" Settings."
+msgstr ""
+"Os registos comerciais não estão ativados na Sourevo: ative-os na Sourevo, "
+"Comércio > Definições."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__res_company__sourevo_trade_role__trader
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__res_partner__sourevo_trade_supplier_kind__trader
+msgid "Trader"
+msgstr "Comerciante"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model,name:sourevo_eudr_lite.model_stock_picking
+msgid "Transfer"
+msgstr "Transferência"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_line__transient
+msgid "Transient"
+msgstr "Temporário"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_product_product__sourevo_trade_unit
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_product_template__sourevo_trade_unit
+msgid "Unit in the EUDR register"
+msgstr "Unidade no registo EUDR"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid "Update now"
+msgstr "Atualizar agora"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/stock_picking.py:0
+msgid ""
+"Validate the receipt first: Sourevo asks for the number of a recorded "
+"purchase."
+msgstr ""
+"Valide primeiro a receção: a Sourevo pede o número de uma compra registada."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reference__verification_number
+msgid "Verification number"
+msgstr "Número de verificação"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.res_config_settings_view_form_sourevo_trade
+msgid ""
+"What you keep five years and show the authority if asked (EUDR Art. 5.4): "
+"download it in Sourevo as CSV or as a ZIP with the TRACES checks."
+msgstr ""
+"O que guarda cinco anos e mostra à autoridade se lho pedir (art. 5.4 do "
+"EUDR): descarregue-o na Sourevo em CSV ou num ZIP com as verificações do "
+"TRACES."
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields,field_description:sourevo_eudr_lite.field_sourevo_trade_reject__reason
+msgid "Why"
+msgstr "Porquê"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_partner.py:0
+msgid "country"
+msgstr "país"
+
+#. module: sourevo_eudr_lite
+#: model_terms:ir.ui.view,arch_db:sourevo_eudr_lite.sourevo_trade_reject_view_form
+msgid "e.g. it is the number of another delivery"
+msgstr "p. ex. é o número de outra entrega"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_partner.py:0
+msgid "email"
+msgstr "e-mail"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__product_template__sourevo_trade_unit__head
+msgid "head"
+msgstr "cabeças"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__product_template__sourevo_trade_unit__kg
+msgid "kg"
+msgstr "kg"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__product_template__sourevo_trade_unit__l
+msgid "litres"
+msgstr "litros"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__product_template__sourevo_trade_unit__m3
+msgid "m³"
+msgstr "m³"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/res_partner.py:0
+msgid "postal address"
+msgstr "morada"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__product_template__sourevo_trade_unit__t
+msgid "tonnes"
+msgstr "toneladas"
+
+#. module: sourevo_eudr_lite
+#: model:ir.model.fields.selection,name:sourevo_eudr_lite.selection__product_template__sourevo_trade_unit__units
+msgid "units"
+msgstr "unidades"
+
+#. module: sourevo_eudr_lite
+#. odoo-python
+#: code:addons/sourevo_eudr_lite/models/trade_client.py:0
+msgid "unknown error"
+msgstr "erro desconhecido"

@@ -1,5 +1,6 @@
 """Ports the module one Odoo version down, in place: python3 dev/port.py 19 (run on a copy of the 20.0 branch),
-then 18 on the 19.0 branch and 17 on the 18.0 branch. What changes is what changed in decafirma-odoo."""
+then 18 on the 19.0 branch and 17 on the 18.0 branch. What changes is what changed in decafirma-odoo.
+The Lite module: python3 dev/port.py 19 sourevo_eudr_lite (same steps, its own files)."""
 import csv
 import io
 import pathlib
@@ -7,7 +8,8 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-MOD = ROOT / 'sourevo_eudr'
+MOD = ROOT / (sys.argv[2] if len(sys.argv) > 2 else 'sourevo_eudr')
+LITE = MOD.name == 'sourevo_eudr_lite'
 
 
 def edit(path, *pairs, regex=False):
@@ -53,7 +55,8 @@ def to_19():
         p = MOD / f
         p.write_text(p.read_text().replace('icon="arrow_forward"', 'icon="fa-arrow-right"')
                      .replace('icon="forest"', 'icon="fa-tree"').replace('icon="delete"', 'icon="fa-trash"'))
-    edit(ROOT / 'dev' / 'docker-compose.yml', ('odoo:20.0', 'odoo:19.0'))
+    if not LITE:
+        edit(ROOT / 'dev' / 'docker-compose.yml', ('odoo:20.0', 'odoo:19.0'))
 
 
 def to_18():
@@ -65,8 +68,9 @@ def to_18():
                     lambda m: f"    _sql_constraints = [('{m[1]}', '{m[2]}', '{m[3]}')]", s)
         if s2 != s:
             f.write_text(s2)
-    edit('views/res_partner_views.xml', ('<field name="group_ids"', '<field name="groups_id"'))
-    edit(ROOT / 'dev' / 'docker-compose.yml', ('odoo:19.0', 'odoo:18.0'))
+    if not LITE:
+        edit('views/res_partner_views.xml', ('<field name="group_ids"', '<field name="groups_id"'))
+        edit(ROOT / 'dev' / 'docker-compose.yml', ('odoo:19.0', 'odoo:18.0'))
 
 
 def to_17():
@@ -83,6 +87,8 @@ def to_17():
         s2 = s.replace("'view_mode': 'list,form'", "'view_mode': 'tree,form'")
         if s2 != s:
             f.write_text(s2)
+    if LITE:
+        return
     # No LazyTranslate in 17: odoo._lt, translated by str() with the language of a local "context".
     edit('models/check_messages.py',
          ('from odoo.tools import LazyTranslate\n\n_lt = LazyTranslate(__name__)\n', 'from odoo import _lt\n'),

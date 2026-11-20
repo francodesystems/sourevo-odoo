@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document_sourevo_trade" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@name='comment']" position="before">
+            <p t-if="o.sourevo_trade_reference_text" name="sourevo_trade_references">
+                <strong>EUDR · DDS reference / verification numbers:</strong>
+                <span t-field="o.sourevo_trade_reference_text"/>
+            </p>
+        </xpath>
+    </template>
+</odoo>
