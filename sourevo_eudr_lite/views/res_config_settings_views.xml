@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_sourevo_trade" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.sourevo.trade</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="98"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Sourevo EUDR Lite" id="sourevo_eudr_lite" string="Sourevo EUDR Lite" name="sourevo_eudr_lite" groups="base.group_system">
+                    <block title="Connection" id="sourevo_trade_connection">
+                        <setting string="API key" help="Created in Sourevo, menu API. It starts with svk_. The trader plan of Sourevo is free, with no end date.">
+                            <div class="content-group mt16">
+                                <div class="row">
+                                    <label for="sourevo_trade_api_key" string="Key" class="col-lg-3 o_light_label"/>
+                                    <field name="sourevo_trade_api_key" password="True"/>
+                                </div>
+                                <div class="row">
+                                    <label for="sourevo_trade_url" string="API URL" class="col-lg-3 o_light_label"/>
+                                    <field name="sourevo_trade_url"/>
+                                </div>
+                                <div class="mt8" invisible="not sourevo_trade_organization">
+                                    <span class="text-muted">Connected to </span><field name="sourevo_trade_organization" class="d-inline"/>
+                                    <span class="text-muted"> · </span><field name="sourevo_trade_role" class="d-inline"/>
+                                </div>
+                                <div class="mt8" invisible="sourevo_trade_api_key">
+                                    <span class="text-muted">No account yet? </span>
+                                    <a href="https://traders.sourevo.com/?utm_source=odoo&amp;utm_medium=module_lite&amp;utm_campaign=odoo20" target="_blank">Create a free trader account in Sourevo</a>
+                                </div>
+                                <button name="action_sourevo_trade_test" type="object" string="Test connection" class="btn-link" icon="arrow_forward"/>
+                            </div>
+                        </setting>
+                        <setting string="Notifications" help="Sourevo tells Odoo when a supplier proposes a reference number. This database must be reachable from the internet; if not, the scheduled action checks every 15 minutes.">
+                            <div class="content-group mt16">
+                                <div invisible="not sourevo_trade_webhook_url">
+                                    <span class="text-muted">Sent to </span><field name="sourevo_trade_webhook_url" class="d-inline"/>
+                                </div>
+                                <button name="action_sourevo_trade_connect_webhook" type="object" string="Connect notifications" class="btn-link" icon="arrow_forward" invisible="sourevo_trade_webhook_url"/>
+                                <button name="action_sourevo_trade_connect_webhook" type="object" string="Connect again" class="btn-link" invisible="not sourevo_trade_webhook_url"/>
+                                <button name="action_sourevo_trade_disconnect_webhook" type="object" string="Disconnect" class="btn-link" invisible="not sourevo_trade_webhook_url"/>
+                                <div class="mt8">
+                                    <span class="text-muted">Last update: </span><field name="sourevo_trade_last_sync" class="d-inline"/>
+                                    <button name="action_sourevo_trade_update_now" type="object" string="Update now" class="btn-link"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting string="EUDR register" help="What you keep five years and show the authority if asked (EUDR Art. 5.4): download it in Sourevo as CSV or as a ZIP with the TRACES checks.">
+                            <div class="content-group mt16">
+                                <button name="action_sourevo_trade_open_register" type="object" string="Open the register in Sourevo" class="btn-link" icon="arrow_forward"/>
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sourevo_trade_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Sourevo EUDR Lite settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'sourevo_eudr_lite', 'bin_size': False}</field>
+    </record>
+</odoo>

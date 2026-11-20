@@ -1,0 +1,10 @@
+id,name,model_id,group_id/id,operation,domain
+access_sourevo_trade_reference_user,sourevo.trade.reference user,sourevo.trade.reference,base.group_user,r,
+access_sourevo_trade_reference_stock,sourevo.trade.reference stock,sourevo.trade.reference,stock.group_stock_user,crud,
+access_sourevo_trade_reference_purchase,sourevo.trade.reference purchase,sourevo.trade.reference,purchase.group_purchase_user,crud,
+access_sourevo_trade_line_user,sourevo.trade.line user,sourevo.trade.line,base.group_user,r,
+access_sourevo_trade_line_stock,sourevo.trade.line stock,sourevo.trade.line,stock.group_stock_user,cru,
+access_sourevo_trade_reject_stock,sourevo.trade.reject stock,sourevo.trade.reject,stock.group_stock_user,crud,
+access_sourevo_trade_reject_purchase,sourevo.trade.reject purchase,sourevo.trade.reject,purchase.group_purchase_user,crud,
+rule_sourevo_trade_reference_company,Sourevo EUDR numbers: multi-company,sourevo.trade.reference,,crud,"[('company_id', 'in', company_ids)]"
+rule_sourevo_trade_line_company,Sourevo EUDR register: multi-company,sourevo.trade.line,,crud,"[('company_id', 'in', company_ids)]"

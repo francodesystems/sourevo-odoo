@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_delivery_document_sourevo_trade" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@name='div_origin']" position="before">
+            <div t-if="o.sourevo_trade_reference_text" class="col col-3 mw-100 mb-2" name="div_sourevo_trade">
+                <strong>EUDR · DDS:</strong>
+                <p t-field="o.sourevo_trade_reference_text" class="m-0"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
