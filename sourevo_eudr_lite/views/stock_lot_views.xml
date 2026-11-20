@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_production_lot_form_sourevo_trade" model="ir.ui.view">
+        <field name="name">stock.lot.form.sourevo.trade</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='main_group']" position="after">
+                <div class="alert alert-success" role="status" invisible="not sourevo_trade_reference_text">
+                    <strong>EUDR: </strong><field name="sourevo_trade_reference_text" class="d-inline"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

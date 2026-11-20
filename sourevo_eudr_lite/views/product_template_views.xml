@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_sourevo_trade" model="ir.ui.view">
+        <field name="name">product.template.form.sourevo.trade</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <group name="inventory" position="inside">
+                <group string="EUDR register" name="sourevo_eudr_lite">
+                    <field name="sourevo_trade_eudr"/>
+                    <field name="sourevo_trade_cn_code" invisible="not sourevo_trade_eudr" required="sourevo_trade_eudr" placeholder="09011100"/>
+                    <field name="sourevo_trade_unit" invisible="not sourevo_trade_eudr"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="product_template_search_view_sourevo_trade" model="ir.ui.view">
+        <field name="name">product.template.search.sourevo.trade</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <filter name="filter_to_sell" position="before">
+                <filter string="EUDR register" name="sourevo_trade_eudr" domain="[('sourevo_trade_eudr', '=', True)]"/>
+            </filter>
+        </field>
+    </record>
+</odoo>
